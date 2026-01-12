@@ -1,9 +1,11 @@
 :root {
-    --bg-color: #f0f8ff;
-    --text-color: #333;
-    --primary-color: #3498db;
+    --bg-color: #f4f7f9;
+    --text-color: #444;
+    --primary-color: #007aff;
+    --secondary-color: #ff9500;
     --card-bg: #ffffff;
-    --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+    --border-radius: 12px;
     --font-family: 'Nunito', sans-serif;
 }
 
@@ -14,10 +16,10 @@ body {
     margin: 0;
     padding: 2rem;
     line-height: 1.6;
-    text-align: center;
 }
 
 header {
+    text-align: center;
     margin-bottom: 3rem;
 }
 
@@ -38,20 +40,30 @@ h1 span {
     margin: 0 auto;
 }
 
-.timeline {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
+.month-section {
+    margin-bottom: 3rem;
+}
+
+.month-title {
+    font-size: 1.8rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary-color);
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
 }
 
 .card {
     background: var(--card-bg);
-    border-radius: 15px;
+    border-radius: var(--border-radius);
     box-shadow: var(--shadow);
-    padding: 1.5rem 2rem;
-    width: 320px;
-    text-align: left;
+    display: flex;
+    flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     opacity: 0;
     transform: translateY(20px);
@@ -64,55 +76,124 @@ h1 span {
 }
 
 .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
-.card-month {
+.card-header {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.card-month-abbr {
     font-size: 1rem;
     font-weight: 700;
-    padding: 0.3rem 0.8rem;
-    border-radius: 20px;
-    color: #fff;
-    background-color: var(--primary-color);
-    display: inline-block;
-    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-radius: 8px;
+    color: var(--primary-color);
+    background-color: #eef6ff;
+    margin-right: 1rem;
+    min-width: 40px;
+    text-align: center;
 }
 
 .card-title {
     font-size: 1.3rem;
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    margin: 0;
+}
+
+.card-body {
+    padding: 1rem 1.5rem;
+    flex-grow: 1;
 }
 
 .card-description {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: #555;
+    margin-bottom: 1rem;
 }
 
-/* Animações com delay para um efeito escalonado */
-.card:nth-child(1) { animation-delay: 0.1s; }
-.card:nth-child(2) { animation-delay: 0.2s; }
-.card:nth-child(3) { animation-delay: 0.3s; }
-.card:nth-child(4) { animation-delay: 0.4s; }
-/* ... e assim por diante se não usarmos JS para scroll */
+.card-details {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.9rem;
+    color: #333;
+}
 
+.card-details span {
+    display: flex;
+    align-items: center;
+}
 
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.card-details i {
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+    color: var(--secondary-color);
+}
+
+.card-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem 1.5rem;
+    background-color: #fcfcfc;
+    border-top: 1px solid #eee;
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+}
+
+.card-action-link, .card-edit-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.card-action-link {
+    color: var(--primary-color);
+}
+
+.card-action-link:hover {
+    background-color: #eef6ff;
+}
+
+.card-action-link.disabled {
+    color: #aaa;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.card-edit-button {
+    background-color: var(--secondary-color);
+    color: #fff;
+    margin-left: 0.5rem;
+}
+
+.card-edit-button:hover {
+    background-color: #e68600;
+}
+
+.card-footer i {
+    font-size: 1rem;
 }
 
 @media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
     h1 {
         font-size: 2rem;
     }
-    .timeline {
-        gap: 1.5rem;
-    }
-    .card {
-        width: 100%;
+    .cards-container {
+        grid-template-columns: 1fr;
     }
 }
