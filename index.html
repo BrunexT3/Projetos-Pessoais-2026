@@ -28,5 +28,71 @@
     <!-- Seus scripts -->
     <script src="firebase-config.js"></script>
     <script src="script.js"></script>
+
+    <!-- Modal de Edição (inicialmente oculto) -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Editar Passeio</h2>
+            <form id="editForm">
+                <input type="hidden" id="tripId">
+                
+                <div class="form-group">
+                    <label for="tripTitle">Título</label>
+                    <input type="text" id="tripTitle" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="tripDescription">Descrição</label>
+                    <textarea id="tripDescription" rows="3"></textarea>
+                </div>
+
+                <div class="form-group-row">
+                    <div class="form-group">
+                        <label for="tripMonth">Mês</label>
+                        <select id="tripMonth" required>
+                            <option value="Janeiro">Janeiro</option>
+                            <option value="Fevereiro">Fevereiro</option>
+                            <option value="Março">Março</option>
+                            <option value="Abril">Abril</option>
+                            <option value="Maio">Maio</option>
+                            <option value="Junho">Junho</option>
+                            <option value="Julho">Julho</option>
+                            <option value="Agosto">Agosto</option>
+                            <option value="Setembro">Setembro</option>
+                            <option value="Outubro">Outubro</option>
+                            <option value="Novembro">Novembro</option>
+                            <option value="Dezembro">Dezembro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tripOrder">Ordem no Mês</label>
+                        <input type="number" id="tripOrder" min="1">
+                    </div>
+                </div>
+
+                <div class="form-group-row">
+                    <div class="form-group">
+                        <label for="tripDays">Dias Previstos</label>
+                        <input type="number" id="tripDays" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tripCost">Custo Estimado (R$)</label>
+                        <input type="number" id="tripCost" min="0">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="tripMapsUrl">Link do Google Maps</label>
+                    <input type="url" id="tripMapsUrl">
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="save-button">Salvar Alterações</button>
+                    <button type="button" class="cancel-button">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

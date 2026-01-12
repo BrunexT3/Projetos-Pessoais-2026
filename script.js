@@ -126,6 +126,140 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Roda a função principal
     loadTrips();
+
+    // --- LÓGICA DO MODAL DE EDIÇÃO ---
+
+    const modal = document.getElementById('editModal');
+    const editForm = document.getElementById('editForm');
+    const closeButton = modal.querySelector('.close-button');
+    const cancelButton = modal.querySelector('.cancel-button');
+
+    const tripIdInput = document.getElementById('tripId');
+    const tripTitleInput = document.getElementById('tripTitle');
+    const tripDescriptionInput = document.getElementById('tripDescription');
+    const tripMonthInput = document.getElementById('tripMonth');
+    const tripOrderInput = document.getElementById('tripOrder');
+    const tripDaysInput = document.getElementById('tripDays');
+    const tripCostInput = document.getElementById('tripCost');
+    const tripMapsUrlInput = document.getElementById('tripMapsUrl');
+
+    // Função para abrir o modal com os dados do passeio
+    const openEditModal = async (tripId) => {
+        try {
+            const docRef = tripsCollection.doc(tripId);
+            const doc = await docRef.get();
+            if (!doc.exists) {
+                console.error("Documento não encontrado!");
+                return;
+            }
+            const tripData = doc.data();
+
+            // Preenche o formulário
+            tripIdInput.value = tripId;
+            tripTitleInput.value = tripData.title;
+            tripDescriptionInput.value = tripData.description;
+            tripMonthInput.value = tripData.month;
+            tripOrderInput.value = tripData.order;
+            tripDaysInput.value = tripData.estimatedDays;
+            tripCostInput.value = tripData.estimatedCost;
+            tripMapsUrlInput.value = tripData.googleMapsUrl || '';
+
+            // Exibe o modal
+            modal.style.display = 'block';
+
+        } catch (error) {
+            console.error("Erro ao abrir o modal de edição:", error);
+        }
+    };
+
+    // Função para fechar o modal
+    const closeEditModal = () => {
+        modal.style.display = 'none';
+        editForm.reset(); // Limpa o formulário
+    };
+    
+    // Função para atualizar o card na interface após a edição
+    const updateCardInUI = (tripId, updatedData) => {
+        const card = document.querySelector(`.card[data-id="${tripId}"]`);
+        if (!card) return;
+
+        const monthAbbr = updatedData.month.substring(0, 3).toUpperCase();
+        const cost = updatedData.estimatedCost > 0 ? `R$ ${updatedData.estimatedCost.toFixed(2)}` : 'Grátis';
+        const days = updatedData.estimatedDays > 1 ? `${updatedData.estimatedDays} dias` : `${updatedData.estimatedDays} dia`;
+
+        card.querySelector('.card-month-abbr').textContent = monthAbbr;
+        card.querySelector('.card-title').textContent = updatedData.title;
+        card.querySelector('.card-description').textContent = updatedData.description;
+        
+        const detailsContainer = card.querySelector('.card-details');
+        detailsContainer.innerHTML = `
+            <span><i class="las la-calendar"></i> ${days}</span>
+            <span><i class="las la-money-bill-wave"></i> ${cost}</span>
+        `;
+        
+        const mapsLink = card.querySelector('.card-action-link');
+        mapsLink.href = updatedData.googleMapsUrl;
+        if (updatedData.googleMapsUrl) {
+            mapsLink.classList.remove('disabled');
+        } else {
+            mapsLink.classList.add('disabled');
+        }
+        
+        // Se o mês mudou, a página precisa ser recarregada para reorganizar
+        const oldMonth = card.closest('.month-section').querySelector('.month-title').textContent;
+        if (oldMonth !== updatedData.month) {
+            // A forma mais simples de refletir a mudança de mês é recarregar tudo
+            loadTrips();
+        }
+    };
+
+
+    // Adiciona 'event listener' para o container principal (delegação)
+    timeline.addEventListener('click', (event) => {
+        const editButton = event.target.closest('.card-edit-button');
+        if (editButton) {
+            const card = editButton.closest('.card');
+            const tripId = card.getAttribute('data-id');
+            openEditModal(tripId);
+        }
+    });
+
+    // Event listeners para fechar o modal
+    closeButton.addEventListener('click', closeEditModal);
+    cancelButton.addEventListener('click', closeEditModal);
+    window.addEventListener('click', (event) => {
+        if (event.target == modal) {
+            closeEditModal();
+        }
+    });
+    
+    // Event listener para salvar as alterações
+    editForm.addEventListener('submit', async (event) => {
+        event.preventDefault(); // Impede o recarregamento da página
+
+        const tripId = tripIdInput.value;
+        const updatedData = {
+            title: tripTitleInput.value,
+            description: tripDescriptionInput.value,
+            month: tripMonthInput.value,
+            order: parseInt(tripOrderInput.value, 10),
+            estimatedDays: parseInt(tripDaysInput.value, 10),
+            estimatedCost: parseFloat(tripCostInput.value),
+            googleMapsUrl: tripMapsUrlInput.value
+        };
+
+        try {
+            const docRef = tripsCollection.doc(tripId);
+            await docRef.update(updatedData);
+            
+            closeEditModal();
+            updateCardInUI(tripId, updatedData);
+            console.log("Passeio atualizado com sucesso!");
+
+        } catch (error) {
+            console.error("Erro ao salvar as alterações:", error);
+        }
+    });
 });
 
 
@@ -152,7 +286,7 @@ async function seedDatabase() {
         { month: 'Outubro', title: 'Guararema', description: 'Trem Turístico.', order: 17, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 180 },
         { month: 'Outubro', title: 'São Paulo', description: 'Aquário do Ipiranga.', order: 18, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 150 },
         { month: 'Novembro', title: 'Votorantim', description: 'Represa de Itupararanga.', order: 19, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 40 },
-        { month: 'Novembro', title: 'Boituva', description: 'Parque Ecológico ou Balonismo (visual).', order: 20, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 100 },
+        { month: 'Novembro', 'title: 'Boituva', description: 'Parque Ecológico ou Balonismo (visual).', order: 20, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 100 },
         { month: 'Dezembro', title: 'Itu', description: 'Luzes de Natal na Praça.', order: 21, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 0 },
         { month: 'Dezembro', title: 'São Roque', description: 'Vila Don Patto (Decoração).', order: 22, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 250 }
     ];
