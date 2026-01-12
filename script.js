@@ -5,11 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- FUNÇÕES DE RENDERIZAÇÃO ---
 
-    // Renderiza um único card com o novo formato
     const renderCard = (tripData, tripId) => {
         const card = document.createElement('div');
         card.classList.add('card');
-        card.setAttribute('data-id', tripId); // Salva o ID do documento para uso futuro (edição)
+        card.setAttribute('data-id', tripId);
 
         const monthAbbr = tripData.month.substring(0, 3).toUpperCase();
         const cost = tripData.estimatedCost > 0 ? `R$ ${tripData.estimatedCost.toFixed(2)}` : 'Grátis';
@@ -39,11 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
         return card;
     };
 
-    // Renderiza a estrutura completa agrupada por mês
     const renderGroupedTrips = (groupedTrips) => {
-        timeline.innerHTML = ''; // Limpa a visualização antiga
+        timeline.innerHTML = '';
         
-        // Ordena os meses
         const sortedMonths = Object.keys(groupedTrips).sort((a, b) => monthOrder.indexOf(a) - monthOrder.indexOf(b));
 
         for (const month of sortedMonths) {
@@ -77,7 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (snapshot.empty) {
                 console.log('Coleção vazia. Populando o banco de dados...');
                 await seedDatabase();
-                // Recarrega os dados após o 'seed'
                 const newSnapshot = await tripsCollection.get();
                 processSnapshot(newSnapshot);
             } else {
@@ -85,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 processSnapshot(snapshot);
             }
             
-            setupScrollAnimation(); // Reconfigura animações após renderizar
+            setupScrollAnimation();
 
         } catch (error) {
             console.error("Erro ao carregar os passeios: ", error);
@@ -96,13 +92,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const processSnapshot = (snapshot) => {
         const trips = snapshot.docs.map(doc => ({ id: doc.id, data: doc.data() }));
         
-        // Agrupa por mês
         const groupedTrips = trips.reduce((acc, trip) => {
             const month = trip.data.month;
             if (!acc[month]) {
                 acc[month] = [];
             }
-            // Ordena os passeios dentro do mês pela propriedade 'order'
             acc[month].push(trip);
             acc[month].sort((a, b) => a.data.order - b.data.order);
             return acc;
@@ -143,7 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const tripCostInput = document.getElementById('tripCost');
     const tripMapsUrlInput = document.getElementById('tripMapsUrl');
 
-    // Função para abrir o modal com os dados do passeio
     const openEditModal = async (tripId) => {
         try {
             const docRef = tripsCollection.doc(tripId);
@@ -154,7 +147,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             const tripData = doc.data();
 
-            // Preenche o formulário
             tripIdInput.value = tripId;
             tripTitleInput.value = tripData.title;
             tripDescriptionInput.value = tripData.description;
@@ -164,7 +156,6 @@ document.addEventListener('DOMContentLoaded', () => {
             tripCostInput.value = tripData.estimatedCost;
             tripMapsUrlInput.value = tripData.googleMapsUrl || '';
 
-            // Exibe o modal
             modal.style.display = 'block';
 
         } catch (error) {
@@ -172,13 +163,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Função para fechar o modal
     const closeEditModal = () => {
         modal.style.display = 'none';
-        editForm.reset(); // Limpa o formulário
+        editForm.reset();
     };
     
-    // Função para atualizar o card na interface após a edição
     const updateCardInUI = (tripId, updatedData) => {
         const card = document.querySelector(`.card[data-id="${tripId}"]`);
         if (!card) return;
@@ -205,16 +194,12 @@ document.addEventListener('DOMContentLoaded', () => {
             mapsLink.classList.add('disabled');
         }
         
-        // Se o mês mudou, a página precisa ser recarregada para reorganizar
         const oldMonth = card.closest('.month-section').querySelector('.month-title').textContent;
         if (oldMonth !== updatedData.month) {
-            // A forma mais simples de refletir a mudança de mês é recarregar tudo
             loadTrips();
         }
     };
 
-
-    // Adiciona 'event listener' para o container principal (delegação)
     timeline.addEventListener('click', (event) => {
         const editButton = event.target.closest('.card-edit-button');
         if (editButton) {
@@ -224,7 +209,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Event listeners para fechar o modal
     closeButton.addEventListener('click', closeEditModal);
     cancelButton.addEventListener('click', closeEditModal);
     window.addEventListener('click', (event) => {
@@ -233,9 +217,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // Event listener para salvar as alterações
     editForm.addEventListener('submit', async (event) => {
-        event.preventDefault(); // Impede o recarregamento da página
+        event.preventDefault();
 
         const tripId = tripIdInput.value;
         const updatedData = {
@@ -262,9 +245,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-
-// --- FUNÇÃO DE SEED (POPULAR O BANCO) ---
-// Atualizada com os novos campos
 async function seedDatabase() {
     const initialTrips = [
         { month: 'Fevereiro', title: 'Salto', description: 'Complexo da Cachoeira e Parque Rocha Moutonnée.', order: 1, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 100 },
@@ -286,7 +266,7 @@ async function seedDatabase() {
         { month: 'Outubro', title: 'Guararema', description: 'Trem Turístico.', order: 17, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 180 },
         { month: 'Outubro', title: 'São Paulo', description: 'Aquário do Ipiranga.', order: 18, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 150 },
         { month: 'Novembro', title: 'Votorantim', description: 'Represa de Itupararanga.', order: 19, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 40 },
-        { month: 'Novembro', 'title: 'Boituva', description: 'Parque Ecológico ou Balonismo (visual).', order: 20, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 100 },
+        { month: 'Novembro', title: 'Boituva', description: 'Parque Ecológico ou Balonismo (visual).', order: 20, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 100 },
         { month: 'Dezembro', title: 'Itu', description: 'Luzes de Natal na Praça.', order: 21, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 0 },
         { month: 'Dezembro', title: 'São Roque', description: 'Vila Don Patto (Decoração).', order: 22, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 250 }
     ];
