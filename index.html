@@ -12,14 +12,20 @@
 </head>
 <body>
 
-    <header>
-        <h1>Planejamento de Viagens <span>Bate e Volta</span> - 2026</h1>
-        <p class="subtitle">Um roteiro familiar de passeios inesquecíveis pelo interior de São Paulo.</p>
-    </header>
+    <div class="app-layout">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h1>Passeios <span>2026</span></h1>
+            </div>
+            <ul id="month-nav" class="month-nav">
+                <!-- Links dos meses serão inseridos aqui pelo script.js -->
+            </ul>
+        </nav>
 
-    <main class="timeline">
-        <!-- Os cards de viagem serão inseridos aqui pelo script.js -->
-    </main>
+        <main id="content-area" class="content">
+            <!-- As seções de meses e cards serão inseridas aqui pelo script.js -->
+        </main>
+    </div>
 
     <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>

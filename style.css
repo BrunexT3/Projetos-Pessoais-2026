@@ -1,305 +1,247 @@
 :root {
-    --bg-color: #f4f7f9;
-    --text-color: #444;
-    --primary-color: #007aff;
-    --secondary-color: #ff9500;
+    --font-sans: 'Nunito', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --bg-color: #f6f8fa;
+    --sidebar-bg: #ffffff;
     --card-bg: #ffffff;
-    --shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
-    --border-radius: 12px;
-    --font-family: 'Nunito', sans-serif;
+    --text-color: #3d4f66;
+    --heading-color: #1d2838;
+    --primary-color: #0062ff;
+    --secondary-color: #ff7b00;
+    --border-color: #e9eef2;
+    --shadow-sm: 0 4px 6px -1px rgba(0,0,0,0.03), 0 2px 4px -1px rgba(0,0,0,0.02);
+    --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.03);
+    --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+    --border-radius: 16px;
+    --transition-speed: 0.3s;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body {
-    font-family: var(--font-family);
+    font-family: var(--font-sans);
     background-color: var(--bg-color);
     color: var(--text-color);
     margin: 0;
+}
+
+.app-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    min-height: 100vh;
+}
+
+/* --- Sidebar --- */
+.sidebar {
+    background-color: var(--sidebar-bg);
     padding: 2rem;
-    line-height: 1.6;
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
 }
 
-header {
-    text-align: center;
-    margin-bottom: 3rem;
+.sidebar-header h1 {
+    font-size: 1.8rem;
+    color: var(--heading-color);
+    margin: 0 0 2rem 0;
 }
 
-h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-}
-
-h1 span {
+.sidebar-header span {
     color: var(--primary-color);
 }
 
-.subtitle {
-    font-size: 1.1rem;
-    color: #666;
-    max-width: 600px;
-    margin: 0 auto;
+.month-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.month-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    color: var(--text-color);
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+.month-link:hover {
+    background-color: var(--bg-color);
+}
+
+.month-link.active {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.month-link span {
+    font-size: 0.8rem;
+    background-color: var(--border-color);
+    padding: 0.1rem 0.5rem;
+    border-radius: 20px;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.month-link.active span {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+/* --- Content Area --- */
+.content {
+    padding: 3rem;
+    overflow-y: auto;
 }
 
 .month-section {
-    margin-bottom: 3rem;
+    display: none; /* Hidden by default */
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.month-section.visible {
+    display: block; /* Made visible by JS */
 }
 
 .month-title {
-    font-size: 1.8rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid var(--primary-color);
-    margin-bottom: 2rem;
-    text-align: left;
+    font-size: 2.5rem;
+    color: var(--heading-color);
+    margin: 0 0 2rem 0;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .cards-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
+/* --- Card Redesign --- */
 .card {
     background: var(--card-bg);
     border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-md);
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeIn 0.5s forwards;
-}
-
-.card.visible {
-    opacity: 1;
-    transform: translateY(0);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    perspective: 1000px;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-8px) rotateX(2deg) scale(1.02);
+    box-shadow: var(--shadow-lg);
 }
 
 .card-header {
     display: flex;
     align-items: center;
     padding: 1rem 1.5rem;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--border-color);
 }
-
 .card-month-abbr {
-    font-size: 1rem;
-    font-weight: 700;
-    padding: 0.5rem;
-    border-radius: 8px;
-    color: var(--primary-color);
-    background-color: #eef6ff;
-    margin-right: 1rem;
-    min-width: 40px;
-    text-align: center;
+    font-size: 0.9rem; font-weight: 700; padding: 0.5rem;
+    border-radius: 8px; color: var(--primary-color);
+    background-color: #eef6ff; margin-right: 1rem;
+    min-width: 40px; text-align: center;
 }
-
-.card-title {
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin: 0;
-}
-
-.card-body {
-    padding: 1rem 1.5rem;
-    flex-grow: 1;
-}
-
-.card-description {
-    font-size: 0.95rem;
-    color: #555;
-    margin-bottom: 1rem;
-}
-
-.card-details {
-    display: flex;
-    gap: 1.5rem;
-    font-size: 0.9rem;
-    color: #333;
-}
-
-.card-details span {
-    display: flex;
-    align-items: center;
-}
-
-.card-details i {
-    font-size: 1.2rem;
-    margin-right: 0.5rem;
-    color: var(--secondary-color);
-}
+.card-title { font-size: 1.3rem; font-weight: 700; margin: 0; color: var(--heading-color); }
+.card-body { padding: 1.5rem; flex-grow: 1; }
+.card-description { font-size: 0.95rem; margin-bottom: 1.5rem; }
+.card-details { display: flex; gap: 1.5rem; font-size: 0.9rem; }
+.card-details span { display: flex; align-items: center; }
+.card-details i { font-size: 1.2rem; margin-right: 0.5rem; color: var(--secondary-color); }
 
 .card-footer {
-    display: flex;
-    justify-content: flex-end;
-    padding: 1rem 1.5rem;
-    background-color: #fcfcfc;
-    border-top: 1px solid #eee;
+    display: flex; justify-content: flex-end; padding: 0.75rem 1.5rem;
+    background-color: var(--bg-color); border-top: 1px solid var(--border-color);
     border-bottom-left-radius: var(--border-radius);
     border-bottom-right-radius: var(--border-radius);
 }
-
 .card-action-link, .card-edit-button {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.9rem;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.5rem 1rem; border-radius: 8px; text-decoration: none;
+    font-weight: 700; font-size: 0.9rem; border: none; cursor: pointer;
+    transition: all var(--transition-speed);
 }
+.card-action-link:hover { background-color: #eef6ff; }
+.card-action-link.disabled { color: #aaa; pointer-events: none; opacity: 0.6; }
+.card-edit-button { background-color: var(--secondary-color); color: #fff; margin-left: 0.5rem; }
+.card-edit-button:hover { background-color: #d96a00; transform: translateY(-2px); }
 
-.card-action-link {
-    color: var(--primary-color);
+/* --- Modal Styles --- */
+.modal {
+    display: none; position: fixed; z-index: 1000; left: 0; top: 0;
+    width: 100%; height: 100%; overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s;
 }
-
-.card-action-link:hover {
-    background-color: #eef6ff;
+.modal-content {
+    background-color: #fefefe; margin: 5% auto; padding: 2.5rem;
+    width: 90%; max-width: 600px; border-radius: var(--border-radius);
+    position: relative; box-shadow: var(--shadow-lg);
+    animation: slideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-
-.card-action-link.disabled {
-    color: #aaa;
-    pointer-events: none;
-    opacity: 0.6;
+.close-button {
+    color: #aaa; position: absolute; top: 1rem; right: 1.5rem;
+    font-size: 28px; font-weight: bold; cursor: pointer;
 }
-
-.card-edit-button {
-    background-color: var(--secondary-color);
-    color: #fff;
-    margin-left: 0.5rem;
+/* Form styles */
+#editForm h2 { margin-top: 0; color: var(--heading-color); }
+.form-group { margin-bottom: 1rem; }
+.form-group-row { display: flex; gap: 1rem; }
+.form-group-row .form-group { flex: 1; }
+.form-group label { display: block; margin-bottom: 0.5rem; font-weight: 700; font-size: 0.9rem; }
+.form-group input, .form-group textarea, .form-group select {
+    width: 100%; padding: 0.8rem; border: 1px solid var(--border-color);
+    border-radius: 8px; font-family: var(--font-sans); font-size: 1rem;
+    box-sizing: border-box; transition: box-shadow 0.2s;
 }
-
-.card-edit-button:hover {
-    background-color: #e68600;
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+    outline: none; box-shadow: 0 0 0 2px var(--primary-color);
 }
-
-.card-footer i {
-    font-size: 1rem;
+.form-actions { margin-top: 2rem; display: flex; justify-content: flex-end; gap: 1rem; }
+.save-button, .cancel-button {
+    padding: 0.8rem 1.5rem; border: none; border-radius: 8px;
+    font-weight: 700; font-size: 1rem; cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
 }
+.save-button { background-color: var(--primary-color); color: white; }
+.save-button:hover { transform: translateY(-2px); }
+.cancel-button { background-color: #e9eef2; color: var(--text-color); }
+.cancel-button:hover { background-color: #d8dde2; }
 
+/* --- Animations --- */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideIn { from { transform: translateY(-30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+/* --- Responsiveness --- */
 @media (max-width: 768px) {
-    body {
-        padding: 1rem;
-    }
-    h1 {
-        font-size: 2rem;
-    }
-    .cards-container {
+    .app-layout {
         grid-template-columns: 1fr;
     }
-}
-
-/* --- Estilos do Modal de Edição --- */
-
-.modal {
-    display: none; /* Oculto por padrão */
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.5); /* Fundo escurecido */
-    animation: fadeInModal 0.3s ease-in-out;
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 5% auto;
-    padding: 2rem;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 600px;
-    border-radius: var(--border-radius);
-    position: relative;
-}
-
-.close-button {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.close-button:hover,
-.close-button:focus {
-    color: black;
-}
-
-#editForm h2 {
-    margin-top: 0;
-}
-
-.form-group {
-    margin-bottom: 1rem;
-}
-
-.form-group-row {
-    display: flex;
-    gap: 1rem;
-}
-
-.form-group-row .form-group {
-    flex: 1;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 700;
-    font-size: 0.9rem;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select {
-    width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-family: var(--font-family);
-    font-size: 1rem;
-    box-sizing: border-box;
-}
-
-.form-actions {
-    margin-top: 2rem;
-    display: flex;
-    justify-content: flex-end;
-    gap: 1rem;
-}
-
-.save-button, .cancel-button {
-    padding: 0.8rem 1.5rem;
-    border: none;
-    border-radius: 8px;
-    font-weight: 700;
-    font-size: 1rem;
-    cursor: pointer;
-}
-
-.save-button {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-.cancel-button {
-    background-color: #ccc;
-    color: #333;
-}
-
-@keyframes fadeInModal {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    .sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding: 1rem;
+    }
+    .month-nav {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 1rem;
+    }
+    .content {
+        padding: 1.5rem;
+    }
+    .month-title {
+        font-size: 2rem;
+    }
 }

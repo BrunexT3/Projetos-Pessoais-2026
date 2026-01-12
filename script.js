@@ -1,7 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const timeline = document.querySelector('.timeline');
+    // --- ELEMENTOS DO DOM ---
+    const monthNav = document.getElementById('month-nav');
+    const contentArea = document.getElementById('content-area');
     const tripsCollection = db.collection('viagens');
     const monthOrder = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+
+    let allTripsData = {}; // Cache para os dados dos passeios
 
     // --- FUNÇÕES DE RENDERIZAÇÃO ---
 
@@ -38,14 +42,19 @@ document.addEventListener('DOMContentLoaded', () => {
         return card;
     };
 
-    const renderGroupedTrips = (groupedTrips) => {
-        timeline.innerHTML = '';
-        
+    const renderContent = (groupedTrips) => {
+        contentArea.innerHTML = '';
         const sortedMonths = Object.keys(groupedTrips).sort((a, b) => monthOrder.indexOf(a) - monthOrder.indexOf(b));
+
+        if (sortedMonths.length === 0) {
+            contentArea.innerHTML = '<p class="empty-message">Nenhum passeio encontrado. Edite os dados no Firebase!</p>';
+            return;
+        }
 
         for (const month of sortedMonths) {
             const monthSection = document.createElement('section');
             monthSection.classList.add('month-section');
+            monthSection.id = `month-${month}`;
             
             const monthTitle = document.createElement('h2');
             monthTitle.classList.add('month-title');
@@ -54,80 +63,88 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const cardsContainer = document.createElement('div');
             cardsContainer.classList.add('cards-container');
-
             groupedTrips[month].forEach(trip => {
                 const cardElement = renderCard(trip.data, trip.id);
                 cardsContainer.appendChild(cardElement);
             });
 
             monthSection.appendChild(cardsContainer);
-            timeline.appendChild(monthSection);
+            contentArea.appendChild(monthSection);
         }
     };
-    
+
+    const renderSidebar = (groupedTrips) => {
+        monthNav.innerHTML = ''; // Limpa antes de renderizar
+        const sortedMonths = Object.keys(groupedTrips).sort((a, b) => monthOrder.indexOf(a) - monthOrder.indexOf(b));
+
+        const allLi = document.createElement('li');
+        allLi.innerHTML = `<a href="#" class="month-link active" data-month="all">Mostrar Todos <span>${Object.values(groupedTrips).flat().length}</span></a>`;
+        monthNav.appendChild(allLi);
+
+        for (const month of sortedMonths) {
+            const li = document.createElement('li');
+            const tripCount = groupedTrips[month].length;
+            li.innerHTML = `<a href="#" class="month-link" data-month="${month}">${month} <span>${tripCount}</span></a>`;
+            monthNav.appendChild(li);
+        }
+    };
+
+    // --- LÓGICA DE FILTRAGEM ---
+
+    monthNav.addEventListener('click', (event) => {
+        event.preventDefault();
+        const link = event.target.closest('.month-link');
+        if (!link) return;
+
+        const selectedMonth = link.dataset.month;
+        document.querySelectorAll('.month-link').forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+
+        document.querySelectorAll('.month-section').forEach(section => {
+            section.classList.remove('visible');
+            if (selectedMonth === 'all' || section.id === `month-${selectedMonth}`) {
+                section.classList.add('visible');
+            }
+        });
+    });
+
     // --- LÓGICA PRINCIPAL ---
 
     const loadTrips = async () => {
         try {
             const snapshot = await tripsCollection.get();
-
             if (snapshot.empty) {
-                console.log('Coleção vazia. Populando o banco de dados...');
                 await seedDatabase();
-                const newSnapshot = await tripsCollection.get();
-                processSnapshot(newSnapshot);
-            } else {
-                console.log('Dados carregados do Firestore.');
-                processSnapshot(snapshot);
+                return loadTrips();
             }
             
-            setupScrollAnimation();
+            const trips = snapshot.docs.map(doc => ({ id: doc.id, data: doc.data() }));
+            allTripsData = trips.reduce((acc, trip) => {
+                const month = trip.data.month;
+                if (!acc[month]) acc[month] = [];
+                acc[month].push(trip);
+                acc[month].sort((a, b) => a.data.order - b.data.order);
+                return acc;
+            }, {});
 
+            renderSidebar(allTripsData);
+            renderContent(allTripsData);
+            // Mostra todas as seções por padrão no carregamento inicial
+            document.querySelectorAll('.month-section').forEach(s => s.classList.add('visible'));
+            
         } catch (error) {
             console.error("Erro ao carregar os passeios: ", error);
-            timeline.innerHTML = '<p style="color: red;">Não foi possível carregar os passeios. Verifique o console para mais detalhes.</p>';
+            contentArea.innerHTML = '<p class="empty-message">Falha ao carregar passeios.</p>';
         }
     };
 
-    const processSnapshot = (snapshot) => {
-        const trips = snapshot.docs.map(doc => ({ id: doc.id, data: doc.data() }));
-        
-        const groupedTrips = trips.reduce((acc, trip) => {
-            const month = trip.data.month;
-            if (!acc[month]) {
-                acc[month] = [];
-            }
-            acc[month].push(trip);
-            acc[month].sort((a, b) => a.data.order - b.data.order);
-            return acc;
-        }, {});
-
-        renderGroupedTrips(groupedTrips);
-    };
-
-    const setupScrollAnimation = () => {
-        const cards = document.querySelectorAll('.card');
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-        cards.forEach(card => { observer.observe(card); });
-    };
-
-    // Roda a função principal
     loadTrips();
 
-    // --- LÓGICA DO MODAL DE EDIÇÃO ---
-
+    // --- LÓGICA DO MODAL ---
     const modal = document.getElementById('editModal');
     const editForm = document.getElementById('editForm');
     const closeButton = modal.querySelector('.close-button');
     const cancelButton = modal.querySelector('.cancel-button');
-
     const tripIdInput = document.getElementById('tripId');
     const tripTitleInput = document.getElementById('tripTitle');
     const tripDescriptionInput = document.getElementById('tripDescription');
@@ -141,10 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const docRef = tripsCollection.doc(tripId);
             const doc = await docRef.get();
-            if (!doc.exists) {
-                console.error("Documento não encontrado!");
-                return;
-            }
+            if (!doc.exists) { console.error("Documento não encontrado!"); return; }
             const tripData = doc.data();
 
             tripIdInput.value = tripId;
@@ -157,9 +171,8 @@ document.addEventListener('DOMContentLoaded', () => {
             tripMapsUrlInput.value = tripData.googleMapsUrl || '';
 
             modal.style.display = 'block';
-
         } catch (error) {
-            console.error("Erro ao abrir o modal de edição:", error);
+            console.error("Erro ao abrir o modal:", error);
         }
     };
 
@@ -171,40 +184,36 @@ document.addEventListener('DOMContentLoaded', () => {
     const updateCardInUI = (tripId, updatedData) => {
         const card = document.querySelector(`.card[data-id="${tripId}"]`);
         if (!card) return;
-
-        const monthAbbr = updatedData.month.substring(0, 3).toUpperCase();
-        const cost = updatedData.estimatedCost > 0 ? `R$ ${updatedData.estimatedCost.toFixed(2)}` : 'Grátis';
-        const days = updatedData.estimatedDays > 1 ? `${updatedData.estimatedDays} dias` : `${updatedData.estimatedDays} dia`;
-
-        card.querySelector('.card-month-abbr').textContent = monthAbbr;
-        card.querySelector('.card-title').textContent = updatedData.title;
-        card.querySelector('.card-description').textContent = updatedData.description;
         
-        const detailsContainer = card.querySelector('.card-details');
-        detailsContainer.innerHTML = `
-            <span><i class="las la-calendar"></i> ${days}</span>
-            <span><i class="las la-money-bill-wave"></i> ${cost}</span>
-        `;
+        const oldMonthSectionId = card.closest('.month-section').id;
+        const newMonth = updatedData.month;
         
-        const mapsLink = card.querySelector('.card-action-link');
-        mapsLink.href = updatedData.googleMapsUrl;
-        if (updatedData.googleMapsUrl) {
-            mapsLink.classList.remove('disabled');
-        } else {
-            mapsLink.classList.add('disabled');
-        }
-        
-        const oldMonth = card.closest('.month-section').querySelector('.month-title').textContent;
-        if (oldMonth !== updatedData.month) {
+        // Se o mês mudou, a forma mais segura é recarregar tudo
+        if (oldMonthSectionId !== `month-${newMonth}`) {
             loadTrips();
+        } else {
+            // Atualização otimizada se o mês não mudou
+            const monthAbbr = updatedData.month.substring(0, 3).toUpperCase();
+            const cost = updatedData.estimatedCost > 0 ? `R$ ${updatedData.estimatedCost.toFixed(2)}` : 'Grátis';
+            const days = updatedData.estimatedDays > 1 ? `${updatedData.estimatedDays} dias` : `${updatedData.estimatedDays} dia`;
+
+            card.querySelector('.card-month-abbr').textContent = monthAbbr;
+            card.querySelector('.card-title').textContent = updatedData.title;
+            card.querySelector('.card-description').textContent = updatedData.description;
+            card.querySelector('.card-details').innerHTML = `
+                <span><i class="las la-calendar"></i> ${days}</span>
+                <span><i class="las la-money-bill-wave"></i> ${cost}</span>
+            `;
+            const mapsLink = card.querySelector('.card-action-link');
+            mapsLink.href = updatedData.googleMapsUrl;
+            mapsLink.classList.toggle('disabled', !updatedData.googleMapsUrl);
         }
     };
 
-    timeline.addEventListener('click', (event) => {
+    contentArea.addEventListener('click', (event) => {
         const editButton = event.target.closest('.card-edit-button');
         if (editButton) {
-            const card = editButton.closest('.card');
-            const tripId = card.getAttribute('data-id');
+            const tripId = editButton.closest('.card').dataset.id;
             openEditModal(tripId);
         }
     });
@@ -212,14 +221,11 @@ document.addEventListener('DOMContentLoaded', () => {
     closeButton.addEventListener('click', closeEditModal);
     cancelButton.addEventListener('click', closeEditModal);
     window.addEventListener('click', (event) => {
-        if (event.target == modal) {
-            closeEditModal();
-        }
+        if (event.target == modal) closeEditModal();
     });
     
     editForm.addEventListener('submit', async (event) => {
         event.preventDefault();
-
         const tripId = tripIdInput.value;
         const updatedData = {
             title: tripTitleInput.value,
@@ -232,13 +238,9 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
-            const docRef = tripsCollection.doc(tripId);
-            await docRef.update(updatedData);
-            
+            await tripsCollection.doc(tripId).update(updatedData);
             closeEditModal();
             updateCardInUI(tripId, updatedData);
-            console.log("Passeio atualizado com sucesso!");
-
         } catch (error) {
             console.error("Erro ao salvar as alterações:", error);
         }
@@ -270,15 +272,12 @@ async function seedDatabase() {
         { month: 'Dezembro', title: 'Itu', description: 'Luzes de Natal na Praça.', order: 21, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 0 },
         { month: 'Dezembro', title: 'São Roque', description: 'Vila Don Patto (Decoração).', order: 22, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 250 }
     ];
-
     const batch = db.batch();
     const tripsCollection = db.collection('viagens');
-
-    initialTrips.forEach(trip => {
+    for (const trip of initialTrips) {
         const docRef = tripsCollection.doc();
         batch.set(docRef, trip);
-    });
-
+    }
     await batch.commit();
     console.log('Banco de dados populado com a nova estrutura de dados!');
 }
