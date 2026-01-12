@@ -2,18 +2,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- ELEMENTOS DO DOM ---
     const monthNav = document.getElementById('month-nav');
     const contentArea = document.getElementById('content-area');
+    const newTripButton = document.getElementById('new-trip-button');
     const tripsCollection = db.collection('viagens');
     const monthOrder = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
 
-    let allTripsData = {}; // Cache para os dados dos passeios
+    let allTripsCache = {}; // Cache para os dados dos passeios
+    let currentFilter = 'all'; // Filtro atual (all, 'Mês', 'done')
 
-    // --- FUNÇÕES DE RENDERIZAÇÃO ---
+    // --- RENDERIZAÇÃO ---
 
     const renderCard = (tripData, tripId) => {
         const card = document.createElement('div');
         card.classList.add('card');
         card.setAttribute('data-id', tripId);
-
+        if (tripData.isDone) {
+            card.classList.add('is-done');
+        }
+        
         const monthAbbr = tripData.month.substring(0, 3).toUpperCase();
         const cost = tripData.estimatedCost > 0 ? `R$ ${tripData.estimatedCost.toFixed(2)}` : 'Grátis';
         const days = tripData.estimatedDays > 1 ? `${tripData.estimatedDays} dias` : `${tripData.estimatedDays} dia`;
@@ -31,12 +36,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             </div>
             <div class="card-footer">
-                <a href="${tripData.googleMapsUrl}" target="_blank" class="card-action-link ${!tripData.googleMapsUrl ? 'disabled' : ''}">
-                    <i class="las la-map-marker-alt"></i> Ver no Mapa
-                </a>
-                <button class="card-edit-button">
-                    <i class="las la-pencil-alt"></i> Editar
-                </button>
+                <div class="card-actions-left">
+                    <a href="${tripData.googleMapsUrl}" target="_blank" class="card-action-link ${!tripData.googleMapsUrl ? 'disabled' : ''}" title="Ver no Mapa">
+                        <i class="las la-map-marker-alt"></i>
+                    </a>
+                </div>
+                <div class="card-actions-right">
+                    <button class="card-action-button card-done-button" title="${tripData.isDone ? 'Marcar como Não Feito' : 'Marcar como Feito'}">
+                        <i class="las la-${tripData.isDone ? 'check-circle' : 'circle'}"></i>
+                    </button>
+                    <button class="card-action-button card-edit-button" title="Editar">
+                        <i class="las la-pencil-alt"></i>
+                    </button>
+                    <button class="card-action-button card-delete-button" title="Excluir">
+                        <i class="las la-trash"></i>
+                    </button>
+                </div>
             </div>
         `;
         return card;
@@ -46,10 +61,14 @@ document.addEventListener('DOMContentLoaded', () => {
         contentArea.innerHTML = '';
         const sortedMonths = Object.keys(groupedTrips).sort((a, b) => monthOrder.indexOf(a) - monthOrder.indexOf(b));
 
-        if (sortedMonths.length === 0) {
-            contentArea.innerHTML = '<p class="empty-message">Nenhum passeio encontrado. Edite os dados no Firebase!</p>';
+        if (sortedMonths.length === 0 && currentFilter !== 'done') {
+            contentArea.innerHTML = '<p class="empty-message">Nenhum passeio encontrado. Clique em "Novo Passeio" para começar!</p>';
+            return;
+        } else if (sortedMonths.length === 0 && currentFilter === 'done') {
+            contentArea.innerHTML = '<p class="empty-message">Nenhum passeio "Feito" encontrado.</p>';
             return;
         }
+
 
         for (const month of sortedMonths) {
             const monthSection = document.createElement('section');
@@ -64,49 +83,45 @@ document.addEventListener('DOMContentLoaded', () => {
             const cardsContainer = document.createElement('div');
             cardsContainer.classList.add('cards-container');
             groupedTrips[month].forEach(trip => {
-                const cardElement = renderCard(trip.data, trip.id);
-                cardsContainer.appendChild(cardElement);
+                cardsContainer.appendChild(renderCard(trip.data, trip.id));
             });
-
             monthSection.appendChild(cardsContainer);
             contentArea.appendChild(monthSection);
         }
     };
+    
+    const renderSidebar = (trips) => {
+        monthNav.innerHTML = '';
+        const groupedTripsByMonth = trips.reduce((acc, trip) => {
+            const month = trip.data.month;
+            if (!acc[month]) acc[month] = [];
+            acc[month].push(trip);
+            return acc;
+        }, {});
 
-    const renderSidebar = (groupedTrips) => {
-        monthNav.innerHTML = ''; // Limpa antes de renderizar
-        const sortedMonths = Object.keys(groupedTrips).sort((a, b) => monthOrder.indexOf(a) - monthOrder.indexOf(b));
-
+        const sortedMonths = Object.keys(groupedTripsByMonth).sort((a, b) => monthOrder.indexOf(a) - monthOrder.indexOf(b));
+        
+        // Link "Mostrar Todos"
+        const allCount = trips.length;
         const allLi = document.createElement('li');
-        allLi.innerHTML = `<a href="#" class="month-link active" data-month="all">Mostrar Todos <span>${Object.values(groupedTrips).flat().length}</span></a>`;
+        allLi.innerHTML = `<a href="#" class="month-link active" data-filter="all">Mostrar Todos <span>${allCount}</span></a>`;
         monthNav.appendChild(allLi);
 
+        // Link "Realizados"
+        const doneCount = trips.filter(trip => trip.data.isDone).length;
+        const doneLi = document.createElement('li');
+        doneLi.innerHTML = `<a href="#" class="month-link" data-filter="done">Realizados <span>${doneCount}</span></a>`;
+        monthNav.appendChild(doneLi);
+
+        // Links dos meses
         for (const month of sortedMonths) {
+            const monthTrips = groupedTripsByMonth[month];
+            const monthCount = monthTrips.length;
             const li = document.createElement('li');
-            const tripCount = groupedTrips[month].length;
-            li.innerHTML = `<a href="#" class="month-link" data-month="${month}">${month} <span>${tripCount}</span></a>`;
+            li.innerHTML = `<a href="#" class="month-link" data-filter="${month}">${month} <span>${monthCount}</span></a>`;
             monthNav.appendChild(li);
         }
     };
-
-    // --- LÓGICA DE FILTRAGEM ---
-
-    monthNav.addEventListener('click', (event) => {
-        event.preventDefault();
-        const link = event.target.closest('.month-link');
-        if (!link) return;
-
-        const selectedMonth = link.dataset.month;
-        document.querySelectorAll('.month-link').forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-
-        document.querySelectorAll('.month-section').forEach(section => {
-            section.classList.remove('visible');
-            if (selectedMonth === 'all' || section.id === `month-${selectedMonth}`) {
-                section.classList.add('visible');
-            }
-        });
-    });
 
     // --- LÓGICA PRINCIPAL ---
 
@@ -119,7 +134,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
             const trips = snapshot.docs.map(doc => ({ id: doc.id, data: doc.data() }));
-            allTripsData = trips.reduce((acc, trip) => {
+            
+            // Cache para uso nos filtros e sidebar
+            allTripsCache = trips.reduce((acc, trip) => {
                 const month = trip.data.month;
                 if (!acc[month]) acc[month] = [];
                 acc[month].push(trip);
@@ -127,20 +144,79 @@ document.addEventListener('DOMContentLoaded', () => {
                 return acc;
             }, {});
 
-            renderSidebar(allTripsData);
-            renderContent(allTripsData);
-            // Mostra todas as seções por padrão no carregamento inicial
-            document.querySelectorAll('.month-section').forEach(s => s.classList.add('visible'));
+            renderSidebar(trips); // Passa a lista completa para o sidebar para contagens
+            applyFilter(currentFilter); // Aplica o filtro atual
             
         } catch (error) {
-            console.error("Erro ao carregar os passeios: ", error);
+            console.error("Erro ao carregar passeios: ", error);
             contentArea.innerHTML = '<p class="empty-message">Falha ao carregar passeios.</p>';
         }
     };
 
+    const applyFilter = (filter) => {
+        currentFilter = filter;
+        document.querySelectorAll('.month-link').forEach(l => {
+            if (l.dataset.filter === filter) {
+                l.classList.add('active');
+            } else {
+                l.classList.remove('active');
+            }
+        });
+
+        contentArea.innerHTML = ''; // Limpa antes de renderizar o conteúdo filtrado
+
+        let tripsToRender = [];
+        if (filter === 'all') {
+            tripsToRender = Object.values(allTripsCache).flat();
+        } else if (filter === 'done') {
+            tripsToRender = Object.values(allTripsCache).flat().filter(trip => trip.data.isDone);
+        } else { // Filtro por mês
+            tripsToRender = allTripsCache[filter] || [];
+        }
+        
+        // Agrupa os passeios filtrados para renderização
+        const groupedFilteredTrips = tripsToRender.reduce((acc, trip) => {
+            const month = trip.data.month;
+            if (!acc[month]) acc[month] = [];
+            acc[month].push(trip);
+            acc[month].sort((a, b) => a.data.order - b.data.order);
+            return acc;
+        }, {});
+
+        renderContent(groupedFilteredTrips);
+        setupScrollAnimation();
+    };
+
+
     loadTrips();
 
-    // --- LÓGICA DO MODAL ---
+    // --- FILTROS E EVENTOS ---
+
+    monthNav.addEventListener('click', (event) => {
+        event.preventDefault();
+        const link = event.target.closest('.month-link');
+        if (!link) return;
+        applyFilter(link.dataset.filter);
+    });
+
+    contentArea.addEventListener('click', (event) => {
+        const card = event.target.closest('.card');
+        if (!card) return;
+
+        const tripId = card.dataset.id;
+
+        const editButton = event.target.closest('.card-edit-button');
+        if (editButton) { openEditModal(tripId); return; }
+
+        const deleteButton = event.target.closest('.card-delete-button');
+        if (deleteButton) { handleDelete(tripId); return; }
+
+        const doneButton = event.target.closest('.card-done-button');
+        if (doneButton) { handleToggleDone(tripId, card); return; }
+    });
+
+    // --- MODAL & AÇÕES CRUD ---
+
     const modal = document.getElementById('editModal');
     const editForm = document.getElementById('editForm');
     const closeButton = modal.querySelector('.close-button');
@@ -153,27 +229,36 @@ document.addEventListener('DOMContentLoaded', () => {
     const tripDaysInput = document.getElementById('tripDays');
     const tripCostInput = document.getElementById('tripCost');
     const tripMapsUrlInput = document.getElementById('tripMapsUrl');
+    const tripIsDoneInput = document.getElementById('tripIsDone');
 
-    const openEditModal = async (tripId) => {
-        try {
-            const docRef = tripsCollection.doc(tripId);
-            const doc = await docRef.get();
-            if (!doc.exists) { console.error("Documento não encontrado!"); return; }
-            const tripData = doc.data();
+    const openEditModal = async (tripId = null) => {
+        editForm.reset();
+        tripIdInput.value = ''; // Sempre limpa para novo
+        if (tripId) {
+            modalTitle.textContent = "Editar Passeio";
+            try {
+                const doc = await tripsCollection.doc(tripId).get();
+                if (!doc.exists) { console.error("Documento não encontrado!"); return; }
+                const tripData = doc.data();
 
-            tripIdInput.value = tripId;
-            tripTitleInput.value = tripData.title;
-            tripDescriptionInput.value = tripData.description;
-            tripMonthInput.value = tripData.month;
-            tripOrderInput.value = tripData.order;
-            tripDaysInput.value = tripData.estimatedDays;
-            tripCostInput.value = tripData.estimatedCost;
-            tripMapsUrlInput.value = tripData.googleMapsUrl || '';
+                tripIdInput.value = tripId;
+                tripTitleInput.value = tripData.title;
+                tripDescriptionInput.value = tripData.description;
+                tripMonthInput.value = tripData.month;
+                tripOrderInput.value = tripData.order;
+                tripDaysInput.value = tripData.estimatedDays;
+                tripCostInput.value = tripData.estimatedCost;
+                tripMapsUrlInput.value = tripData.googleMapsUrl || '';
+                tripIsDoneInput.checked = tripData.isDone || false;
 
-            modal.style.display = 'block';
-        } catch (error) {
-            console.error("Erro ao abrir o modal:", error);
+            } catch (error) {
+                console.error("Erro ao carregar dados para edição:", error);
+            }
+        } else {
+            modalTitle.textContent = "Novo Passeio";
+            tripIsDoneInput.checked = false; // Novo passeio não começa como feito
         }
+        modal.style.display = 'block';
     };
 
     const closeEditModal = () => {
@@ -181,42 +266,31 @@ document.addEventListener('DOMContentLoaded', () => {
         editForm.reset();
     };
     
-    const updateCardInUI = (tripId, updatedData) => {
-        const card = document.querySelector(`.card[data-id="${tripId}"]`);
-        if (!card) return;
-        
-        const oldMonthSectionId = card.closest('.month-section').id;
-        const newMonth = updatedData.month;
-        
-        // Se o mês mudou, a forma mais segura é recarregar tudo
-        if (oldMonthSectionId !== `month-${newMonth}`) {
-            loadTrips();
-        } else {
-            // Atualização otimizada se o mês não mudou
-            const monthAbbr = updatedData.month.substring(0, 3).toUpperCase();
-            const cost = updatedData.estimatedCost > 0 ? `R$ ${updatedData.estimatedCost.toFixed(2)}` : 'Grátis';
-            const days = updatedData.estimatedDays > 1 ? `${updatedData.estimatedDays} dias` : `${updatedData.estimatedDays} dia`;
+    // Nãousada, a renderização completa garante consistência.
+    // const updateCardInUI = (tripId, updatedData) => { /* ... */ };
 
-            card.querySelector('.card-month-abbr').textContent = monthAbbr;
-            card.querySelector('.card-title').textContent = updatedData.title;
-            card.querySelector('.card-description').textContent = updatedData.description;
-            card.querySelector('.card-details').innerHTML = `
-                <span><i class="las la-calendar"></i> ${days}</span>
-                <span><i class="las la-money-bill-wave"></i> ${cost}</span>
-            `;
-            const mapsLink = card.querySelector('.card-action-link');
-            mapsLink.href = updatedData.googleMapsUrl;
-            mapsLink.classList.toggle('disabled', !updatedData.googleMapsUrl);
+    const handleDelete = async (tripId) => {
+        if (confirm("Tem certeza que deseja excluir este passeio?")) {
+            try {
+                await tripsCollection.doc(tripId).delete();
+                loadTrips(); // Recarrega a UI
+            } catch (error) {
+                console.error("Erro ao excluir passeio: ", error);
+            }
         }
     };
 
-    contentArea.addEventListener('click', (event) => {
-        const editButton = event.target.closest('.card-edit-button');
-        if (editButton) {
-            const tripId = editButton.closest('.card').dataset.id;
-            openEditModal(tripId);
+    const handleToggleDone = async (tripId, cardElement) => {
+        try {
+            const currentIsDone = cardElement.classList.contains('is-done');
+            await tripsCollection.doc(tripId).update({ isDone: !currentIsDone });
+            loadTrips(); // Recarrega para atualizar o sidebar e possível reordenação
+        } catch (error) {
+            console.error("Erro ao marcar/desmarcar como feito:", error);
         }
-    });
+    };
+    
+    newTripButton.addEventListener('click', () => openEditModal());
 
     closeButton.addEventListener('click', closeEditModal);
     cancelButton.addEventListener('click', closeEditModal);
@@ -227,50 +301,71 @@ document.addEventListener('DOMContentLoaded', () => {
     editForm.addEventListener('submit', async (event) => {
         event.preventDefault();
         const tripId = tripIdInput.value;
-        const updatedData = {
+        const newData = {
             title: tripTitleInput.value,
             description: tripDescriptionInput.value,
             month: tripMonthInput.value,
             order: parseInt(tripOrderInput.value, 10),
             estimatedDays: parseInt(tripDaysInput.value, 10),
             estimatedCost: parseFloat(tripCostInput.value),
-            googleMapsUrl: tripMapsUrlInput.value
+            googleMapsUrl: tripMapsUrlInput.value,
+            isDone: tripIsDoneInput.checked
         };
 
         try {
-            await tripsCollection.doc(tripId).update(updatedData);
+            if (tripId) { // Atualizar
+                await tripsCollection.doc(tripId).update(newData);
+            } else { // Criar
+                await tripsCollection.add(newData);
+            }
             closeEditModal();
-            updateCardInUI(tripId, updatedData);
+            loadTrips(); // Recarrega a UI para refletir as mudanças
         } catch (error) {
-            console.error("Erro ao salvar as alterações:", error);
+            console.error("Erro ao salvar:", error);
         }
     });
+
+    // Função de animação de scroll
+    const setupScrollAnimation = () => {
+        const cards = document.querySelectorAll('.card');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        cards.forEach(card => { observer.observe(card); });
+    };
+
 });
 
+// --- FUNÇÃO DE SEED (POPULAR O BANCO) ---
 async function seedDatabase() {
     const initialTrips = [
-        { month: 'Fevereiro', title: 'Salto', description: 'Complexo da Cachoeira e Parque Rocha Moutonnée.', order: 1, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 100 },
-        { month: 'Fevereiro', title: 'Águas de São Pedro', description: 'Thermas Water Park.', order: 2, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 250 },
-        { month: 'Março', title: 'Itu', description: 'Parque Maeda (Jardim Japonês e Trencito).', order: 3, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 150 },
-        { month: 'Março', title: 'Araçoiaba da Serra', description: 'Fazenda Ipanema (História).', order: 4, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 50 },
-        { month: 'Abril', title: 'São Roque', description: 'Roteiro do Vinho.', order: 5, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 200 },
-        { month: 'Abril', title: 'Piedade', description: 'Colheita de Caqui ou Jardim Botânico.', order: 6, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 80 },
-        { month: 'Maio', title: 'Cotia', description: 'Animália Park.', order: 7, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 300 },
-        { month: 'Maio', title: 'Indaiatuba', description: 'Parque Ecológico e Museu da Água.', order: 8, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 0 },
-        { month: 'Junho', title: 'Embu das Artes', description: 'Feira de Artesanato.', order: 9, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 120 },
-        { month: 'Junho', title: 'Tatuí', description: 'Rota dos Doces Caseiros.', order: 10, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 100 },
-        { month: 'Julho', title: 'Cabreúva', description: 'Fazenda do Chocolate.', order: 11, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 150 },
-        { month: 'Julho', title: 'Serra Negra', description: 'Fontana di Trevi (ou Jundiaí).', order: 12, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 200 },
-        { month: 'Agosto', title: 'Porto Feliz', description: 'Parque das Monções.', order: 13, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 30 },
-        { month: 'Agosto', title: 'Holambra', description: 'Arquitetura holandesa e flores.', order: 14, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 180 },
-        { month: 'Setembro', title: 'Jundiaí', description: 'Jardim Botânico.', order: 15, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 0 },
-        { month: 'Setembro', title: 'Atibaia', description: 'Festa de Flores e Morangos.', order: 16, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 220 },
-        { month: 'Outubro', title: 'Guararema', description: 'Trem Turístico.', order: 17, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 180 },
-        { month: 'Outubro', title: 'São Paulo', description: 'Aquário do Ipiranga.', order: 18, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 150 },
-        { month: 'Novembro', title: 'Votorantim', description: 'Represa de Itupararanga.', order: 19, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 40 },
-        { month: 'Novembro', title: 'Boituva', description: 'Parque Ecológico ou Balonismo (visual).', order: 20, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 100 },
-        { month: 'Dezembro', title: 'Itu', description: 'Luzes de Natal na Praça.', order: 21, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 0 },
-        { month: 'Dezembro', title: 'São Roque', description: 'Vila Don Patto (Decoração).', order: 22, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 250 }
+        { month: 'Fevereiro', title: 'Salto', description: 'Complexo da Cachoeira e Parque Rocha Moutonnée.', order: 1, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 100, isDone: false },
+        { month: 'Fevereiro', title: 'Águas de São Pedro', description: 'Thermas Water Park.', order: 2, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 250, isDone: false },
+        { month: 'Março', title: 'Itu', description: 'Parque Maeda (Jardim Japonês e Trencito).', order: 3, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 150, isDone: false },
+        { month: 'Março', title: 'Araçoiaba da Serra', description: 'Fazenda Ipanema (História).', order: 4, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 50, isDone: false },
+        { month: 'Abril', title: 'São Roque', description: 'Roteiro do Vinho.', order: 5, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 200, isDone: false },
+        { month: 'Abril', title: 'Piedade', description: 'Colheita de Caqui ou Jardim Botânico.', order: 6, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 80, isDone: false },
+        { month: 'Maio', title: 'Cotia', description: 'Animália Park.', order: 7, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 300, isDone: false },
+        { month: 'Maio', title: 'Indaiatuba', description: 'Parque Ecológico e Museu da Água.', order: 8, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 0, isDone: false },
+        { month: 'Junho', title: 'Embu das Artes', description: 'Feira de Artesanato.', order: 9, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 120, isDone: false },
+        { month: 'Junho', title: 'Tatuí', description: 'Rota dos Doces Caseiros.', order: 10, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 100, isDone: false },
+        { month: 'Julho', title: 'Cabreúva', description: 'Fazenda do Chocolate.', order: 11, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 150, isDone: false },
+        { month: 'Julho', title: 'Serra Negra', description: 'Fontana di Trevi (ou Jundiaí).', order: 12, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 200, isDone: false },
+        { month: 'Agosto', title: 'Porto Feliz', description: 'Parque das Monções.', order: 13, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 30, isDone: false },
+        { month: 'Agosto', title: 'Holambra', description: 'Arquitetura holandesa e flores.', order: 14, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 180, isDone: false },
+        { month: 'Setembro', title: 'Jundiaí', description: 'Jardim Botânico.', order: 15, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 0, isDone: false },
+        { month: 'Setembro', title: 'Atibaia', description: 'Festa de Flores e Morangos.', order: 16, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 220, isDone: false },
+        { month: 'Outubro', title: 'Guararema', description: 'Trem Turístico.', order: 17, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 180, isDone: false },
+        { month: 'Outubro', title: 'São Paulo', description: 'Aquário do Ipiranga.', order: 18, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 150, isDone: false },
+        { month: 'Novembro', title: 'Votorantim', description: 'Represa de Itupararanga.', order: 19, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 40, isDone: false },
+        { month: 'Novembro', title: 'Boituva', description: 'Parque Ecológico ou Balonismo (visual).', order: 20, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 100, isDone: false },
+        { month: 'Dezembro', title: 'Itu', description: 'Luzes de Natal na Praça.', order: 21, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 0, isDone: false },
+        { month: 'Dezembro', title: 'São Roque', description: 'Vila Don Patto (Decoração).', order: 22, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 250, isDone: false }
     ];
     const batch = db.batch();
     const tripsCollection = db.collection('viagens');

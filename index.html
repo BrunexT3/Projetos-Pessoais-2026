@@ -16,6 +16,7 @@
         <nav class="sidebar">
             <div class="sidebar-header">
                 <h1>Passeios <span>2026</span></h1>
+                <button id="new-trip-button" class="new-trip-button"><i class="las la-plus"></i> Novo Passeio</button>
             </div>
             <ul id="month-nav" class="month-nav">
                 <!-- Links dos meses serão inseridos aqui pelo script.js -->
@@ -91,6 +92,11 @@
                 <div class="form-group">
                     <label for="tripMapsUrl">Link do Google Maps</label>
                     <input type="url" id="tripMapsUrl">
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="tripIsDone">
+                    <label for="tripIsDone">Passeio Realizado</label>
                 </div>
 
                 <div class="form-actions">
