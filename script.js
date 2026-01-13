@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         for (const month of sortedMonths) {
             const monthSection = document.createElement('section');
-            monthSection.classList.add('month-section');
+            monthSection.classList.add('month-section', 'visible');
             monthSection.id = `month-${month}`;
             
             const monthTitle = document.createElement('h2');
@@ -194,6 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     monthNav.addEventListener('click', (event) => {
         event.preventDefault();
+,
         const link = event.target.closest('.month-link');
         if (!link) return;
         applyFilter(link.dataset.filter);
@@ -218,6 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- MODAL & AÇÕES CRUD ---
 
     const modal = document.getElementById('editModal');
+    const modalTitle = document.getElementById('modal-title');
     const editForm = document.getElementById('editForm');
     const closeButton = modal.querySelector('.close-button');
     const cancelButton = modal.querySelector('.cancel-button');
