@@ -89,16 +89,85 @@ const trips = [
         description: "Jardim Japonês, Trenzinho e áreas verdes. Ótimo para crianças e idosos.",
         type: "natureza", status: "planned", people: 6, estimatedCost: 150,
         mapsUrl: "https://maps.google.com/?q=Parque+Maeda+Itu",
-        imageUrl: "", gradient: "linear-gradient(135deg, #065f46, #059669)",
-        details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
+        imageUrl: "https://images.unsplash.com/photo-1528164344705-47542687000d?w=900&h=500&fit=crop&auto=format",
+        gradient: "linear-gradient(135deg, #065f46, #059669)",
+        details: {
+            departureTime: "Sair de Sorocaba às 8h. Chegada prevista às 8h40.",
+            itinerary: [
+                { time: "08:00", activity: "Saída de Sorocaba", desc: "Pegar Rodovia Castelo Branco (SP-280) sentido São Paulo. Aproximadamente 40min até Itu." },
+                { time: "08:40", activity: "Chegada ao Parque Maeda", desc: "Estacionamento gratuito. Comprar ingressos na bilheteria. Abre às 8h30 aos finais de semana." },
+                { time: "09:00", activity: "Jardim Japonês", desc: "Passeio tranquilo pelo jardim com carpas, pontes e cerejeiras. Ótimo para fotos em família." },
+                { time: "10:30", activity: "Trenzinho e Pedalinho", desc: "Passeio de trenzinho pelo parque e pedalinho no lago. Júlia vai adorar." },
+                { time: "12:00", activity: "Almoço no parque", desc: "Restaurante dentro do Parque Maeda com comida japonesa e brasileira. Preço médio R$50/pessoa." },
+                { time: "13:30", activity: "Pesca esportiva e áreas verdes", desc: "Pesca no lago (equipamento alugado no local) ou caminhada pelas trilhas e áreas de descanso." },
+                { time: "15:30", activity: "Praça dos Exageros", desc: "Visita rápida ao centro de Itu para ver os objetos gigantes. Parada de 30min." },
+                { time: "16:30", activity: "Retorno a Sorocaba", desc: "Chegada prevista por volta das 17h15." }
+            ],
+            restaurants: [
+                { name: "Restaurante do Parque Maeda", desc: "Dentro do parque. Comida japonesa e brasileira. Ambiente familiar com vista para o lago. Preço médio: R$50/pessoa.", mapsUrl: "https://maps.google.com/?q=Parque+Maeda+Itu" },
+                { name: "Restaurante Sakai", desc: "Cozinha japonesa tradicional em Itu. Sushi, sashimi e pratos quentes. Bom custo-benefício.", mapsUrl: "https://maps.google.com/?q=Restaurante+Sakai+Itu" },
+                { name: "Pizzaria Fornalha", desc: "Pizza assada em forno a lenha. Ambiente rústico e aconchegante. Boa opção para o final da tarde.", mapsUrl: "https://maps.google.com/?q=Pizzaria+Fornalha+Itu" }
+            ],
+            familyActivities: [
+                { name: "Jardim Japonês", desc: "Jardim com lago de carpas, pontes de madeira, cerejeiras e bambuzal. Passeio contemplativo de 1h." },
+                { name: "Pesca Esportiva", desc: "Lagos com tilápias e carpas. Equipamento disponível para aluguel. Pesque e solte." },
+                { name: "Caminhada nas trilhas", desc: "Trilhas leves e acessíveis pelo parque. Bom para os avós e para Júlia." },
+                { name: "Praça dos Exageros", desc: "No centro de Itu. Orelhão gigante, semáforo gigante e outros objetos. Passeio rápido e divertido." }
+            ],
+            kidsActivities: [
+                { name: "Trenzinho do parque", desc: "Passeio de trenzinho que percorre as principais áreas do Parque Maeda. Divertido para Júlia." },
+                { name: "Pedalinho no lago", desc: "Pedalinhos coloridos no lago principal. Seguro e tranquilo para crianças." },
+                { name: "Playground", desc: "Área de playground com brinquedos. Espaço seguro e bem cuidado." }
+            ],
+            citySummary: "Itu é conhecida como a Cidade dos Exageros, famosa pelos objetos gigantes espalhados pelo centro. Localizada a apenas 40km de Sorocaba (~40min pela SP-280), é um destino prático para bate e volta. O Parque Maeda é o destaque desta viagem: um complexo de lazer com jardim japonês, lagos para pesca, trenzinho, pedalinho e áreas verdes. Ideal para um dia tranquilo em família, com atividades para todas as idades.",
+            touristSpots: [
+                { name: "Parque Maeda", desc: "Complexo de lazer com jardim japonês, pesca, trenzinho e restaurante. Funciona sáb/dom/feriados.", mapsUrl: "https://maps.google.com/?q=Parque+Maeda+Itu" },
+                { name: "Praça dos Exageros", desc: "Praça com objetos gigantes — símbolo de Itu. Entrada gratuita.", mapsUrl: "https://maps.google.com/?q=Praca+dos+Exageros+Itu" },
+                { name: "Igreja Matriz Nossa Senhora da Candelária", desc: "Igreja histórica do século XVIII no centro de Itu.", mapsUrl: "https://maps.google.com/?q=Igreja+Matriz+Itu" },
+                { name: "Museu Republicano", desc: "Museu da USP sobre a Convenção Republicana de 1873. Entrada gratuita.", mapsUrl: "https://maps.google.com/?q=Museu+Republicano+Itu" }
+            ]
+        }
     },
     {
         id: "abr-2", month: "Abril", title: "Piedade", subtitle: "Colheita & Jardim Botânico",
         description: "Colheita de caqui na época ou visita ao Jardim Botânico.",
         type: "natureza", status: "planned", people: 6, estimatedCost: 80,
         mapsUrl: "https://maps.google.com/?q=Piedade+SP",
-        imageUrl: "", gradient: "linear-gradient(135deg, #14532d, #16a34a)",
-        details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
+        imageUrl: "https://images.unsplash.com/photo-1558293842-c0fd3db86157?w=900&h=500&fit=crop&auto=format",
+        gradient: "linear-gradient(135deg, #14532d, #16a34a)",
+        details: {
+            departureTime: "Sair de Sorocaba às 8h30. Chegada prevista às 9h15.",
+            itinerary: [
+                { time: "08:30", activity: "Saída de Sorocaba", desc: "Pegar SP-270 sentido Piedade. Aproximadamente 45min de viagem por estrada tranquila." },
+                { time: "09:15", activity: "Chegada em Piedade", desc: "Cidade pequena e acolhedora. Parar no centro para café da manhã." },
+                { time: "09:45", activity: "Colheita de caqui", desc: "Visita a sítio com colheita de caqui (época: março a maio). Experiência rural para toda a família." },
+                { time: "11:30", activity: "Jardim Botânico de Piedade", desc: "Passeio pelas trilhas e jardins. Área de piquenique disponível. Entrada gratuita." },
+                { time: "13:00", activity: "Almoço em Piedade", desc: "Restaurantes no centro com comida caseira mineira. Preço acessível." },
+                { time: "14:30", activity: "Mirante e cachoeiras", desc: "Visita a mirantes na região com vista para o vale. Cachoeiras próximas para contemplação." },
+                { time: "16:00", activity: "Retorno a Sorocaba", desc: "Chegada prevista por volta das 16h45." }
+            ],
+            restaurants: [
+                { name: "Restaurante Sabor da Roça", desc: "Comida caseira mineira com fogão a lenha. Frango caipira, tutu de feijão e couve. Preço médio: R$40/pessoa.", mapsUrl: "https://maps.google.com/?q=Restaurante+Sabor+da+Roca+Piedade" },
+                { name: "Padaria Central de Piedade", desc: "Pães artesanais, bolos caseiros e café coado. Bom para café da manhã ou lanche da tarde.", mapsUrl: "https://maps.google.com/?q=Padaria+Central+Piedade+SP" },
+                { name: "Recanto da Pedra", desc: "Restaurante com vista para a serra. Porções e pratos típicos do interior paulista.", mapsUrl: "https://maps.google.com/?q=Recanto+da+Pedra+Piedade" }
+            ],
+            familyActivities: [
+                { name: "Colheita de caqui", desc: "Sítios abertos para colheita entre março e maio. Experiência rural educativa para Júlia e divertida para todos." },
+                { name: "Jardim Botânico", desc: "Trilhas leves, jardins temáticos e área de piquenique. Acessível para os avós." },
+                { name: "Mirantes da Serra", desc: "Pontos com vista panorâmica para o vale de Piedade. Fotos lindas em família." }
+            ],
+            kidsActivities: [
+                { name: "Colher frutas no sítio", desc: "Júlia pode colher caquis direto do pé. Experiência educativa sobre de onde vem a comida." },
+                { name: "Trilha no Jardim Botânico", desc: "Trilhas curtas e fáceis com identificação de plantas. Divertido e educativo." }
+            ],
+            citySummary: "Piedade é uma cidade rural tranquila localizada a cerca de 50km de Sorocaba (~45min de carro). Conhecida pela produção agrícola, especialmente caqui, uva e hortaliças, a cidade oferece turismo rural com experiências de colheita. O Jardim Botânico Municipal é um espaço verde bem cuidado com trilhas leves, ideal para famílias. A região também possui mirantes com vistas panorâmicas da Serra de Paranapiacaba e cachoeiras para contemplação.",
+            touristSpots: [
+                { name: "Jardim Botânico Municipal", desc: "Jardim com trilhas, plantas nativas e área de descanso. Entrada gratuita. Funciona diariamente.", mapsUrl: "https://maps.google.com/?q=Jardim+Botanico+Piedade+SP" },
+                { name: "Sítios de colheita", desc: "Diversos sítios na região abrem para colheita de frutas da estação. Consultar disponibilidade.", mapsUrl: "https://maps.google.com/?q=Turismo+Rural+Piedade+SP" },
+                { name: "Mirante de Piedade", desc: "Vista panorâmica do vale. Acesso por estrada de terra em bom estado.", mapsUrl: "https://maps.google.com/?q=Mirante+Piedade+SP" },
+                { name: "Centro Histórico", desc: "Igreja Matriz e praça central. Passeio rápido e tranquilo.", mapsUrl: "https://maps.google.com/?q=Igreja+Matriz+Piedade+SP" }
+            ]
+        }
     },
     {
         id: "mai-1", month: "Maio", title: "Salto", subtitle: "Cachoeira & Parque Rocha Moutonnée",
