@@ -85,6 +85,50 @@ const trips = [
         }
     },
     {
+        id: "abr-1", month: "Abril", title: "São Miguel Arcanjo", subtitle: "Parque Estadual Carlos Botelho",
+        description: "Bate e volta ao Parque Estadual Carlos Botelho — Mata Atlântica, trilhas, cachoeiras e a maior população de muriquis do mundo.",
+        type: "natureza", status: "planned", people: 6, distance: 130, estimatedCost: 120,
+        mapsUrl: "https://maps.google.com/?q=Parque+Estadual+Carlos+Botelho+Sao+Miguel+Arcanjo",
+        imageUrl: "https://images.unsplash.com/photo-1767788171641-ca2490627cca?w=900&h=500&fit=crop&auto=format",
+        gradient: "linear-gradient(135deg, #064e3b, #059669)",
+        details: {
+            departureTime: "Sair de Sorocaba às 7h. Chegada prevista às 9h.",
+            itinerary: [
+                { time: "07:00", activity: "Saída de Sorocaba", desc: "Pegar SP-270 (Raposo Tavares) até Pilar do Sul, depois SP-139 até São Miguel Arcanjo. Aproximadamente 2h de viagem." },
+                { time: "09:00", activity: "Chegada no Parque Carlos Botelho", desc: "Entrada pelo Núcleo São Miguel Arcanjo, na SP-139 km 78,5. Retirar ingressos na recepção." },
+                { time: "09:30", activity: "Trilha Zé Leme", desc: "Trilha autoguiada de 800m, nível moderado. Percurso em meio à Mata Atlântica com placas interpretativas. Duração: ~40 minutos." },
+                { time: "10:30", activity: "Banho no Ribeirão da Serra", desc: "Área de banho natural com águas cristalinas. Local tranquilo cercado pela mata. Ideal para refrescar após a trilha." },
+                { time: "12:00", activity: "Piquenique nos quiosques", desc: "O parque tem quiosques com mesas. Levar lanche de casa — não há restaurante dentro do parque." },
+                { time: "13:30", activity: "Estrada Cênica", desc: "Trecho de carro pela estrada de 33km com mirantes, cachoeiras e áreas de descanso. Paisagem espetacular da Mata Atlântica." },
+                { time: "15:30", activity: "Parada em São Miguel Arcanjo", desc: "Lanche na cidade antes do retorno. Opções simples no centro." },
+                { time: "16:00", activity: "Retorno a Sorocaba", desc: "Chegada prevista por volta das 18h." }
+            ],
+            restaurants: [
+                { name: "Padaria e Restaurante Bom Sabor", desc: "Restaurante no centro de São Miguel Arcanjo. Comida caseira, preço acessível. Bom para almoço ou lanche na volta.", mapsUrl: "https://maps.google.com/?q=Restaurante+Bom+Sabor+Sao+Miguel+Arcanjo+SP" },
+                { name: "Lanchonete e Pizzaria do Centro", desc: "Opção rápida no centro da cidade. Lanches, porções e pizzas. Ambiente simples e familiar.", mapsUrl: "https://maps.google.com/?q=Pizzaria+Sao+Miguel+Arcanjo+SP" },
+                { name: "Piquenique no Parque (levar de casa)", desc: "Melhor opção para o almoço — levar sanduíches, frutas, sucos e lanches. O parque tem quiosques com mesas e sombra.", mapsUrl: "https://maps.google.com/?q=Parque+Estadual+Carlos+Botelho" }
+            ],
+            familyActivities: [
+                { name: "Estrada Cênica (33km)", desc: "Percurso de carro com mirantes, cachoeiras e áreas de descanso. Ideal para os mais velhos — aproveitar sem esforço físico." },
+                { name: "Trilha Zé Leme (800m)", desc: "Trilha curta e autoguiada. Nível moderado, acessível para toda a família." },
+                { name: "Área de banho no Ribeirão da Serra", desc: "Banho em rio de águas limpas cercado pela mata. Área tranquila e segura." },
+                { name: "Observação de fauna", desc: "O parque abriga a maior população mundial de muriquis (mono-carvoeiro), o maior primata das Américas. Com sorte, é possível avistar." }
+            ],
+            kidsActivities: [
+                { name: "Trilha Zé Leme", desc: "Trilha curta de 800m com placas educativas sobre a Mata Atlântica. Júlia vai gostar de identificar plantas e animais." },
+                { name: "Banho no rio", desc: "Área de banho natural no Ribeirão da Serra. Água rasa em alguns trechos, bom para brincar com supervisão." },
+                { name: "Piquenique na mata", desc: "Comer nos quiosques cercados pela floresta. Experiência diferente do dia a dia na cidade." }
+            ],
+            citySummary: "São Miguel Arcanjo é um município de cerca de 32 mil habitantes no sudoeste paulista, a 130km de Sorocaba (~2h de carro). A principal atração é o Parque Estadual Carlos Botelho, uma reserva de 37.644 hectares de Mata Atlântica reconhecida como Patrimônio Natural da Humanidade pela UNESCO. O parque abriga a maior população mundial de muriquis (mono-carvoeiro), espécie ameaçada e maior primata das Américas. A estrada cênica de 33km que corta o parque oferece mirantes, cachoeiras e contato direto com a floresta. Destino ideal para quem busca natureza preservada perto de Sorocaba.",
+            touristSpots: [
+                { name: "Parque Estadual Carlos Botelho", desc: "Reserva de Mata Atlântica com trilhas, cachoeiras e fauna rica. Patrimônio UNESCO. SP-139, km 78,5.", mapsUrl: "https://maps.google.com/?q=Parque+Estadual+Carlos+Botelho" },
+                { name: "Estrada Cênica (33km)", desc: "Estrada panorâmica dentro do parque ligando Sete Barras a São Miguel Arcanjo. Mirantes e cachoeiras.", mapsUrl: "https://maps.google.com/?q=Estrada+Cenica+Carlos+Botelho" },
+                { name: "Ribeirão da Serra", desc: "Área de banho natural dentro do parque. Águas cristalinas cercadas pela Mata Atlântica.", mapsUrl: "https://maps.google.com/?q=Ribeirao+da+Serra+Carlos+Botelho" },
+                { name: "Mirantes do Parque", desc: "Pontos de observação ao longo da estrada cênica com vista panorâmica da serra e da mata.", mapsUrl: "https://maps.google.com/?q=Mirante+Parque+Carlos+Botelho" }
+            ]
+        }
+    },
+    {
         id: "abr-2", month: "Abril", title: "Piedade", subtitle: "Colheita & Jardim Botânico",
         description: "Colheita de caqui na época ou visita ao Jardim Botânico.",
         type: "natureza", status: "planned", people: 6, distance: 50, estimatedCost: 80,

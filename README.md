@@ -11,7 +11,7 @@ Planejamento de viagens em familia para 2026. Partindo de Sorocaba, 6 pessoas (c
 | Jan | Maresias - Pousada Tambayba | Feito |
 | Fev | -- | -- |
 | Mar | Sao Roque - Rota do Vinho | Planejado |
-| Abr | Itu (Parque Maeda) + Piedade | Planejado |
+| Abr | Sao Miguel Arcanjo (Parque Carlos Botelho) + Piedade | Planejado |
 | Mai | Salto (Cachoeira) + Cotia (Animalia Park) | Planejado |
 | Jun | Embu das Artes + Tatui (Doces) | Planejado |
 | Jul | Cabreuva (Chocolate) + Serra Negra | Planejado |
