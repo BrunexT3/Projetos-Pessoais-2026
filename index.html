@@ -3,108 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planejamento de Viagens 2026</title>
+    <title>Viagens 2026 - DeMarco Family</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="app-layout">
-        <nav class="sidebar">
-            <div class="sidebar-header">
-                <h1>Passeios <span>2026</span></h1>
-                <button id="new-trip-button" class="new-trip-button"><i class="las la-plus"></i> Novo Passeio</button>
-            </div>
-            <ul id="month-nav" class="month-nav">
-                <!-- Links dos meses serão inseridos aqui pelo script.js -->
-            </ul>
-        </nav>
+    <header class="top-bar">
+        <div class="logo">Viagens <span>2026</span></div>
+        <div class="month-dots" id="monthDots"></div>
+        <div class="trip-counter" id="tripCounter"></div>
+    </header>
 
-        <main id="content-area" class="content">
-            <!-- As seções de meses e cards serão inseridas aqui pelo script.js -->
-        </main>
-    </div>
+    <main class="slider-container">
+        <button class="nav-arrow nav-prev" id="prevBtn" aria-label="Mes anterior">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
 
-    <!-- Firebase SDKs -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
-
-    <!-- Seus scripts -->
-    <script src="firebase-config.js"></script>
-    <script src="script.js"></script>
-
-    <!-- Modal de Edição (inicialmente oculto) -->
-    <div id="editModal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h2 id="modal-title">Editar Passeio</h2>
-            <form id="editForm">
-                <input type="hidden" id="tripId">
-                
-                <div class="form-group">
-                    <label for="tripTitle">Título</label>
-                    <input type="text" id="tripTitle" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="tripDescription">Descrição</label>
-                    <textarea id="tripDescription" rows="3"></textarea>
-                </div>
-
-                <div class="form-group-row">
-                    <div class="form-group">
-                        <label for="tripMonth">Mês</label>
-                        <select id="tripMonth" required>
-                            <option value="Janeiro">Janeiro</option>
-                            <option value="Fevereiro">Fevereiro</option>
-                            <option value="Março">Março</option>
-                            <option value="Abril">Abril</option>
-                            <option value="Maio">Maio</option>
-                            <option value="Junho">Junho</option>
-                            <option value="Julho">Julho</option>
-                            <option value="Agosto">Agosto</option>
-                            <option value="Setembro">Setembro</option>
-                            <option value="Outubro">Outubro</option>
-                            <option value="Novembro">Novembro</option>
-                            <option value="Dezembro">Dezembro</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="tripOrder">Ordem no Mês</label>
-                        <input type="number" id="tripOrder" min="1">
-                    </div>
-                </div>
-
-                <div class="form-group-row">
-                    <div class="form-group">
-                        <label for="tripDays">Dias Previstos</label>
-                        <input type="number" id="tripDays" min="1" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="tripCost">Custo Estimado (R$)</label>
-                        <input type="number" id="tripCost" min="0">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="tripMapsUrl">Link do Google Maps</label>
-                    <input type="url" id="tripMapsUrl">
-                </div>
-
-                <div class="form-group checkbox-group">
-                    <input type="checkbox" id="tripIsDone">
-                    <label for="tripIsDone">Passeio Realizado</label>
-                </div>
-
-                <div class="form-actions">
-                    <button type="submit" class="save-button">Salvar Alterações</button>
-                    <button type="button" class="cancel-button">Cancelar</button>
-                </div>
-            </form>
+        <div class="slides-wrapper" id="slidesWrapper">
+            <!-- Month pages rendered by JS -->
         </div>
-    </div>
+
+        <button class="nav-arrow nav-next" id="nextBtn" aria-label="Proximo mes">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>

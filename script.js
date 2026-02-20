@@ -1,379 +1,503 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // --- ELEMENTOS DO DOM ---
-    const monthNav = document.getElementById('month-nav');
-    const contentArea = document.getElementById('content-area');
-    const newTripButton = document.getElementById('new-trip-button');
-    const tripsCollection = db.collection('viagens');
-    const monthOrder = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+const trips = [
+    {
+        month: "Janeiro",
+        theme: "Praia",
+        trips: [
+            {
+                title: "Maresias",
+                subtitle: "Pousada Tambayba",
+                description: "Viagem com hospedagem. Gostamos, provavelmente voltaremos.",
+                type: "praia",
+                status: "done",
+                people: 6,
+                origin: "Sorocaba",
+                estimatedCost: null,
+                mapsUrl: "https://maps.google.com/?q=Pousada+Tambayba+Maresias"
+            }
+        ]
+    },
+    {
+        month: "Fevereiro",
+        theme: "Sem viagem",
+        trips: []
+    },
+    {
+        month: "Marco",
+        theme: "Gastronomia",
+        trips: [
+            {
+                title: "Sao Roque",
+                subtitle: "Rota do Vinho",
+                description: "Bate e volta. Almoco e passeio pelas vinicolas. 1o final de semana do mes.",
+                type: "gastronomia",
+                status: "planned",
+                people: 6,
+                origin: "Sorocaba",
+                estimatedCost: 200,
+                mapsUrl: "https://maps.google.com/?q=Rota+do+Vinho+Sao+Roque"
+            }
+        ]
+    },
+    {
+        month: "Abril",
+        theme: "Natureza & Cultura",
+        trips: [
+            {
+                title: "Itu",
+                subtitle: "Parque Maeda",
+                description: "Jardim Japones, Trenzinho e areas verdes. Otimo para criancas e idosos.",
+                type: "natureza",
+                status: "planned",
+                people: 6,
+                origin: "Sorocaba",
+                estimatedCost: 150,
+                mapsUrl: "https://maps.google.com/?q=Parque+Maeda+Itu"
+            },
+            {
+                title: "Piedade",
+                subtitle: "Colheita & Jardim Botanico",
+                description: "Colheita de caqui na epoca ou visita ao Jardim Botanico.",
+                type: "natureza",
+                status: "planned",
+                people: 6,
+                origin: "Sorocaba",
+                estimatedCost: 80,
+                mapsUrl: "https://maps.google.com/?q=Piedade+SP"
+            }
+        ]
+    },
+    {
+        month: "Maio",
+        theme: "Aventura & Natureza",
+        trips: [
+            {
+                title: "Salto",
+                subtitle: "Cachoeira & Parque Rocha Moutonee",
+                description: "Complexo da Cachoeira e parque tematico de dinossauros.",
+                type: "natureza",
+                status: "planned",
+                people: 6,
+                origin: "Sorocaba",
+                estimatedCost: 100,
+                mapsUrl: "https://maps.google.com/?q=Parque+Rocha+Moutonee+Salto"
+            },
+            {
+                title: "Cotia",
+                subtitle: "Animalia Park",
+                description: "Zoologico interativo. Excelente para criancas.",
+                type: "aventura",
+                status: "planned",
+                people: 6,
+                origin: "Sorocaba",
+                estimatedCost: 300,
+                mapsUrl: "https://maps.google.com/?q=Animalia+Park+Cotia"
+            }
+        ]
+    },
+    {
+        month: "Junho",
+        theme: "Artesanato & Doces",
+        trips: [
+            {
+                title: "Embu das Artes",
+                subtitle: "Feira de Artesanato",
+                description: "Maior feira de artesanato do estado. Cultura e gastronomia.",
+                type: "cultura",
+                status: "planned",
+                people: 6,
+                origin: "Sorocaba",
+                estimatedCost: 120,
+                mapsUrl: "https://maps.google.com/?q=Feira+de+Artesanato+Embu+das+Artes"
+            },
+            {
+                title: "Tatui",
+                subtitle: "Rota dos Doces Caseiros",
+                description: "Degustacao de doces artesanais e compras.",
+                type: "gastronomia",
+                status: "planned",
+                people: 6,
+                origin: "Sorocaba",
+                estimatedCost: 100,
+                mapsUrl: "https://maps.google.com/?q=Tatui+SP"
+            }
+        ]
+    },
+    {
+        month: "Julho",
+        theme: "Ferias Escolares",
+        trips: [
+            {
+                title: "Cabreuva",
+                subtitle: "Fazenda do Chocolate",
+                description: "Fabrica de chocolate artesanal. Otimo para ferias da Laura.",
+                type: "gastronomia",
+                status: "planned",
+                people: 6,
+                origin: "Sorocaba",
+                estimatedCost: 150,
+                mapsUrl: "https://maps.google.com/?q=Fazenda+do+Chocolate+Cabreuva"
+            },
+            {
+                title: "Serra Negra",
+                subtitle: "Fontana di Trevi & Centro",
+                description: "Replica da Fontana di Trevi, lojas e restaurantes. Alternativa: Jundiai.",
+                type: "cultura",
+                status: "planned",
+                people: 6,
+                origin: "Sorocaba",
+                estimatedCost: 200,
+                mapsUrl: "https://maps.google.com/?q=Serra+Negra+SP"
+            }
+        ]
+    },
+    {
+        month: "Agosto",
+        theme: "Flores & Historia",
+        trips: [
+            {
+                title: "Holambra",
+                subtitle: "Cidade das Flores",
+                description: "Arquitetura holandesa, campos de flores e gastronomia tipica.",
+                type: "cultura",
+                status: "planned",
+                people: 6,
+                origin: "Sorocaba",
+                estimatedCost: 180,
+                mapsUrl: "https://maps.google.com/?q=Holambra+SP"
+            },
+            {
+                title: "Porto Feliz",
+                subtitle: "Parque das Moncoes",
+                description: "Parque historico as margens do Rio Tiete. Passeio tranquilo.",
+                type: "historia",
+                status: "planned",
+                people: 6,
+                origin: "Sorocaba",
+                estimatedCost: 30,
+                mapsUrl: "https://maps.google.com/?q=Parque+das+Moncoes+Porto+Feliz"
+            }
+        ]
+    },
+    {
+        month: "Setembro",
+        theme: "Primavera",
+        trips: [
+            {
+                title: "Atibaia",
+                subtitle: "Festa de Flores e Morangos",
+                description: "Festival de primavera com flores e colheita de morangos.",
+                type: "natureza",
+                status: "planned",
+                people: 6,
+                origin: "Sorocaba",
+                estimatedCost: 220,
+                mapsUrl: "https://maps.google.com/?q=Atibaia+SP"
+            },
+            {
+                title: "Jundiai",
+                subtitle: "Jardim Botanico",
+                description: "Jardim Botanico com trilhas acessiveis e area de piquenique.",
+                type: "natureza",
+                status: "planned",
+                people: 6,
+                origin: "Sorocaba",
+                estimatedCost: 0,
+                mapsUrl: "https://maps.google.com/?q=Jardim+Botanico+Jundiai"
+            }
+        ]
+    },
+    {
+        month: "Outubro",
+        theme: "Dia das Criancas",
+        trips: [
+            {
+                title: "Guararema",
+                subtitle: "Trem Turistico",
+                description: "Passeio de trem turistico pela cidade. Otimo pra Laura.",
+                type: "aventura",
+                status: "planned",
+                people: 6,
+                origin: "Sorocaba",
+                estimatedCost: 180,
+                mapsUrl: "https://maps.google.com/?q=Trem+Turistico+Guararema"
+            },
+            {
+                title: "Sao Paulo",
+                subtitle: "Aquario de Sao Paulo",
+                description: "Maior aquario da America Latina. Presente de Dia das Criancas.",
+                type: "aventura",
+                status: "planned",
+                people: 6,
+                origin: "Sorocaba",
+                estimatedCost: 150,
+                mapsUrl: "https://maps.google.com/?q=Aquario+de+Sao+Paulo"
+            }
+        ]
+    },
+    {
+        month: "Novembro",
+        theme: "Passeios Tranquilos",
+        trips: [
+            {
+                title: "Indaiatuba",
+                subtitle: "Parque Ecologico",
+                description: "Parque Ecologico e Museu da Agua. Passeio gratuito e acessivel.",
+                type: "natureza",
+                status: "planned",
+                people: 6,
+                origin: "Sorocaba",
+                estimatedCost: 0,
+                mapsUrl: "https://maps.google.com/?q=Parque+Ecologico+Indaiatuba"
+            },
+            {
+                title: "Aracoiaba da Serra",
+                subtitle: "Fazenda Ipanema",
+                description: "Fazenda historica com trilhas e ruinas. Patrimonio cultural.",
+                type: "historia",
+                status: "planned",
+                people: 6,
+                origin: "Sorocaba",
+                estimatedCost: 50,
+                mapsUrl: "https://maps.google.com/?q=Fazenda+Ipanema+Aracoiaba+da+Serra"
+            }
+        ]
+    },
+    {
+        month: "Dezembro",
+        theme: "Natal & Despedida do Ano",
+        trips: [
+            {
+                title: "Itu",
+                subtitle: "Luzes de Natal",
+                description: "Decoracao natalina na praca central. Passeio noturno em familia.",
+                type: "cultura",
+                status: "planned",
+                people: 6,
+                origin: "Sorocaba",
+                estimatedCost: 0,
+                mapsUrl: "https://maps.google.com/?q=Praca+Padre+Miguel+Itu"
+            },
+            {
+                title: "Maresias",
+                subtitle: "Pousada Tambayba - Retorno",
+                description: "Volta a Maresias para fechar o ano. Pousada que a familia gostou em janeiro.",
+                type: "praia",
+                status: "planned",
+                people: 6,
+                origin: "Sorocaba",
+                estimatedCost: null,
+                mapsUrl: "https://maps.google.com/?q=Pousada+Tambayba+Maresias"
+            }
+        ]
+    }
+];
 
-    let allTripsCache = {}; // Cache para os dados dos passeios
-    let currentFilter = 'all'; // Filtro atual (all, 'Mês', 'done')
+// --- ICONS ---
+const typeIcons = {
+    praia: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="3"/><path d="M2 20c2-3 4-5 6-5s4 2 6 5"/><path d="M14 15c2-3 4-5 6-5"/></svg>',
+    gastronomia: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>',
+    natureza: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 20H7l5-16 5 16z"/><path d="M12 13l-3 7"/><path d="M12 13l3 7"/><line x1="12" y1="20" x2="12" y2="24"/></svg>',
+    cultura: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>',
+    aventura: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
+    historia: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01"/><path d="M9 12v.01"/><path d="M9 15v.01"/><path d="M9 18v.01"/></svg>'
+};
 
-    // --- RENDERIZAÇÃO ---
+const typeColors = {
+    praia: { bg: "#dbeafe", text: "#1e40af", accent: "#3b82f6" },
+    gastronomia: { bg: "#fef3c7", text: "#92400e", accent: "#f59e0b" },
+    natureza: { bg: "#d1fae5", text: "#065f46", accent: "#10b981" },
+    cultura: { bg: "#ede9fe", text: "#5b21b6", accent: "#8b5cf6" },
+    aventura: { bg: "#fee2e2", text: "#991b1b", accent: "#ef4444" },
+    historia: { bg: "#f3e8ff", text: "#6b21a8", accent: "#a855f7" }
+};
 
-    const renderCard = (tripData, tripId) => {
-        const card = document.createElement('div');
-        card.classList.add('card');
-        card.setAttribute('data-id', tripId);
-        if (tripData.isDone) {
-            card.classList.add('is-done');
+const typeLabels = {
+    praia: "Praia",
+    gastronomia: "Gastronomia",
+    natureza: "Natureza",
+    cultura: "Cultura",
+    aventura: "Aventura",
+    historia: "Historia"
+};
+
+// --- STATE ---
+let currentIndex = getCurrentMonthIndex();
+
+function getCurrentMonthIndex() {
+    const now = new Date();
+    const currentMonth = now.getMonth(); // 0-indexed
+    // Find the closest month in our trips array
+    const monthNames = ["Janeiro", "Fevereiro", "Marco", "Abril", "Maio", "Junho",
+        "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+    const target = monthNames[currentMonth];
+    const idx = trips.findIndex(t => t.month === target);
+    return idx >= 0 ? idx : 0;
+}
+
+// --- RENDER ---
+function renderSlides() {
+    const wrapper = document.getElementById("slidesWrapper");
+    wrapper.innerHTML = "";
+
+    trips.forEach((monthData, i) => {
+        const slide = document.createElement("div");
+        slide.className = "slide";
+        slide.dataset.index = i;
+
+        const tripCount = monthData.trips.length;
+        const doneCount = monthData.trips.filter(t => t.status === "done").length;
+
+        let cardsHTML = "";
+        if (tripCount === 0) {
+            cardsHTML = `<div class="empty-month">
+                <div class="empty-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                </div>
+                <p>Nenhuma viagem planejada para este mes.</p>
+            </div>`;
+        } else {
+            monthData.trips.forEach(trip => {
+                const colors = typeColors[trip.type] || typeColors.cultura;
+                const icon = typeIcons[trip.type] || typeIcons.cultura;
+                const label = typeLabels[trip.type] || trip.type;
+                const isDone = trip.status === "done";
+                const costText = trip.estimatedCost === null ? "A definir"
+                    : trip.estimatedCost === 0 ? "Gratuito"
+                    : `R$ ${trip.estimatedCost}`;
+
+                cardsHTML += `
+                <div class="trip-card ${isDone ? 'is-done' : ''}" style="--card-accent: ${colors.accent}; --card-bg: ${colors.bg}; --card-text: ${colors.text}">
+                    <div class="card-status-bar"></div>
+                    <div class="card-content">
+                        <div class="card-top">
+                            <span class="card-type-badge" style="background: ${colors.bg}; color: ${colors.text}">
+                                ${icon} ${label}
+                            </span>
+                            ${isDone ? '<span class="card-done-badge">Realizada</span>' : '<span class="card-planned-badge">Planejada</span>'}
+                        </div>
+                        <h3 class="card-title">${trip.title}</h3>
+                        <p class="card-subtitle">${trip.subtitle}</p>
+                        <p class="card-description">${trip.description}</p>
+                        <div class="card-meta">
+                            <span class="meta-item">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                                ${trip.people} pessoas
+                            </span>
+                            <span class="meta-item">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                                ${costText}
+                            </span>
+                        </div>
+                        ${trip.mapsUrl ? `<a href="${trip.mapsUrl}" target="_blank" rel="noopener" class="card-map-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Ver no mapa
+                        </a>` : ''}
+                    </div>
+                </div>`;
+            });
         }
-        
-        const monthAbbr = tripData.month.substring(0, 3).toUpperCase();
-        const cost = tripData.estimatedCost > 0 ? `R$ ${tripData.estimatedCost.toFixed(2)}` : 'Grátis';
-        const days = tripData.estimatedDays > 1 ? `${tripData.estimatedDays} dias` : `${tripData.estimatedDays} dia`;
 
-        card.innerHTML = `
-            <div class="card-header">
-                <div class="card-month-abbr">${monthAbbr}</div>
-                <h2 class="card-title">${tripData.title}</h2>
+        slide.innerHTML = `
+            <div class="slide-header">
+                <span class="slide-month-label">${monthData.month}</span>
+                <h2 class="slide-theme">${monthData.theme}</h2>
+                ${tripCount > 0 ? `<div class="slide-stats">${doneCount}/${tripCount} ${tripCount === 1 ? 'viagem' : 'viagens'} ${doneCount === tripCount && tripCount > 0 ? '-- Completo!' : ''}</div>` : ''}
             </div>
-            <div class="card-body">
-                <p class="card-description">${tripData.description}</p>
-                <div class="card-details">
-                    <span><i class="las la-calendar"></i> ${days}</span>
-                    <span><i class="las la-money-bill-wave"></i> ${cost}</span>
-                </div>
-            </div>
-            <div class="card-footer">
-                <div class="card-actions-left">
-                    <a href="${tripData.googleMapsUrl}" target="_blank" class="card-action-link ${!tripData.googleMapsUrl ? 'disabled' : ''}" title="Ver no Mapa">
-                        <i class="las la-map-marker-alt"></i>
-                    </a>
-                </div>
-                <div class="card-actions-right">
-                    <button class="card-action-button card-done-button" title="${tripData.isDone ? 'Marcar como Não Feito' : 'Marcar como Feito'}">
-                        <i class="las la-${tripData.isDone ? 'check-circle' : 'circle'}"></i>
-                    </button>
-                    <button class="card-action-button card-edit-button" title="Editar">
-                        <i class="las la-pencil-alt"></i>
-                    </button>
-                    <button class="card-action-button card-delete-button" title="Excluir">
-                        <i class="las la-trash"></i>
-                    </button>
-                </div>
+            <div class="cards-grid ${tripCount === 1 ? 'single-card' : ''}">
+                ${cardsHTML}
             </div>
         `;
-        return card;
-    };
 
-    const renderContent = (groupedTrips) => {
-        contentArea.innerHTML = '';
-        const sortedMonths = Object.keys(groupedTrips).sort((a, b) => monthOrder.indexOf(a) - monthOrder.indexOf(b));
-
-        if (sortedMonths.length === 0 && currentFilter !== 'done') {
-            contentArea.innerHTML = '<p class="empty-message">Nenhum passeio encontrado. Clique em "Novo Passeio" para começar!</p>';
-            return;
-        } else if (sortedMonths.length === 0 && currentFilter === 'done') {
-            contentArea.innerHTML = '<p class="empty-message">Nenhum passeio "Feito" encontrado.</p>';
-            return;
-        }
-
-
-        for (const month of sortedMonths) {
-            const monthSection = document.createElement('section');
-            monthSection.classList.add('month-section', 'visible');
-            monthSection.id = `month-${month}`;
-            
-            const monthTitle = document.createElement('h2');
-            monthTitle.classList.add('month-title');
-            monthTitle.textContent = month;
-            monthSection.appendChild(monthTitle);
-
-            const cardsContainer = document.createElement('div');
-            cardsContainer.classList.add('cards-container');
-            groupedTrips[month].forEach(trip => {
-                cardsContainer.appendChild(renderCard(trip.data, trip.id));
-            });
-            monthSection.appendChild(cardsContainer);
-            contentArea.appendChild(monthSection);
-        }
-    };
-    
-    const renderSidebar = (trips) => {
-        monthNav.innerHTML = '';
-        const groupedTripsByMonth = trips.reduce((acc, trip) => {
-            const month = trip.data.month;
-            if (!acc[month]) acc[month] = [];
-            acc[month].push(trip);
-            return acc;
-        }, {});
-
-        const sortedMonths = Object.keys(groupedTripsByMonth).sort((a, b) => monthOrder.indexOf(a) - monthOrder.indexOf(b));
-        
-        // Link "Mostrar Todos"
-        const allCount = trips.length;
-        const allLi = document.createElement('li');
-        allLi.innerHTML = `<a href="#" class="month-link active" data-filter="all">Mostrar Todos <span>${allCount}</span></a>`;
-        monthNav.appendChild(allLi);
-
-        // Link "Realizados"
-        const doneCount = trips.filter(trip => trip.data.isDone).length;
-        const doneLi = document.createElement('li');
-        doneLi.innerHTML = `<a href="#" class="month-link" data-filter="done">Realizados <span>${doneCount}</span></a>`;
-        monthNav.appendChild(doneLi);
-
-        // Links dos meses
-        for (const month of sortedMonths) {
-            const monthTrips = groupedTripsByMonth[month];
-            const monthCount = monthTrips.length;
-            const li = document.createElement('li');
-            li.innerHTML = `<a href="#" class="month-link" data-filter="${month}">${month} <span>${monthCount}</span></a>`;
-            monthNav.appendChild(li);
-        }
-    };
-
-    // --- LÓGICA PRINCIPAL ---
-
-    const loadTrips = async () => {
-        try {
-            const snapshot = await tripsCollection.get();
-            if (snapshot.empty) {
-                await seedDatabase();
-                return loadTrips();
-            }
-            
-            const trips = snapshot.docs.map(doc => ({ id: doc.id, data: doc.data() }));
-            
-            // Cache para uso nos filtros e sidebar
-            allTripsCache = trips.reduce((acc, trip) => {
-                const month = trip.data.month;
-                if (!acc[month]) acc[month] = [];
-                acc[month].push(trip);
-                acc[month].sort((a, b) => a.data.order - b.data.order);
-                return acc;
-            }, {});
-
-            renderSidebar(trips); // Passa a lista completa para o sidebar para contagens
-            applyFilter(currentFilter); // Aplica o filtro atual
-            
-        } catch (error) {
-            console.error("Erro ao carregar passeios: ", error);
-            contentArea.innerHTML = '<p class="empty-message">Falha ao carregar passeios.</p>';
-        }
-    };
-
-    const applyFilter = (filter) => {
-        currentFilter = filter;
-        document.querySelectorAll('.month-link').forEach(l => {
-            if (l.dataset.filter === filter) {
-                l.classList.add('active');
-            } else {
-                l.classList.remove('active');
-            }
-        });
-
-        contentArea.innerHTML = ''; // Limpa antes de renderizar o conteúdo filtrado
-
-        let tripsToRender = [];
-        if (filter === 'all') {
-            tripsToRender = Object.values(allTripsCache).flat();
-        } else if (filter === 'done') {
-            tripsToRender = Object.values(allTripsCache).flat().filter(trip => trip.data.isDone);
-        } else { // Filtro por mês
-            tripsToRender = allTripsCache[filter] || [];
-        }
-        
-        // Agrupa os passeios filtrados para renderização
-        const groupedFilteredTrips = tripsToRender.reduce((acc, trip) => {
-            const month = trip.data.month;
-            if (!acc[month]) acc[month] = [];
-            acc[month].push(trip);
-            acc[month].sort((a, b) => a.data.order - b.data.order);
-            return acc;
-        }, {});
-
-        renderContent(groupedFilteredTrips);
-        setupScrollAnimation();
-    };
-
-
-    loadTrips();
-
-    // --- FILTROS E EVENTOS ---
-
-    monthNav.addEventListener('click', (event) => {
-        event.preventDefault();
-        const link = event.target.closest('.month-link');
-        if (!link) return;
-        applyFilter(link.dataset.filter);
+        wrapper.appendChild(slide);
     });
 
-    contentArea.addEventListener('click', (event) => {
-        const card = event.target.closest('.card');
-        if (!card) return;
+    updateView(false);
+}
 
-        const tripId = card.dataset.id;
+function renderDots() {
+    const dotsContainer = document.getElementById("monthDots");
+    dotsContainer.innerHTML = "";
+    trips.forEach((m, i) => {
+        const dot = document.createElement("button");
+        dot.className = "dot";
+        dot.title = m.month;
+        dot.dataset.index = i;
 
-        const editButton = event.target.closest('.card-edit-button');
-        if (editButton) { openEditModal(tripId); return; }
+        const hasTrips = m.trips.length > 0;
+        const allDone = hasTrips && m.trips.every(t => t.status === "done");
+        if (allDone) dot.classList.add("done");
+        if (!hasTrips) dot.classList.add("empty");
 
-        const deleteButton = event.target.closest('.card-delete-button');
-        if (deleteButton) { handleDelete(tripId); return; }
-
-        const doneButton = event.target.closest('.card-done-button');
-        if (doneButton) { handleToggleDone(tripId, card); return; }
+        dot.addEventListener("click", () => goTo(i));
+        dotsContainer.appendChild(dot);
     });
+}
 
-    // --- MODAL & AÇÕES CRUD ---
-
-    const modal = document.getElementById('editModal');
-    const modalTitle = document.getElementById('modal-title');
-    const editForm = document.getElementById('editForm');
-    const closeButton = modal.querySelector('.close-button');
-    const cancelButton = modal.querySelector('.cancel-button');
-    const tripIdInput = document.getElementById('tripId');
-    const tripTitleInput = document.getElementById('tripTitle');
-    const tripDescriptionInput = document.getElementById('tripDescription');
-    const tripMonthInput = document.getElementById('tripMonth');
-    const tripOrderInput = document.getElementById('tripOrder');
-    const tripDaysInput = document.getElementById('tripDays');
-    const tripCostInput = document.getElementById('tripCost');
-    const tripMapsUrlInput = document.getElementById('tripMapsUrl');
-    const tripIsDoneInput = document.getElementById('tripIsDone');
-
-    const openEditModal = async (tripId = null) => {
-        editForm.reset();
-        tripIdInput.value = ''; // Sempre limpa para novo
-        if (tripId) {
-            modalTitle.textContent = "Editar Passeio";
-            try {
-                const doc = await tripsCollection.doc(tripId).get();
-                if (!doc.exists) { console.error("Documento não encontrado!"); return; }
-                const tripData = doc.data();
-
-                tripIdInput.value = tripId;
-                tripTitleInput.value = tripData.title;
-                tripDescriptionInput.value = tripData.description;
-                tripMonthInput.value = tripData.month;
-                tripOrderInput.value = tripData.order;
-                tripDaysInput.value = tripData.estimatedDays;
-                tripCostInput.value = tripData.estimatedCost;
-                tripMapsUrlInput.value = tripData.googleMapsUrl || '';
-                tripIsDoneInput.checked = tripData.isDone || false;
-
-            } catch (error) {
-                console.error("Erro ao carregar dados para edição:", error);
-            }
+function updateView(animate = true) {
+    const slides = document.querySelectorAll(".slide");
+    slides.forEach((slide, i) => {
+        slide.classList.remove("active", "prev", "next");
+        if (i === currentIndex) {
+            slide.classList.add("active");
+        } else if (i < currentIndex) {
+            slide.classList.add("prev");
         } else {
-            modalTitle.textContent = "Novo Passeio";
-            tripIsDoneInput.checked = false; // Novo passeio não começa como feito
-        }
-        modal.style.display = 'block';
-    };
-
-    const closeEditModal = () => {
-        modal.style.display = 'none';
-        editForm.reset();
-    };
-    
-    // Nãousada, a renderização completa garante consistência.
-    // const updateCardInUI = (tripId, updatedData) => { /* ... */ };
-
-    const handleDelete = async (tripId) => {
-        if (confirm("Tem certeza que deseja excluir este passeio?")) {
-            try {
-                await tripsCollection.doc(tripId).delete();
-                loadTrips(); // Recarrega a UI
-            } catch (error) {
-                console.error("Erro ao excluir passeio: ", error);
-            }
-        }
-    };
-
-    const handleToggleDone = async (tripId, cardElement) => {
-        try {
-            const currentIsDone = cardElement.classList.contains('is-done');
-            await tripsCollection.doc(tripId).update({ isDone: !currentIsDone });
-            loadTrips(); // Recarrega para atualizar o sidebar e possível reordenação
-        } catch (error) {
-            console.error("Erro ao marcar/desmarcar como feito:", error);
-        }
-    };
-    
-    newTripButton.addEventListener('click', () => openEditModal());
-
-    closeButton.addEventListener('click', closeEditModal);
-    cancelButton.addEventListener('click', closeEditModal);
-    window.addEventListener('click', (event) => {
-        if (event.target == modal) closeEditModal();
-    });
-    
-    editForm.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        const tripId = tripIdInput.value;
-        const newData = {
-            title: tripTitleInput.value,
-            description: tripDescriptionInput.value,
-            month: tripMonthInput.value,
-            order: parseInt(tripOrderInput.value, 10),
-            estimatedDays: parseInt(tripDaysInput.value, 10),
-            estimatedCost: parseFloat(tripCostInput.value),
-            googleMapsUrl: tripMapsUrlInput.value,
-            isDone: tripIsDoneInput.checked
-        };
-
-        try {
-            if (tripId) { // Atualizar
-                await tripsCollection.doc(tripId).update(newData);
-            } else { // Criar
-                await tripsCollection.add(newData);
-            }
-            closeEditModal();
-            loadTrips(); // Recarrega a UI para refletir as mudanças
-        } catch (error) {
-            console.error("Erro ao salvar:", error);
+            slide.classList.add("next");
         }
     });
 
-    // Função de animação de scroll
-    const setupScrollAnimation = () => {
-        const cards = document.querySelectorAll('.card');
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-        cards.forEach(card => { observer.observe(card); });
-    };
+    // Update dots
+    const dots = document.querySelectorAll(".dot");
+    dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === currentIndex);
+    });
 
+    // Update counter
+    const counter = document.getElementById("tripCounter");
+    const total = trips.reduce((sum, m) => sum + m.trips.length, 0);
+    const done = trips.reduce((sum, m) => sum + m.trips.filter(t => t.status === "done").length, 0);
+    counter.textContent = `${done}/${total} viagens realizadas`;
+
+    // Update arrows
+    document.getElementById("prevBtn").disabled = currentIndex === 0;
+    document.getElementById("nextBtn").disabled = currentIndex === trips.length - 1;
+}
+
+function goTo(index) {
+    if (index < 0 || index >= trips.length) return;
+    currentIndex = index;
+    updateView(true);
+}
+
+function goNext() { goTo(currentIndex + 1); }
+function goPrev() { goTo(currentIndex - 1); }
+
+// --- KEYBOARD NAV ---
+document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") goPrev();
+    if (e.key === "ArrowRight") goNext();
 });
 
-// --- FUNÇÃO DE SEED (POPULAR O BANCO) ---
-async function seedDatabase() {
-    const initialTrips = [
-        { month: 'Fevereiro', title: 'Salto', description: 'Complexo da Cachoeira e Parque Rocha Moutonnée.', order: 1, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 100, isDone: false },
-        { month: 'Fevereiro', title: 'Águas de São Pedro', description: 'Thermas Water Park.', order: 2, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 250, isDone: false },
-        { month: 'Março', title: 'Itu', description: 'Parque Maeda (Jardim Japonês e Trencito).', order: 3, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 150, isDone: false },
-        { month: 'Março', title: 'Araçoiaba da Serra', description: 'Fazenda Ipanema (História).', order: 4, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 50, isDone: false },
-        { month: 'Abril', title: 'São Roque', description: 'Roteiro do Vinho.', order: 5, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 200, isDone: false },
-        { month: 'Abril', title: 'Piedade', description: 'Colheita de Caqui ou Jardim Botânico.', order: 6, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 80, isDone: false },
-        { month: 'Maio', title: 'Cotia', description: 'Animália Park.', order: 7, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 300, isDone: false },
-        { month: 'Maio', title: 'Indaiatuba', description: 'Parque Ecológico e Museu da Água.', order: 8, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 0, isDone: false },
-        { month: 'Junho', title: 'Embu das Artes', description: 'Feira de Artesanato.', order: 9, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 120, isDone: false },
-        { month: 'Junho', title: 'Tatuí', description: 'Rota dos Doces Caseiros.', order: 10, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 100, isDone: false },
-        { month: 'Julho', title: 'Cabreúva', description: 'Fazenda do Chocolate.', order: 11, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 150, isDone: false },
-        { month: 'Julho', title: 'Serra Negra', description: 'Fontana di Trevi (ou Jundiaí).', order: 12, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 200, isDone: false },
-        { month: 'Agosto', title: 'Porto Feliz', description: 'Parque das Monções.', order: 13, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 30, isDone: false },
-        { month: 'Agosto', title: 'Holambra', description: 'Arquitetura holandesa e flores.', order: 14, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 180, isDone: false },
-        { month: 'Setembro', title: 'Jundiaí', description: 'Jardim Botânico.', order: 15, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 0, isDone: false },
-        { month: 'Setembro', title: 'Atibaia', description: 'Festa de Flores e Morangos.', order: 16, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 220, isDone: false },
-        { month: 'Outubro', title: 'Guararema', description: 'Trem Turístico.', order: 17, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 180, isDone: false },
-        { month: 'Outubro', title: 'São Paulo', description: 'Aquário do Ipiranga.', order: 18, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 150, isDone: false },
-        { month: 'Novembro', title: 'Votorantim', description: 'Represa de Itupararanga.', order: 19, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 40, isDone: false },
-        { month: 'Novembro', title: 'Boituva', description: 'Parque Ecológico ou Balonismo (visual).', order: 20, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 100, isDone: false },
-        { month: 'Dezembro', title: 'Itu', description: 'Luzes de Natal na Praça.', order: 21, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 0, isDone: false },
-        { month: 'Dezembro', title: 'São Roque', description: 'Vila Don Patto (Decoração).', order: 22, googleMapsUrl: '', estimatedDays: 1, estimatedCost: 250, isDone: false }
-    ];
-    const batch = db.batch();
-    const tripsCollection = db.collection('viagens');
-    for (const trip of initialTrips) {
-        const docRef = tripsCollection.doc();
-        batch.set(docRef, trip);
+// --- TOUCH/SWIPE ---
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+}, { passive: true });
+
+document.addEventListener("touchend", (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 50) {
+        if (diff > 0) goNext();
+        else goPrev();
     }
-    await batch.commit();
-    console.log('Banco de dados populado com a nova estrutura de dados!');
-}
+}, { passive: true });
+
+// --- INIT ---
+document.getElementById("prevBtn").addEventListener("click", goPrev);
+document.getElementById("nextBtn").addEventListener("click", goNext);
+
+renderSlides();
+renderDots();
