@@ -218,16 +218,89 @@ const trips = [
         description: "Maior feira de artesanato do estado. Cultura e gastronomia.",
         type: "cultura", status: "planned", people: 6, estimatedCost: 120,
         mapsUrl: "https://maps.google.com/?q=Feira+de+Artesanato+Embu+das+Artes",
-        imageUrl: "", gradient: "linear-gradient(135deg, #4c1d95, #7c3aed)",
-        details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
+        imageUrl: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=900&h=500&fit=crop&auto=format",
+        gradient: "linear-gradient(135deg, #4c1d95, #7c3aed)",
+        details: {
+            departureTime: "Sair de Sorocaba às 8h. Chegada prevista às 9h30.",
+            itinerary: [
+                { time: "08:00", activity: "Saída de Sorocaba", desc: "Pegar SP-270 (Raposo Tavares) sentido São Paulo. Aproximadamente 1h30 de viagem." },
+                { time: "09:30", activity: "Chegada em Embu das Artes", desc: "Estacionar próximo ao centro histórico. Aos domingos a feira ocupa as ruas principais." },
+                { time: "09:45", activity: "Feira de Artesanato", desc: "Maior feira de artesanato do estado. Centenas de barracas com cerâmica, madeira, tecidos, bijuterias e quadros. Funciona sáb/dom." },
+                { time: "11:30", activity: "Galerias de Arte", desc: "Visita às galerias e ateliês no centro histórico. Pintura, escultura e arte popular brasileira." },
+                { time: "12:30", activity: "Almoço", desc: "Restaurantes no centro com culinária variada. Opções desde comida caseira até gastronomia contemporânea." },
+                { time: "14:00", activity: "Centro Histórico e igrejas", desc: "Caminhada pelo centro colonial. Igreja Nossa Senhora do Rosário (1690) e casarões históricos." },
+                { time: "15:00", activity: "Compras e doces", desc: "Últimas compras na feira. Doces artesanais, geleias e produtos coloniais para levar." },
+                { time: "16:00", activity: "Retorno a Sorocaba", desc: "Chegada prevista por volta das 17h30." }
+            ],
+            restaurants: [
+                { name: "Restaurante O Garimpo", desc: "Cozinha brasileira contemporânea em casarão histórico. Ambiente charmoso com jardim interno. Preço médio: R$70/pessoa.", mapsUrl: "https://maps.google.com/?q=Restaurante+O+Garimpo+Embu+das+Artes" },
+                { name: "Sushi Embu", desc: "Culinária japonesa no centro. Combinados e pratos quentes. Boa opção para variar. Preço médio: R$55/pessoa.", mapsUrl: "https://maps.google.com/?q=Sushi+Embu+das+Artes" },
+                { name: "Creperia da Vila", desc: "Crepes doces e salgados em ambiente acolhedor. Bom para lanche no meio do passeio.", mapsUrl: "https://maps.google.com/?q=Creperia+da+Vila+Embu+das+Artes" },
+                { name: "Barracas da feira", desc: "Espetinhos, pastéis, tapiocas e lanches rápidos nas barracas da própria feira. Preço acessível.", mapsUrl: "https://maps.google.com/?q=Feira+de+Artesanato+Embu+das+Artes" }
+            ],
+            familyActivities: [
+                { name: "Feira de Artesanato", desc: "Centenas de artesãos expondo trabalhos originais. Ótimo para comprar lembranças e presentes." },
+                { name: "Galerias de Arte", desc: "Ateliês e galerias com pinturas, esculturas e arte popular. Entrada gratuita na maioria." },
+                { name: "Centro Histórico Colonial", desc: "Caminhada pelas ruas de paralelepípedo com casarões do século XVII. Fotos em família." },
+                { name: "Igreja Nossa Senhora do Rosário", desc: "Igreja de 1690, uma das mais antigas da região metropolitana de São Paulo." }
+            ],
+            kidsActivities: [
+                { name: "Artesanato interativo", desc: "Algumas barracas oferecem oficinas de artesanato para crianças. Pintura em cerâmica e modelagem." },
+                { name: "Barracas de doces", desc: "Doces artesanais, brigadeiros gourmet e algodão-doce na feira. Júlia vai querer provar tudo." },
+                { name: "Praça da feira", desc: "Espaço aberto com músicos de rua e apresentações ao vivo. Ambiente lúdico e colorido." }
+            ],
+            citySummary: "Embu das Artes é uma estância turística localizada a cerca de 100km de Sorocaba (~1h30 de carro). Conhecida mundialmente pela Feira de Artesanato que acontece aos finais de semana, a cidade reúne centenas de artesãos, galerias de arte e ateliês em um charmoso centro histórico colonial do século XVII. Além do artesanato, destaca-se pela gastronomia variada, igrejas históricas e um clima boêmio e cultural único no interior paulista.",
+            touristSpots: [
+                { name: "Feira de Artesanato", desc: "Maior feira de artesanato do estado. Sáb/dom das 9h às 17h. Entrada gratuita.", mapsUrl: "https://maps.google.com/?q=Feira+de+Artesanato+Embu+das+Artes" },
+                { name: "Igreja Nossa Senhora do Rosário", desc: "Igreja de 1690 no centro histórico. Uma das mais antigas de SP.", mapsUrl: "https://maps.google.com/?q=Igreja+Nossa+Senhora+do+Rosario+Embu+das+Artes" },
+                { name: "Museu de Arte Sacra", desc: "Acervo de arte sacra colonial. Junto à Igreja do Rosário. Entrada gratuita.", mapsUrl: "https://maps.google.com/?q=Museu+de+Arte+Sacra+Embu+das+Artes" },
+                { name: "Centro Histórico", desc: "Ruas de paralelepípedo, casarões coloniais e ateliês de artistas.", mapsUrl: "https://maps.google.com/?q=Centro+Historico+Embu+das+Artes" }
+            ]
+        }
     },
     {
         id: "jun-2", month: "Junho", title: "Tatuí", subtitle: "Rota dos Doces Caseiros",
         description: "Degustação de doces artesanais e compras.",
         type: "gastronomia", status: "planned", people: 6, estimatedCost: 100,
         mapsUrl: "https://maps.google.com/?q=Tatui+SP",
-        imageUrl: "", gradient: "linear-gradient(135deg, #881337, #e11d48)",
-        details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
+        imageUrl: "https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=900&h=500&fit=crop&auto=format",
+        gradient: "linear-gradient(135deg, #881337, #e11d48)",
+        details: {
+            departureTime: "Sair de Sorocaba às 9h. Chegada prevista às 9h45.",
+            itinerary: [
+                { time: "09:00", activity: "Saída de Sorocaba", desc: "Pegar SP-127 sentido Tatuí. Estrada tranquila, aproximadamente 45min de viagem." },
+                { time: "09:45", activity: "Chegada em Tatuí", desc: "Estacionar no centro. Cidade pequena e fácil de circular a pé." },
+                { time: "10:00", activity: "Rota dos Doces Caseiros", desc: "Visita às fábricas e ateliês de doces artesanais. Degustação de cocadas, doces de leite, compotas e geleias." },
+                { time: "11:30", activity: "Conservatório de Tatuí", desc: "Visita ao maior conservatório musical da América Latina. Apresentações gratuitas aos finais de semana." },
+                { time: "12:30", activity: "Almoço em Tatuí", desc: "Restaurantes no centro com comida caseira do interior. Preço acessível." },
+                { time: "14:00", activity: "Centro Histórico", desc: "Caminhada pelo centro com casarões coloniais, Igreja Matriz e Praça da Matriz." },
+                { time: "15:00", activity: "Compras de doces", desc: "Última parada para comprar doces, geleias e produtos artesanais para levar para casa." },
+                { time: "15:30", activity: "Retorno a Sorocaba", desc: "Chegada prevista por volta das 16h15." }
+            ],
+            restaurants: [
+                { name: "Restaurante Sabor Caipira", desc: "Comida caseira do interior: frango caipira, mandioca frita, feijão tropeiro. Preço médio: R$40/pessoa.", mapsUrl: "https://maps.google.com/?q=Restaurante+Sabor+Caipira+Tatui" },
+                { name: "Pizzaria Tutti Buoni", desc: "Pizzas em forno a lenha e massas caseiras. Ambiente familiar. Boa opção para almoço em grupo.", mapsUrl: "https://maps.google.com/?q=Pizzaria+Tutti+Buoni+Tatui" },
+                { name: "Doceria da Praça", desc: "Café colonial com doces artesanais, bolos e tortas caseiras. Perfeito para o lanche da tarde.", mapsUrl: "https://maps.google.com/?q=Doceria+Tatui+SP" }
+            ],
+            familyActivities: [
+                { name: "Rota dos Doces", desc: "Circuito de fábricas e ateliês de doces caseiros. Degustação gratuita em vários pontos. Ótimo para compras." },
+                { name: "Conservatório de Tatuí", desc: "Maior conservatório musical da América Latina. Apresentações gratuitas aos sáb/dom. Cultura para toda a família." },
+                { name: "Centro Histórico", desc: "Casarões coloniais e praça arborizada. Passeio tranquilo acessível para os avós." },
+                { name: "Compras de artesanato", desc: "Além dos doces, lojas com artesanato local, bordados e produtos coloniais." }
+            ],
+            kidsActivities: [
+                { name: "Degustação de doces", desc: "Júlia vai adorar provar cocadas, brigadeiros e doces de leite nas fábricas artesanais." },
+                { name: "Apresentação musical", desc: "Apresentações de alunos do conservatório. Instrumentos variados — educativo e divertido." },
+                { name: "Praça da Matriz", desc: "Praça central com espaço para correr e brincar. Sorveterias ao redor." }
+            ],
+            citySummary: "Tatuí é conhecida como a Capital da Música, abrigando o maior conservatório musical da América Latina — o Conservatório Dramático e Musical Dr. Carlos de Campos. Localizada a apenas 50km de Sorocaba (~45min pela SP-127), a cidade é famosa pela Rota dos Doces Caseiros, com dezenas de fábricas artesanais de cocadas, doces de leite, compotas e geleias. O centro histórico preserva casarões coloniais e uma praça arborizada agradável para passeios em família.",
+            touristSpots: [
+                { name: "Rota dos Doces Caseiros", desc: "Circuito com dezenas de fábricas de doces artesanais. Degustação e compras.", mapsUrl: "https://maps.google.com/?q=Rota+dos+Doces+Tatui" },
+                { name: "Conservatório de Tatuí", desc: "Maior conservatório da América Latina. Apresentações gratuitas aos finais de semana.", mapsUrl: "https://maps.google.com/?q=Conservatorio+de+Tatui" },
+                { name: "Igreja Matriz", desc: "Igreja do século XIX na praça central de Tatuí.", mapsUrl: "https://maps.google.com/?q=Igreja+Matriz+Tatui" },
+                { name: "Praça da Matriz", desc: "Praça central arborizada com coreto e bancos. Coração da cidade.", mapsUrl: "https://maps.google.com/?q=Praca+da+Matriz+Tatui" }
+            ]
+        }
     },
     {
         id: "jul-1", month: "Julho", title: "Cabreúva", subtitle: "Fazenda do Chocolate",
