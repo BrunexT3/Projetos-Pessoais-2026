@@ -257,15 +257,45 @@ body {
    ============================================================ */
 .cards-row {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 360px));
+    grid-template-columns: repeat(2, minmax(0, 400px));
     gap: 2rem;
     justify-content: center;
     width: 100%;
-    max-width: 780px;
+    max-width: 860px;
 }
 
 .cards-row.single {
-    grid-template-columns: minmax(0, 360px);
+    grid-template-columns: minmax(0, 520px);
+}
+
+.cards-row.single .card-image {
+    height: 340px;
+}
+
+.cards-row.single .card-image-title h3 {
+    font-size: 2.2rem;
+}
+
+.cards-row.single .card-image-title p {
+    font-size: 1.05rem;
+}
+
+.cards-row.single .card-body {
+    padding: 1.5rem 2rem 1.75rem;
+}
+
+.cards-row.single .card-desc {
+    font-size: 0.95rem;
+}
+
+.cards-row.single .card-meta {
+    font-size: 0.88rem;
+}
+
+.cards-row.single .btn-map,
+.cards-row.single .btn-details {
+    font-size: 0.85rem;
+    padding: 0.6rem 1.1rem;
 }
 
 /* ============================================================
@@ -296,12 +326,26 @@ body {
     position: relative;
     height: 260px;
     overflow: hidden;
+    transition: none;
 }
 
 .card-image-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0) 100%);
+    background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0) 100%);
+    z-index: 2;
+}
+
+.card-image-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.5s var(--ease);
+}
+
+.trip-card:hover .card-image-bg {
+    transform: scale(1.08);
 }
 
 .card-badges {
@@ -311,7 +355,7 @@ body {
     right: 1rem;
     display: flex;
     justify-content: space-between;
-    z-index: 2;
+    z-index: 3;
 }
 
 .badge-type {
@@ -349,7 +393,7 @@ body {
     position: absolute;
     bottom: 1rem;
     left: 1.25rem;
-    z-index: 2;
+    z-index: 3;
     color: white;
 }
 

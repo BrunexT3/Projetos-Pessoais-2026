@@ -42,7 +42,7 @@ const trips = [
             people: 6,
             estimatedCost: 250,
             mapsUrl: "https://maps.google.com/?q=Rota+do+Vinho+Sao+Roque+SP",
-            imageUrl: "",
+            imageUrl: "https://images.unsplash.com/photo-1560148218-1a83060f7b32?w=800&h=600&fit=crop&auto=format",
             gradient: "linear-gradient(135deg, #7f1d1d, #b91c1c, #dc2626)",
             details: {
                 departureTime: "Sair de Sorocaba as 8h30. Chegada prevista as 9h30.",
@@ -604,7 +604,8 @@ function renderSlides() {
 
                 cardsHTML += `
                 <article class="trip-card ${isDone ? 'is-done' : ''}" data-trip-id="${trip.id}" style="animation-delay: ${0.1 + ti * 0.15}s">
-                    <div class="card-image" style="${bgStyle}">
+                    <div class="card-image">
+                        <div class="card-image-bg" style="${bgStyle}"></div>
                         <div class="card-image-overlay"></div>
                         <div class="card-badges">
                             <span class="badge-type" style="--badge-color: ${cfg.color}">${cfg.label}</span>
