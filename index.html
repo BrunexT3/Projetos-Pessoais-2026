@@ -10,48 +10,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <header class="header" id="header">
-        <div class="header-left">
-            <h1 class="logo">Viagens <span>2026</span></h1>
-        </div>
-        <nav class="month-nav" id="monthNav"></nav>
-        <div class="header-right">
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressFill"></div>
-            </div>
-            <span class="progress-text" id="progressText"></span>
-        </div>
-    </header>
-
-    <main class="main">
-        <button class="arrow arrow-left" id="prevBtn" aria-label="Mes anterior">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
-
-        <div class="slides-viewport">
-            <div class="slides-track" id="slidesTrack"></div>
-        </div>
-
-        <button class="arrow arrow-right" id="nextBtn" aria-label="Proximo mes">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-    </main>
-
-    <!-- Detail Overlay -->
-    <div class="detail-overlay" id="detailOverlay">
-        <div class="detail-panel" id="detailPanel">
-            <div class="detail-hero" id="detailHero">
-                <button class="detail-back" id="detailBack">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-                    Voltar
-                </button>
-                <div class="detail-hero-content" id="detailHeroContent"></div>
-            </div>
-            <div class="detail-body" id="detailBody"></div>
-        </div>
-    </div>
-
+    <div id="app"></div>
     <script src="script.js"></script>
 </body>
 </html>
