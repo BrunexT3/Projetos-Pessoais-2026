@@ -598,14 +598,10 @@ function renderSlides() {
                 const costText = trip.estimatedCost === null ? "A definir"
                     : trip.estimatedCost === 0 ? "Gratuito"
                     : `R$ ${trip.estimatedCost}`;
-                const bgStyle = trip.imageUrl
-                    ? `background-image: url('${trip.imageUrl}'); background-size: cover; background-position: center;`
-                    : `background: ${trip.gradient};`;
-
                 cardsHTML += `
                 <article class="trip-card ${isDone ? 'is-done' : ''}" data-trip-id="${trip.id}" style="animation-delay: ${0.1 + ti * 0.15}s">
-                    <div class="card-image">
-                        <div class="card-image-bg" style="${bgStyle}"></div>
+                    <div class="card-image" style="background: ${trip.gradient};">
+                        ${trip.imageUrl ? `<img class="card-image-photo" src="${trip.imageUrl}" alt="${trip.title}" loading="lazy">` : ''}
                         <div class="card-image-overlay"></div>
                         <div class="card-badges">
                             <span class="badge-type" style="--badge-color: ${cfg.color}">${cfg.label}</span>
@@ -730,12 +726,19 @@ function openDetail(tripId) {
     const costText = trip.estimatedCost === null ? "A definir"
         : trip.estimatedCost === 0 ? "Gratuito"
         : `R$ ${trip.estimatedCost}`;
-    const bgStyle = trip.imageUrl
-        ? `background-image: url('${trip.imageUrl}'); background-size: cover; background-position: center;`
-        : `background: ${trip.gradient};`;
 
     const hero = document.getElementById("detailHero");
-    hero.style = bgStyle;
+    hero.style.background = trip.gradient;
+    // Remove old img if any
+    const oldImg = hero.querySelector('.detail-hero-img');
+    if (oldImg) oldImg.remove();
+    if (trip.imageUrl) {
+        const img = document.createElement('img');
+        img.className = 'detail-hero-img';
+        img.src = trip.imageUrl;
+        img.alt = trip.title;
+        hero.insertBefore(img, hero.firstChild);
+    }
 
     document.getElementById("detailHeroContent").innerHTML = `
         <span class="detail-badge" style="--badge-color: ${cfg.color}">${cfg.label}</span>

@@ -336,15 +336,17 @@ body {
     z-index: 2;
 }
 
-.card-image-bg {
+.card-image-photo {
     position: absolute;
     inset: 0;
-    background-size: cover;
-    background-position: center;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
     transition: transform 0.5s var(--ease);
 }
 
-.trip-card:hover .card-image-bg {
+.trip-card:hover .card-image-photo {
     transform: scale(1.08);
 }
 
@@ -621,6 +623,17 @@ body {
     justify-content: flex-end;
     padding: 2rem;
     overflow: hidden;
+    background-size: cover;
+    background-position: center;
+}
+
+.detail-hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
 }
 
 .detail-hero::after {
