@@ -85,50 +85,6 @@ const trips = [
         }
     },
     {
-        id: "abr-1", month: "Abril", title: "Itu", subtitle: "Parque Maeda",
-        description: "Jardim Japonês, Trenzinho e áreas verdes. Ótimo para crianças e idosos.",
-        type: "natureza", status: "planned", people: 6, estimatedCost: 150,
-        mapsUrl: "https://maps.google.com/?q=Parque+Maeda+Itu",
-        imageUrl: "https://images.unsplash.com/photo-1528164344705-47542687000d?w=900&h=500&fit=crop&auto=format",
-        gradient: "linear-gradient(135deg, #065f46, #059669)",
-        details: {
-            departureTime: "Sair de Sorocaba às 8h. Chegada prevista às 8h40.",
-            itinerary: [
-                { time: "08:00", activity: "Saída de Sorocaba", desc: "Pegar Rodovia Castelo Branco (SP-280) sentido São Paulo. Aproximadamente 40min até Itu." },
-                { time: "08:40", activity: "Chegada ao Parque Maeda", desc: "Estacionamento gratuito. Comprar ingressos na bilheteria. Abre às 8h30 aos finais de semana." },
-                { time: "09:00", activity: "Jardim Japonês", desc: "Passeio tranquilo pelo jardim com carpas, pontes e cerejeiras. Ótimo para fotos em família." },
-                { time: "10:30", activity: "Trenzinho e Pedalinho", desc: "Passeio de trenzinho pelo parque e pedalinho no lago. Júlia vai adorar." },
-                { time: "12:00", activity: "Almoço no parque", desc: "Restaurante dentro do Parque Maeda com comida japonesa e brasileira. Preço médio R$50/pessoa." },
-                { time: "13:30", activity: "Pesca esportiva e áreas verdes", desc: "Pesca no lago (equipamento alugado no local) ou caminhada pelas trilhas e áreas de descanso." },
-                { time: "15:30", activity: "Praça dos Exageros", desc: "Visita rápida ao centro de Itu para ver os objetos gigantes. Parada de 30min." },
-                { time: "16:30", activity: "Retorno a Sorocaba", desc: "Chegada prevista por volta das 17h15." }
-            ],
-            restaurants: [
-                { name: "Restaurante do Parque Maeda", desc: "Dentro do parque. Comida japonesa e brasileira. Ambiente familiar com vista para o lago. Preço médio: R$50/pessoa.", mapsUrl: "https://maps.google.com/?q=Parque+Maeda+Itu" },
-                { name: "Restaurante Sakai", desc: "Cozinha japonesa tradicional em Itu. Sushi, sashimi e pratos quentes. Bom custo-benefício.", mapsUrl: "https://maps.google.com/?q=Restaurante+Sakai+Itu" },
-                { name: "Pizzaria Fornalha", desc: "Pizza assada em forno a lenha. Ambiente rústico e aconchegante. Boa opção para o final da tarde.", mapsUrl: "https://maps.google.com/?q=Pizzaria+Fornalha+Itu" }
-            ],
-            familyActivities: [
-                { name: "Jardim Japonês", desc: "Jardim com lago de carpas, pontes de madeira, cerejeiras e bambuzal. Passeio contemplativo de 1h." },
-                { name: "Pesca Esportiva", desc: "Lagos com tilápias e carpas. Equipamento disponível para aluguel. Pesque e solte." },
-                { name: "Caminhada nas trilhas", desc: "Trilhas leves e acessíveis pelo parque. Bom para os avós e para Júlia." },
-                { name: "Praça dos Exageros", desc: "No centro de Itu. Orelhão gigante, semáforo gigante e outros objetos. Passeio rápido e divertido." }
-            ],
-            kidsActivities: [
-                { name: "Trenzinho do parque", desc: "Passeio de trenzinho que percorre as principais áreas do Parque Maeda. Divertido para Júlia." },
-                { name: "Pedalinho no lago", desc: "Pedalinhos coloridos no lago principal. Seguro e tranquilo para crianças." },
-                { name: "Playground", desc: "Área de playground com brinquedos. Espaço seguro e bem cuidado." }
-            ],
-            citySummary: "Itu é conhecida como a Cidade dos Exageros, famosa pelos objetos gigantes espalhados pelo centro. Localizada a apenas 40km de Sorocaba (~40min pela SP-280), é um destino prático para bate e volta. O Parque Maeda é o destaque desta viagem: um complexo de lazer com jardim japonês, lagos para pesca, trenzinho, pedalinho e áreas verdes. Ideal para um dia tranquilo em família, com atividades para todas as idades.",
-            touristSpots: [
-                { name: "Parque Maeda", desc: "Complexo de lazer com jardim japonês, pesca, trenzinho e restaurante. Funciona sáb/dom/feriados.", mapsUrl: "https://maps.google.com/?q=Parque+Maeda+Itu" },
-                { name: "Praça dos Exageros", desc: "Praça com objetos gigantes — símbolo de Itu. Entrada gratuita.", mapsUrl: "https://maps.google.com/?q=Praca+dos+Exageros+Itu" },
-                { name: "Igreja Matriz Nossa Senhora da Candelária", desc: "Igreja histórica do século XVIII no centro de Itu.", mapsUrl: "https://maps.google.com/?q=Igreja+Matriz+Itu" },
-                { name: "Museu Republicano", desc: "Museu da USP sobre a Convenção Republicana de 1873. Entrada gratuita.", mapsUrl: "https://maps.google.com/?q=Museu+Republicano+Itu" }
-            ]
-        }
-    },
-    {
         id: "abr-2", month: "Abril", title: "Piedade", subtitle: "Colheita & Jardim Botânico",
         description: "Colheita de caqui na época ou visita ao Jardim Botânico.",
         type: "natureza", status: "planned", people: 6, estimatedCost: 80,
@@ -173,17 +129,89 @@ const trips = [
         id: "mai-1", month: "Maio", title: "Salto", subtitle: "Cachoeira & Parque Rocha Moutonnée",
         description: "Complexo da Cachoeira e parque temático de dinossauros.",
         type: "natureza", status: "planned", people: 6, estimatedCost: 100,
-        mapsUrl: "https://maps.google.com/?q=Parque+Rocha+Moutonee+Salto",
-        imageUrl: "", gradient: "linear-gradient(135deg, #0c4a6e, #0284c7)",
-        details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
+        mapsUrl: "https://maps.google.com/?q=Complexo+da+Cachoeira+Salto+SP",
+        imageUrl: "https://images.unsplash.com/photo-1546587348-d12660c30c50?w=900&h=500&fit=crop&auto=format",
+        gradient: "linear-gradient(135deg, #0c4a6e, #0284c7)",
+        details: {
+            departureTime: "Sair de Sorocaba às 8h. Chegada prevista às 9h15.",
+            itinerary: [
+                { time: "08:00", activity: "Saída de Sorocaba", desc: "Pegar SP-280 (Castelo Branco) até Itu, depois SP-79 até Salto. Aproximadamente 1h15 de viagem." },
+                { time: "09:15", activity: "Complexo da Cachoeira", desc: "Chegada ao Complexo Turístico da Cachoeira. Estacionamento gratuito. Caminhada pela passarela com vista para a queda d'água no Rio Tietê." },
+                { time: "10:30", activity: "Parque Rocha Moutonnée", desc: "Parque geológico com réplicas de dinossauros em tamanho real. Trilhas entre rochas com mais de 300 milhões de anos. Entrada gratuita." },
+                { time: "12:00", activity: "Almoço em Salto", desc: "Restaurantes no centro da cidade. Comida caseira com bom custo-benefício." },
+                { time: "13:30", activity: "Parque da Lavras", desc: "Ruínas históricas da antiga fábrica têxtil às margens do Tietê. Área verde para caminhada." },
+                { time: "15:00", activity: "Centro de Salto", desc: "Caminhada pelo centro histórico, Igreja Matriz e praça principal." },
+                { time: "16:00", activity: "Retorno a Sorocaba", desc: "Chegada prevista por volta das 17h15." }
+            ],
+            restaurants: [
+                { name: "Restaurante Quintal da Vila", desc: "Comida caseira em ambiente acolhedor. Porções generosas e preço justo. Preço médio: R$45/pessoa.", mapsUrl: "https://maps.google.com/?q=Quintal+da+Vila+Salto+SP" },
+                { name: "Cantina Don Rafhael", desc: "Massas artesanais e pizzas em forno a lenha. Ambiente familiar. Bom para almoço em grupo.", mapsUrl: "https://maps.google.com/?q=Cantina+Don+Rafhael+Salto" },
+                { name: "Padaria Brasileira", desc: "Lanches rápidos, salgados e café. Boa opção para lanche da tarde antes de voltar.", mapsUrl: "https://maps.google.com/?q=Padaria+Brasileira+Salto+SP" }
+            ],
+            familyActivities: [
+                { name: "Complexo da Cachoeira", desc: "Passarela sobre o Rio Tietê com vista para a cachoeira. Passeio acessível para todos, incluindo os avós." },
+                { name: "Parque Rocha Moutonnée", desc: "Parque geológico único no Brasil. Rochas glaciais de 300 milhões de anos com réplicas de dinossauros. Entrada gratuita." },
+                { name: "Parque da Lavras", desc: "Ruínas da antiga fábrica de tecidos. Área verde às margens do rio, boa para caminhada tranquila." },
+                { name: "Centro Histórico", desc: "Arquitetura preservada, igreja matriz e praça arborizada. Passeio leve de 30min." }
+            ],
+            kidsActivities: [
+                { name: "Dinossauros no Parque Rocha Moutonnée", desc: "Réplicas de dinossauros em tamanho real espalhadas pelo parque. Júlia vai adorar explorar e tirar fotos." },
+                { name: "Passarela da Cachoeira", desc: "Caminhada pela passarela sobre o rio. Vista impressionante da queda d'água." },
+                { name: "Playground do Complexo", desc: "Área de recreação infantil próxima ao Complexo da Cachoeira." }
+            ],
+            citySummary: "Salto é uma cidade histórica localizada a cerca de 80km de Sorocaba (~1h15 de carro). O principal atrativo é o Complexo Turístico da Cachoeira, com passarela sobre o Rio Tietê e vista para a impressionante queda d'água. O Parque Rocha Moutonnée é único no Brasil: um sítio geológico com rochas glaciais de mais de 300 milhões de anos e réplicas de dinossauros em tamanho real. A cidade também preserva ruínas industriais no Parque da Lavras e um centro histórico charmoso.",
+            touristSpots: [
+                { name: "Complexo da Cachoeira", desc: "Passarela sobre o Rio Tietê com vista para a cachoeira. Aberto diariamente. Gratuito.", mapsUrl: "https://maps.google.com/?q=Complexo+da+Cachoeira+Salto+SP" },
+                { name: "Parque Rocha Moutonnée", desc: "Sítio geológico com dinossauros. Único no Brasil. Gratuito. Sáb/dom 8h-17h.", mapsUrl: "https://maps.google.com/?q=Parque+Rocha+Moutonnee+Salto" },
+                { name: "Parque da Lavras", desc: "Ruínas históricas da fábrica têxtil. Área verde às margens do Tietê.", mapsUrl: "https://maps.google.com/?q=Parque+da+Lavras+Salto" },
+                { name: "Igreja Matriz", desc: "Igreja Nossa Senhora da Ponte. Centro histórico de Salto.", mapsUrl: "https://maps.google.com/?q=Igreja+Matriz+Salto+SP" }
+            ]
+        }
     },
     {
         id: "mai-2", month: "Maio", title: "Cotia", subtitle: "Animália Park",
         description: "Zoológico interativo. Excelente para crianças.",
         type: "aventura", status: "planned", people: 6, estimatedCost: 300,
         mapsUrl: "https://maps.google.com/?q=Animalia+Park+Cotia",
-        imageUrl: "", gradient: "linear-gradient(135deg, #9a3412, #ea580c)",
-        details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
+        imageUrl: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=900&h=500&fit=crop&auto=format",
+        gradient: "linear-gradient(135deg, #9a3412, #ea580c)",
+        details: {
+            departureTime: "Sair de Sorocaba às 7h30. Chegada prevista às 9h.",
+            itinerary: [
+                { time: "07:30", activity: "Saída de Sorocaba", desc: "Pegar SP-270 (Raposo Tavares) sentido São Paulo. Aproximadamente 1h30 até Cotia." },
+                { time: "09:00", activity: "Chegada ao Animália Park", desc: "Estacionamento no local (R$40). Abre às 9h. Comprar ingressos online com antecedência para evitar fila." },
+                { time: "09:30", activity: "Safari de caminhão", desc: "Passeio de caminhão aberto pelo safari com animais soltos: girafas, zebras, avestruzes e outros. Duração ~40min." },
+                { time: "10:30", activity: "Aquário e répteis", desc: "Área coberta com aquários e viveiros de répteis. Boa para dias quentes ou chuvosos." },
+                { time: "11:30", activity: "Fazendinha", desc: "Área interativa onde Júlia pode alimentar e tocar animais domésticos: cabras, coelhos e galinhas." },
+                { time: "12:30", activity: "Almoço no parque", desc: "Praça de alimentação com opções variadas. Preço médio: R$50/pessoa." },
+                { time: "13:30", activity: "Trilha dos animais", desc: "Caminhada pelas áreas temáticas: aves, primatas e felinos. Placas educativas em todo o percurso." },
+                { time: "15:30", activity: "Playground e fotos", desc: "Área de playground e últimas fotos com os animais." },
+                { time: "16:30", activity: "Retorno a Sorocaba", desc: "Chegada prevista por volta das 18h." }
+            ],
+            restaurants: [
+                { name: "Praça de Alimentação do Animália", desc: "Dentro do parque. Hambúrgueres, pizzas, lanches e opções infantis. Preço médio: R$50/pessoa.", mapsUrl: "https://maps.google.com/?q=Animalia+Park+Cotia" },
+                { name: "Restaurante Rancho da Costela", desc: "Costela no bafo e churrasco na estrada de acesso ao parque. Parada boa no retorno. Preço médio: R$60/pessoa.", mapsUrl: "https://maps.google.com/?q=Rancho+da+Costela+Cotia" },
+                { name: "Padaria Real Cotia", desc: "Opção rápida na saída. Salgados, lanches e café para a viagem de volta.", mapsUrl: "https://maps.google.com/?q=Padaria+Real+Cotia" }
+            ],
+            familyActivities: [
+                { name: "Safari de caminhão", desc: "Passeio em caminhão aberto com animais soltos ao redor. Seguro e emocionante para todas as idades." },
+                { name: "Trilha dos animais", desc: "Percurso a pé passando por aves, primatas e felinos. Placas educativas e guias no caminho." },
+                { name: "Aquário", desc: "Área coberta com peixes tropicais e de água salgada. Bom para descansar do sol." },
+                { name: "Área de descanso", desc: "Bancos e sombras espalhados pelo parque. Os avós podem descansar enquanto Júlia explora." }
+            ],
+            kidsActivities: [
+                { name: "Fazendinha interativa", desc: "Júlia pode alimentar cabras, coelhos e galinhas. Experiência de contato direto com os animais." },
+                { name: "Safari", desc: "Ver girafas, zebras e avestruzes de perto no caminhão aberto. Muito emocionante para crianças." },
+                { name: "Playground temático", desc: "Área de brinquedos com tema de animais. Seguro e bem estruturado." }
+            ],
+            citySummary: "O Animália Park é um zoológico interativo localizado em Cotia, a cerca de 90km de Sorocaba (~1h30 pela SP-270). É um dos zoológicos mais modernos do estado de São Paulo, com conceito de imersão — os animais vivem em áreas abertas e o visitante percorre o espaço de caminhão ou a pé. Destaque para o safari com girafas e zebras, a fazendinha interativa e o aquário. É um passeio de dia inteiro, especialmente indicado para famílias com crianças.",
+            touristSpots: [
+                { name: "Animália Park", desc: "Zoológico interativo com safari, aquário e fazendinha. Funciona qua a dom, 9h-17h.", mapsUrl: "https://maps.google.com/?q=Animalia+Park+Cotia" },
+                { name: "Safari de caminhão", desc: "Passeio incluso no ingresso. Girafas, zebras e avestruzes soltos.", mapsUrl: "https://maps.google.com/?q=Animalia+Park+Safari+Cotia" },
+                { name: "Fazendinha", desc: "Área interativa com animais domésticos. Incluso no ingresso.", mapsUrl: "https://maps.google.com/?q=Animalia+Park+Fazendinha+Cotia" },
+                { name: "Aquário", desc: "Área coberta com tanques de peixes tropicais e marinhos.", mapsUrl: "https://maps.google.com/?q=Animalia+Park+Aquario+Cotia" }
+            ]
+        }
     },
     {
         id: "jun-1", month: "Junho", title: "Embu das Artes", subtitle: "Feira de Artesanato",
