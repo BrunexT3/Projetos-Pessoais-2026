@@ -481,32 +481,177 @@ const trips = [
         description: "Festival de primavera com flores e colheita de morangos.",
         type: "natureza", status: "planned", people: 6, distance: 130, estimatedCost: 220,
         mapsUrl: "https://maps.google.com/?q=Atibaia+SP",
-        imageUrl: "", gradient: "linear-gradient(135deg, #be123c, #f43f5e)",
-        details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
+        imageUrl: "https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=900&h=500&fit=crop&auto=format",
+        gradient: "linear-gradient(135deg, #be123c, #f43f5e)",
+        details: {
+            departureTime: "Sair de Sorocaba às 7h. Chegada prevista às 9h.",
+            itinerary: [
+                { time: "07:00", activity: "Saída de Sorocaba", desc: "Pegar SP-280 até SP-348 (Bandeirantes), depois SP-065 até Atibaia. Aproximadamente 2h de viagem." },
+                { time: "09:00", activity: "Festa de Flores e Morangos", desc: "Evento anual de setembro. Exposição de flores, colheita de morangos e barracas gastronômicas." },
+                { time: "10:30", activity: "Colheita de morangos", desc: "Experiência de colher morangos direto do pé nos sítios da região. Paga por quilo colhido." },
+                { time: "11:30", activity: "Jardins e exposição de flores", desc: "Exposição com arranjos florais, orquídeas e jardins temáticos. Cenário lindo para fotos." },
+                { time: "12:30", activity: "Almoço", desc: "Barracas gastronômicas no evento ou restaurantes na cidade. Opções variadas." },
+                { time: "14:00", activity: "Pedra Grande", desc: "Mirante natural com vista panorâmica de 360°. Acesso de carro até o topo. Imperdível." },
+                { time: "15:30", activity: "Centro de Atibaia", desc: "Passeio pelo centro com lojas de artesanato, geleias e produtos coloniais." },
+                { time: "16:30", activity: "Retorno a Sorocaba", desc: "Chegada prevista por volta das 18h30." }
+            ],
+            restaurants: [
+                { name: "Restaurante Dona Chica", desc: "Comida caipira com fogão a lenha. Frango com polenta, leitão e mandioca. Preço médio: R$50/pessoa.", mapsUrl: "https://maps.google.com/?q=Restaurante+Dona+Chica+Atibaia" },
+                { name: "Cervejaria Wolkenburg", desc: "Cervejaria artesanal com cozinha alemã. Salsichas, batatas e cervejas premiadas. Preço médio: R$70/pessoa.", mapsUrl: "https://maps.google.com/?q=Cervejaria+Wolkenburg+Atibaia" },
+                { name: "Café da Roça", desc: "Café colonial com bolos, pães, geleias e café coado. Ambiente rural acolhedor.", mapsUrl: "https://maps.google.com/?q=Cafe+da+Roca+Atibaia" }
+            ],
+            familyActivities: [
+                { name: "Festa de Flores e Morangos", desc: "Evento anual de setembro. Exposição de flores, gastronomia e colheita. Ideal para toda a família." },
+                { name: "Pedra Grande", desc: "Mirante a 1.450m de altitude com vista de 360°. Acesso de carro. Acessível para os avós." },
+                { name: "Colheita de morangos", desc: "Sítios na região permitem colher morangos frescos. Experiência rural divertida." },
+                { name: "Compras de produtos coloniais", desc: "Geleias, compotas, queijos e doces artesanais. Ótimo para levar para casa." }
+            ],
+            kidsActivities: [
+                { name: "Colher morangos", desc: "Júlia pode colher morangos direto do pé e comer na hora. Diversão garantida." },
+                { name: "Pedra Grande", desc: "Vista impressionante do topo. Júlia vai adorar ver a paisagem de cima." },
+                { name: "Barracas de doces", desc: "Fondue de morango, sorvete artesanal e doces na festa. Paraíso para crianças." }
+            ],
+            citySummary: "Atibaia é uma estância climática localizada a cerca de 130km de Sorocaba (~2h de carro). Conhecida como a Cidade das Flores, é sede da tradicional Festa de Flores e Morangos em setembro. O destaque natural é a Pedra Grande, mirante a 1.450m de altitude com vista panorâmica de 360° — acessível de carro. A região é repleta de sítios que oferecem colheita de morangos e produtos coloniais. Clima agradável na primavera, ideal para passeio ao ar livre em família.",
+            touristSpots: [
+                { name: "Festa de Flores e Morangos", desc: "Festival anual em setembro. Flores, colheita e gastronomia.", mapsUrl: "https://maps.google.com/?q=Festa+de+Flores+e+Morangos+Atibaia" },
+                { name: "Pedra Grande", desc: "Mirante natural a 1.450m. Vista 360°. Acesso de carro. Gratuito.", mapsUrl: "https://maps.google.com/?q=Pedra+Grande+Atibaia" },
+                { name: "Sítios de colheita", desc: "Morangos, amoras e outras frutas da estação. Consultar horários.", mapsUrl: "https://maps.google.com/?q=Colheita+de+Morangos+Atibaia" },
+                { name: "Museu de História Natural", desc: "Acervo de fósseis e minerais. Entrada gratuita.", mapsUrl: "https://maps.google.com/?q=Museu+Historia+Natural+Atibaia" }
+            ]
+        }
     },
     {
         id: "set-2", month: "Setembro", title: "Jundiaí", subtitle: "Jardim Botânico",
         description: "Jardim Botânico com trilhas acessíveis e área de piquenique.",
         type: "natureza", status: "planned", people: 6, distance: 100, estimatedCost: 0,
         mapsUrl: "https://maps.google.com/?q=Jardim+Botanico+Jundiai",
-        imageUrl: "", gradient: "linear-gradient(135deg, #064e3b, #047857)",
-        details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
+        imageUrl: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=900&h=500&fit=crop&auto=format",
+        gradient: "linear-gradient(135deg, #064e3b, #047857)",
+        details: {
+            departureTime: "Sair de Sorocaba às 8h. Chegada prevista às 9h30.",
+            itinerary: [
+                { time: "08:00", activity: "Saída de Sorocaba", desc: "Pegar SP-280 (Castelo Branco) até Jundiaí. Aproximadamente 1h30 de viagem." },
+                { time: "09:30", activity: "Jardim Botânico de Jundiaí", desc: "Entrada gratuita. Trilhas acessíveis, lagos, jardim sensorial e área de piquenique." },
+                { time: "10:30", activity: "Trilha do Lago", desc: "Trilha leve ao redor do lago principal. Pontes de madeira, peixes e tartarugas. Acessível para os avós." },
+                { time: "11:30", activity: "Jardim Sensorial", desc: "Espaço com plantas aromáticas e texturas diferentes. Educativo para Júlia." },
+                { time: "12:30", activity: "Almoço em Jundiaí", desc: "Restaurantes próximos ao jardim e no centro. Opções de comida italiana e brasileira." },
+                { time: "14:00", activity: "Serra do Japi", desc: "Mirante com vista para a reserva da Serra do Japi. Patrimônio natural de Mata Atlântica." },
+                { time: "15:00", activity: "Rua do Retiro", desc: "Polo gastronômico com cantinas italianas, empórios e sorveterias. Tradição italiana de Jundiaí." },
+                { time: "16:30", activity: "Retorno a Sorocaba", desc: "Chegada prevista por volta das 18h." }
+            ],
+            restaurants: [
+                { name: "Cantina Passarella", desc: "Cantina italiana tradicional na Rua do Retiro. Massas caseiras e molhos artesanais. Preço médio: R$60/pessoa.", mapsUrl: "https://maps.google.com/?q=Cantina+Passarella+Jundiai" },
+                { name: "Empório Jundiaí", desc: "Queijos, vinhos, embutidos e pratos italianos leves. Bom para lanche ou almoço rápido.", mapsUrl: "https://maps.google.com/?q=Emporio+Jundiai" },
+                { name: "Sorveteria Bacio di Latte", desc: "Sorvete artesanal italiano. Diversos sabores. Parada obrigatória com Júlia.", mapsUrl: "https://maps.google.com/?q=Bacio+di+Latte+Jundiai" }
+            ],
+            familyActivities: [
+                { name: "Jardim Botânico", desc: "Trilhas leves, lagos, jardim sensorial e área de piquenique. Gratuito e acessível para os avós." },
+                { name: "Serra do Japi", desc: "Mirante com vista para a reserva de Mata Atlântica. Acesso de carro até o mirante." },
+                { name: "Rua do Retiro", desc: "Polo gastronômico com cantinas italianas. Tradição dos imigrantes italianos em Jundiaí." },
+                { name: "Piquenique no jardim", desc: "Levar toalha e lanches para um piquenique em família na área verde do Botânico." }
+            ],
+            kidsActivities: [
+                { name: "Jardim Sensorial", desc: "Plantas com cheiros e texturas diferentes para Júlia explorar. Educativo e divertido." },
+                { name: "Lago com peixes e tartarugas", desc: "Observar os peixes e tartarugas no lago do Botânico. Júlia vai querer ficar horas." },
+                { name: "Sorvete na Rua do Retiro", desc: "Sorveterias artesanais com sabores variados. Programa perfeito para crianças." }
+            ],
+            citySummary: "Jundiaí é conhecida como a Terra da Uva, com forte herança da imigração italiana. Localizada a cerca de 100km de Sorocaba (~1h30 de carro), a cidade possui um dos melhores jardins botânicos do estado — gratuito, com trilhas acessíveis, lagos e jardim sensorial. A Serra do Japi é uma importante reserva de Mata Atlântica com mirantes naturais. A Rua do Retiro concentra cantinas italianas tradicionais, empórios e sorveterias, mantendo viva a cultura dos imigrantes.",
+            touristSpots: [
+                { name: "Jardim Botânico", desc: "Trilhas, lagos e jardim sensorial. Gratuito. Funciona ter a dom, 7h-17h.", mapsUrl: "https://maps.google.com/?q=Jardim+Botanico+Jundiai" },
+                { name: "Serra do Japi", desc: "Reserva de Mata Atlântica com mirantes. Acesso controlado.", mapsUrl: "https://maps.google.com/?q=Serra+do+Japi+Jundiai" },
+                { name: "Rua do Retiro", desc: "Polo gastronômico italiano. Cantinas, empórios e sorveterias.", mapsUrl: "https://maps.google.com/?q=Rua+do+Retiro+Jundiai" },
+                { name: "Museu da Companhia Paulista", desc: "Museu ferroviário em antiga estação de trem. Gratuito.", mapsUrl: "https://maps.google.com/?q=Museu+Companhia+Paulista+Jundiai" }
+            ]
+        }
     },
     {
         id: "out-1", month: "Outubro", title: "Guararema", subtitle: "Trem Turístico",
         description: "Passeio de trem turístico pela cidade. Ótimo pra Júlia.",
         type: "aventura", status: "planned", people: 6, distance: 180, estimatedCost: 180,
         mapsUrl: "https://maps.google.com/?q=Trem+Turistico+Guararema",
-        imageUrl: "", gradient: "linear-gradient(135deg, #713f12, #a16207)",
-        details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
+        imageUrl: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=900&h=500&fit=crop&auto=format",
+        gradient: "linear-gradient(135deg, #713f12, #a16207)",
+        details: {
+            departureTime: "Sair de Sorocaba às 7h. Chegada prevista às 9h30.",
+            itinerary: [
+                { time: "07:00", activity: "Saída de Sorocaba", desc: "Pegar SP-280 até SP, depois Rodovia Presidente Dutra (BR-116) até Guararema. Aproximadamente 2h30." },
+                { time: "09:30", activity: "Chegada em Guararema", desc: "Estacionar próximo à estação. Cidade pequena e charmosa com ruas de paralelepípedo." },
+                { time: "10:00", activity: "Trem Turístico", desc: "Passeio de trem pela Maria Fumaça com parada em pontos turísticos. Duração ~1h. Comprar ingressos com antecedência." },
+                { time: "11:30", activity: "Estação ferroviária", desc: "Visita à antiga estação de trem restaurada. Lojinhas e café no entorno." },
+                { time: "12:30", activity: "Almoço", desc: "Restaurantes no centro com culinária variada. Opções de comida caseira e pizzarias." },
+                { time: "14:00", activity: "Rua da Alegria", desc: "Rua temática e colorida com lojas, docerias e ateliês. Ponto mais instagramável da cidade." },
+                { time: "15:00", activity: "Represa de Guararema", desc: "Vista bonita da represa. Área verde para caminhar e tirar fotos." },
+                { time: "16:00", activity: "Retorno a Sorocaba", desc: "Chegada prevista por volta das 18h30." }
+            ],
+            restaurants: [
+                { name: "Restaurante Estação Guararema", desc: "Próximo à estação do trem. Comida caseira e ambiente temático ferroviário. Preço médio: R$55/pessoa.", mapsUrl: "https://maps.google.com/?q=Restaurante+Estacao+Guararema" },
+                { name: "Empório e Restaurante da Vila", desc: "Culinária contemporânea em casarão histórico. Massas artesanais e carnes. Preço médio: R$70/pessoa.", mapsUrl: "https://maps.google.com/?q=Emporio+da+Vila+Guararema" },
+                { name: "Doceria da Rua da Alegria", desc: "Doces artesanais, brownies, cookies e café especial. Parada obrigatória com Júlia.", mapsUrl: "https://maps.google.com/?q=Doceria+Rua+da+Alegria+Guararema" }
+            ],
+            familyActivities: [
+                { name: "Trem Turístico", desc: "Passeio de Maria Fumaça pela cidade. Experiência nostálgica e divertida para todas as idades." },
+                { name: "Rua da Alegria", desc: "Rua colorida com lojas, docerias e ateliês. Cenário perfeito para fotos em família." },
+                { name: "Estação ferroviária", desc: "Antiga estação restaurada com lojinhas e café. Passeio leve e charmoso." },
+                { name: "Represa de Guararema", desc: "Vista da represa com área verde. Caminhada tranquila." }
+            ],
+            kidsActivities: [
+                { name: "Passeio de trem", desc: "Júlia vai adorar o passeio de Maria Fumaça. Emoção de andar de trem de verdade." },
+                { name: "Rua da Alegria", desc: "Rua colorida e lúdica com docerias. Cenário mágico para crianças." },
+                { name: "Doceria artesanal", desc: "Doces, sorvetes e brigadeiros gourmet na Rua da Alegria." }
+            ],
+            citySummary: "Guararema é uma cidade histórica e charmosa localizada a cerca de 180km de Sorocaba (~2h30 de carro). O principal atrativo é o Trem Turístico (Maria Fumaça), que percorre a cidade em um passeio nostálgico. A Rua da Alegria é o ponto mais colorido e instagramável, com lojas, docerias e ateliês. A antiga estação ferroviária foi restaurada e o centro preserva ruas de paralelepípedo e casarões. Destino perfeito para o mês das crianças.",
+            touristSpots: [
+                { name: "Trem Turístico", desc: "Maria Fumaça com passeio pela cidade. Funciona sáb/dom. Ingressos antecipados.", mapsUrl: "https://maps.google.com/?q=Trem+Turistico+Guararema" },
+                { name: "Rua da Alegria", desc: "Rua temática colorida com lojas e docerias.", mapsUrl: "https://maps.google.com/?q=Rua+da+Alegria+Guararema" },
+                { name: "Estação Ferroviária", desc: "Estação histórica restaurada. Ponto de partida do trem.", mapsUrl: "https://maps.google.com/?q=Estacao+Ferroviaria+Guararema" },
+                { name: "Represa de Guararema", desc: "Vista panorâmica da represa e área verde.", mapsUrl: "https://maps.google.com/?q=Represa+Guararema" }
+            ]
+        }
     },
     {
         id: "out-2", month: "Outubro", title: "São Paulo", subtitle: "Aquário de São Paulo",
         description: "Maior aquário da América Latina. Presente de Dia das Crianças.",
         type: "aventura", status: "planned", people: 6, distance: 100, estimatedCost: 150,
         mapsUrl: "https://maps.google.com/?q=Aquario+de+Sao+Paulo",
-        imageUrl: "", gradient: "linear-gradient(135deg, #1e3a5f, #1e40af)",
-        details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
+        imageUrl: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=900&h=500&fit=crop&auto=format",
+        gradient: "linear-gradient(135deg, #1e3a5f, #1e40af)",
+        details: {
+            departureTime: "Sair de Sorocaba às 7h30. Chegada prevista às 9h.",
+            itinerary: [
+                { time: "07:30", activity: "Saída de Sorocaba", desc: "Pegar SP-270 (Raposo Tavares) até São Paulo. Aproximadamente 1h30 — sair cedo para evitar trânsito." },
+                { time: "09:00", activity: "Aquário de São Paulo", desc: "Abertura às 9h. Comprar ingressos online com antecedência. Estacionamento no local." },
+                { time: "09:30", activity: "Setor água doce", desc: "Tanques com peixes de rios brasileiros, jacarés e lontras. Início do percurso." },
+                { time: "10:30", activity: "Setor oceanos", desc: "Tanque principal com tubarões e raias. Túnel subaquático de vidro — momento mais impressionante." },
+                { time: "11:30", activity: "Setor mamíferos e répteis", desc: "Ursos, pinguins, cobras e lagartos. Áreas temáticas com ambientação imersiva." },
+                { time: "12:30", activity: "Almoço no aquário", desc: "Praça de alimentação dentro do complexo. Opções variadas." },
+                { time: "13:30", activity: "Setor interativo", desc: "Tanque de toque onde Júlia pode tocar estrelas-do-mar e pepinos-do-mar." },
+                { time: "14:30", activity: "Loja de souvenirs", desc: "Loja temática com pelúcias, livros e brinquedos de animais marinhos." },
+                { time: "15:30", activity: "Retorno a Sorocaba", desc: "Chegada prevista por volta das 17h (considerar trânsito de SP)." }
+            ],
+            restaurants: [
+                { name: "Praça de Alimentação do Aquário", desc: "Dentro do complexo. Hambúrgueres, sushi, massas e opções kids. Preço médio: R$50/pessoa.", mapsUrl: "https://maps.google.com/?q=Aquario+de+Sao+Paulo" },
+                { name: "Restaurante Mocotó", desc: "Culinária nordestina premiada, próximo ao aquário (bairro Vila Medeiros). Baião de dois e carne de sol. Preço médio: R$65/pessoa.", mapsUrl: "https://maps.google.com/?q=Restaurante+Mocoto+Sao+Paulo" },
+                { name: "McDonald's Ipiranga", desc: "Opção rápida e prática com playground. Bom para Júlia se ficar cansada do aquário.", mapsUrl: "https://maps.google.com/?q=McDonalds+Ipiranga+Sao+Paulo" }
+            ],
+            familyActivities: [
+                { name: "Aquário de São Paulo", desc: "Mais de 3.000 animais em ambientes temáticos. Percurso completo leva ~3h. Acessível para os avós." },
+                { name: "Túnel subaquático", desc: "Passagem de vidro sob o tanque de tubarões e raias. Experiência impressionante." },
+                { name: "Setor dos pinguins", desc: "Ambiente refrigerado com pinguins-de-Magalhães. Um dos preferidos dos visitantes." },
+                { name: "Área de descanso", desc: "Bancos e espaços de descanso espalhados. Os avós podem sentar enquanto Júlia explora." }
+            ],
+            kidsActivities: [
+                { name: "Tanque de toque", desc: "Júlia pode tocar estrelas-do-mar, pepinos-do-mar e ouriços. Experiência sensorial incrível." },
+                { name: "Túnel dos tubarões", desc: "Caminhar sob o tanque com tubarões passando por cima. Emocionante para crianças." },
+                { name: "Loja de souvenirs", desc: "Pelúcias de animais marinhos, livros e brinquedos temáticos. Presente de Dia das Crianças." }
+            ],
+            citySummary: "O Aquário de São Paulo é o maior aquário da América Latina, localizado no bairro do Ipiranga em São Paulo, a cerca de 100km de Sorocaba (~1h30 de carro). O complexo abriga mais de 3.000 animais de 300 espécies, incluindo tubarões, pinguins, lontras e ursos. O destaque é o túnel subaquático de vidro sob o tanque de tubarões. Esta visita é planejada como presente de Dia das Crianças para Júlia, com o setor interativo de toque sendo o ponto alto para ela.",
+            touristSpots: [
+                { name: "Aquário de São Paulo", desc: "Maior aquário da América Latina. Aberto diariamente 9h-18h. Ingressos online.", mapsUrl: "https://maps.google.com/?q=Aquario+de+Sao+Paulo" },
+                { name: "Túnel subaquático", desc: "Passagem de vidro sob tanque de tubarões. Incluso no ingresso.", mapsUrl: "https://maps.google.com/?q=Aquario+de+Sao+Paulo" },
+                { name: "Setor interativo", desc: "Tanque de toque com animais marinhos. Incluso no ingresso.", mapsUrl: "https://maps.google.com/?q=Aquario+de+Sao+Paulo" },
+                { name: "Museu do Ipiranga", desc: "Próximo ao aquário. Museu histórico reaberto após restauração. Visita opcional.", mapsUrl: "https://maps.google.com/?q=Museu+do+Ipiranga+Sao+Paulo" }
+            ]
+        }
     },
     {
         id: "nov-1", month: "Novembro", title: "Indaiatuba", subtitle: "Parque Ecológico",
