@@ -257,15 +257,15 @@ body {
    ============================================================ */
 .cards-row {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 460px));
+    grid-template-columns: repeat(2, minmax(0, 360px));
     gap: 2rem;
     justify-content: center;
     width: 100%;
-    max-width: 980px;
+    max-width: 780px;
 }
 
 .cards-row.single {
-    grid-template-columns: minmax(0, 460px);
+    grid-template-columns: minmax(0, 360px);
 }
 
 /* ============================================================
@@ -294,7 +294,7 @@ body {
 /* Card Image */
 .card-image {
     position: relative;
-    height: 200px;
+    height: 260px;
     overflow: hidden;
 }
 
@@ -737,6 +737,51 @@ body {
     font-weight: 500;
 }
 
+/* City Summary */
+.city-summary {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    background: var(--surface-alt);
+    padding: 1.25rem 1.5rem;
+    border-radius: var(--radius-sm);
+    border-left: 4px solid var(--accent);
+}
+
+/* Item Cards (restaurants, activities, spots) */
+.item-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.item-card {
+    padding: 1rem 1.25rem;
+    background: var(--surface-alt);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+
+.item-card:hover {
+    transform: translateX(4px);
+    box-shadow: var(--shadow-sm);
+    border-color: var(--accent);
+}
+
+.item-card-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+}
+
+.item-card-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+}
+
 .detail-list {
     list-style: none;
     display: flex;
@@ -865,7 +910,7 @@ body {
 
     .cards-row {
         grid-template-columns: 1fr;
-        max-width: 460px;
+        max-width: 360px;
     }
 
     .slide-theme {
@@ -903,7 +948,7 @@ body {
     }
 
     .card-image {
-        height: 160px;
+        height: 200px;
     }
 
     .card-image-title h3 {
@@ -915,7 +960,7 @@ body {
     }
 }
 
-@media (max-height: 750px) {
+@media (max-height: 850px) {
     .slide {
         justify-content: flex-start;
         padding-top: 0.75rem;
@@ -928,7 +973,7 @@ body {
         font-size: 2rem;
     }
     .card-image {
-        height: 160px;
+        height: 220px;
     }
 }
 

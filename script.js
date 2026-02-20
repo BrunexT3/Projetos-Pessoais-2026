@@ -36,21 +36,41 @@ const trips = [
             id: "mar-1",
             title: "Sao Roque",
             subtitle: "Rota do Vinho",
-            description: "Bate e volta no 1o final de semana. Almoco e passeio pelas vinicolas.",
+            description: "Bate e volta no 1o final de semana. Almoco e passeio pelas vinicolas. ~60km de Sorocaba, 1h de carro.",
             type: "gastronomia",
             status: "planned",
             people: 6,
-            estimatedCost: 200,
-            mapsUrl: "https://maps.google.com/?q=Rota+do+Vinho+Sao+Roque",
+            estimatedCost: 250,
+            mapsUrl: "https://maps.google.com/?q=Rota+do+Vinho+Sao+Roque+SP",
             imageUrl: "",
             gradient: "linear-gradient(135deg, #7f1d1d, #b91c1c, #dc2626)",
             details: {
-                departureTime: "",
-                restaurants: [],
-                familyActivities: [],
-                kidsActivities: [],
-                citySummary: "",
-                touristSpots: []
+                departureTime: "Sair de Sorocaba as 8h30. Chegada prevista as 9h30.",
+                restaurants: [
+                    { name: "Villa Don Patto", description: "Complexo com restaurante italiano, pizzaria, emporio e degustacao de vinhos. Ambiente amplo e familiar. Reservar com antecedencia." },
+                    { name: "Quinta do Olivardo", description: "Restaurante portugues premiado com vista para os vinhedos. Bacalhau e polvo sao destaques. Preco medio: R$90/pessoa." },
+                    { name: "Cantina Villa Arrieta", description: "Cantina italiana tradicional com massas caseiras. Ambiente rustico e acolhedor. Bom custo-beneficio." },
+                    { name: "Emporio Sao Roque", description: "Opcao mais rapida com lanches, queijos, embutidos e vinhos para degustacao. Bom para um pit stop." }
+                ],
+                familyActivities: [
+                    { name: "Rota do Vinho", description: "Circuito com mais de 30 vinicolas, adegas e restaurantes. Degustar vinhos (adultos) e sucos de uva artesanais (criancas). Entrada gratuita na maioria." },
+                    { name: "Vinicola Goes", description: "Maior vinicola da regiao com tour guiado gratuito pela fabrica. Degustacao inclusa. Loja com precos de fabrica." },
+                    { name: "Villa Don Patto - Passeio", description: "Alem do restaurante, tem emporio gourmet, espaco para fotos e area verde. Da pra passar 1-2h tranquilamente." },
+                    { name: "Centro Historico", description: "Caminhada pelo centro de Sao Roque com igreja matriz e casaroes coloniais. Passeio curto de 30min." }
+                ],
+                kidsActivities: [
+                    { name: "Ski Mountain Park", description: "Parque com pista de ski sintetico, alpine coaster (montanha-russa), tirolesa e teleférico. Laura vai adorar. Ingressos a partir de R$60." },
+                    { name: "Degustacao de Suco de Uva", description: "Nas vinicolas, criancas podem degustar sucos de uva artesanais e acompanhar o processo de fabricacao." },
+                    { name: "Vinicola Goes - Tour Educativo", description: "Tour guiado mostra como o vinho e produzido. Interessante e educativo para criancas mais velhas." }
+                ],
+                citySummary: "Sao Roque e conhecida como a Terra do Vinho no estado de Sao Paulo. Localizada a cerca de 60km de Sorocaba (~1h de carro pela SP-270), a cidade abriga a famosa Rota do Vinho com mais de 30 estabelecimentos entre vinicolas, adegas e restaurantes. Alem da gastronomia, destaca-se pelo Ski Mountain Park (unica pista de ski do estado) e pelo clima interiorano com forte influencia da colonizacao portuguesa e italiana. E um destino ideal para bate e volta em familia, com boa infraestrutura de banheiros e alimentacao ao longo da rota.",
+                touristSpots: [
+                    { name: "Rota do Vinho (Estrada do Vinho)", description: "Principal atracao. Circuito de 10km com vinicolas, restaurantes e empórios. Funciona aos finais de semana o dia todo." },
+                    { name: "Vinicola Goes", description: "Fundada em 1938, e a maior e mais tradicional da regiao. Tour gratuito com degustacao. Aberta sab/dom das 9h as 17h." },
+                    { name: "Ski Mountain Park", description: "Parque de aventura com pista de ski sintetico, alpine coaster, teleférico e tirolesa. Funciona sab/dom/feriados." },
+                    { name: "Villa Don Patto", description: "Complexo gastronomico com restaurante, pizzaria, emporio e espaco de eventos. Um dos pontos mais visitados da rota." },
+                    { name: "Igreja Matriz de Sao Roque", description: "Igreja historica no centro da cidade, construida no seculo XVIII. Vale uma visita rapida." }
+                ]
             }
         }]
     },
@@ -725,6 +745,17 @@ function openDetail(tripId) {
 
     const d = trip.details;
 
+    const renderItemCards = (items, emptyMsg) => {
+        if (items.length === 0) {
+            return `<div class="placeholder-block"><p>${emptyMsg}</p></div>`;
+        }
+        return `<div class="item-cards">${items.map(item => `
+            <div class="item-card">
+                <div class="item-card-name">${item.name}</div>
+                <div class="item-card-desc">${item.description}</div>
+            </div>`).join('')}</div>`;
+    };
+
     document.getElementById("detailBody").innerHTML = `
         <div class="detail-overview">
             <div class="detail-info-card">
@@ -751,7 +782,7 @@ function openDetail(tripId) {
                 Resumo da Cidade
             </h3>
             ${d.citySummary
-                ? `<p>${d.citySummary}</p>`
+                ? `<p class="city-summary">${d.citySummary}</p>`
                 : '<div class="placeholder-block"><p>Conteudo sera adicionado em breve</p></div>'}
         </section>
 
@@ -760,9 +791,7 @@ function openDetail(tripId) {
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/></svg>
                 Onde Comer
             </h3>
-            ${d.restaurants.length > 0
-                ? `<ul class="detail-list">${d.restaurants.map(r => `<li><strong>${r.name}</strong> - ${r.description}</li>`).join('')}</ul>`
-                : '<div class="placeholder-block"><p>Restaurantes recomendados serao adicionados</p></div>'}
+            ${renderItemCards(d.restaurants, 'Restaurantes recomendados serao adicionados')}
         </section>
 
         <section class="detail-section anim-section" style="animation-delay: 0.3s">
@@ -770,9 +799,7 @@ function openDetail(tripId) {
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
                 Passeios em Familia
             </h3>
-            ${d.familyActivities.length > 0
-                ? `<ul class="detail-list">${d.familyActivities.map(a => `<li><strong>${a.name}</strong> - ${a.description}</li>`).join('')}</ul>`
-                : '<div class="placeholder-block"><p>Atividades para toda a familia serao adicionadas</p></div>'}
+            ${renderItemCards(d.familyActivities, 'Atividades para toda a familia serao adicionadas')}
         </section>
 
         <section class="detail-section anim-section" style="animation-delay: 0.4s">
@@ -780,9 +807,7 @@ function openDetail(tripId) {
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
                 Passeios para Criancas
             </h3>
-            ${d.kidsActivities.length > 0
-                ? `<ul class="detail-list">${d.kidsActivities.map(a => `<li><strong>${a.name}</strong> - ${a.description}</li>`).join('')}</ul>`
-                : '<div class="placeholder-block"><p>Atividades para a Laura serao adicionadas</p></div>'}
+            ${renderItemCards(d.kidsActivities, 'Atividades para a Laura serao adicionadas')}
         </section>
 
         <section class="detail-section anim-section" style="animation-delay: 0.5s">
@@ -790,9 +815,7 @@ function openDetail(tripId) {
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
                 Principais Pontos Turisticos
             </h3>
-            ${d.touristSpots.length > 0
-                ? `<ul class="detail-list">${d.touristSpots.map(s => `<li><strong>${s.name}</strong> - ${s.description}</li>`).join('')}</ul>`
-                : '<div class="placeholder-block"><p>Pontos turisticos serao adicionados</p></div>'}
+            ${renderItemCards(d.touristSpots, 'Pontos turisticos serao adicionados')}
         </section>
 
         ${trip.mapsUrl ? `
