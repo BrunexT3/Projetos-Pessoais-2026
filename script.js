@@ -42,7 +42,7 @@ const trips = [
             people: 6,
             estimatedCost: 250,
             mapsUrl: "https://maps.google.com/?q=Rota+do+Vinho+Sao+Roque+SP",
-            imageUrl: "https://images.unsplash.com/photo-1560148218-1a83060f7b32?w=800&h=600&fit=crop&auto=format",
+            imageUrl: "https://images.unsplash.com/photo-1464638681273-0962e9b53566?w=900&h=500&fit=crop&auto=format",
             gradient: "linear-gradient(135deg, #7f1d1d, #b91c1c, #dc2626)",
             details: {
                 departureTime: "Sair de Sorocaba as 8h30. Chegada prevista as 9h30.",
