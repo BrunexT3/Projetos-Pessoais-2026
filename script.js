@@ -7,7 +7,7 @@ const trips = [
         description: "Viagem com hospedagem na Pousada Tambayba. Gostamos muito, provavelmente voltaremos no final do ano.",
         type: "praia", status: "done", people: 6, distance: 180, estimatedCost: null,
         mapsUrl: "https://maps.google.com/?q=Pousada+Tambayba+Maresias",
-        imageUrl: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&h=500&fit=crop&auto=format",
+        imageUrl: "https://images.unsplash.com/photo-1605819319725-c97ea24cdc44?w=900&h=500&fit=crop&auto=format",
         gradient: "linear-gradient(135deg, #0ea5e9, #06b6d4)",
         details: {
             departureTime: "Viagem com pernoite — horário flexível",
@@ -45,7 +45,7 @@ const trips = [
         description: "Bate e volta no 1º final de semana. Almoço e passeio pelas vinícolas. ~60km de Sorocaba, 1h de carro.",
         type: "gastronomia", status: "planned", people: 6, distance: 60, estimatedCost: 250,
         mapsUrl: "https://maps.google.com/?q=Rota+do+Vinho+Sao+Roque+SP",
-        imageUrl: "https://images.unsplash.com/photo-1464638681273-0962e9b53566?w=900&h=500&fit=crop&auto=format",
+        imageUrl: "https://images.unsplash.com/photo-1650908007715-13db33e2de6c?w=900&h=500&fit=crop&auto=format",
         gradient: "linear-gradient(135deg, #7f1d1d, #b91c1c)",
         details: {
             departureTime: "Sair de Sorocaba às 8h30. Chegada prevista às 9h30.",
@@ -89,7 +89,7 @@ const trips = [
         description: "Colheita de caqui na época ou visita ao Jardim Botânico.",
         type: "natureza", status: "planned", people: 6, distance: 50, estimatedCost: 80,
         mapsUrl: "https://maps.google.com/?q=Piedade+SP",
-        imageUrl: "https://images.unsplash.com/photo-1558293842-c0fd3db86157?w=900&h=500&fit=crop&auto=format",
+        imageUrl: "https://images.unsplash.com/photo-1742320090977-2803b26cb2bb?w=900&h=500&fit=crop&auto=format",
         gradient: "linear-gradient(135deg, #14532d, #16a34a)",
         details: {
             departureTime: "Sair de Sorocaba às 8h30. Chegada prevista às 9h15.",
@@ -130,7 +130,7 @@ const trips = [
         description: "Complexo da Cachoeira e parque temático de dinossauros.",
         type: "natureza", status: "planned", people: 6, distance: 80, estimatedCost: 100,
         mapsUrl: "https://maps.google.com/?q=Complexo+da+Cachoeira+Salto+SP",
-        imageUrl: "https://images.unsplash.com/photo-1546587348-d12660c30c50?w=900&h=500&fit=crop&auto=format",
+        imageUrl: "https://images.unsplash.com/photo-1744496835872-0d6e9a33f2d0?w=900&h=500&fit=crop&auto=format",
         gradient: "linear-gradient(135deg, #0c4a6e, #0284c7)",
         details: {
             departureTime: "Sair de Sorocaba às 8h. Chegada prevista às 9h15.",
@@ -173,7 +173,7 @@ const trips = [
         description: "Zoológico interativo. Excelente para crianças.",
         type: "aventura", status: "planned", people: 6, distance: 90, estimatedCost: 300,
         mapsUrl: "https://maps.google.com/?q=Animalia+Park+Cotia",
-        imageUrl: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=900&h=500&fit=crop&auto=format",
+        imageUrl: "https://images.unsplash.com/photo-1569277051793-783398dc36ff?w=900&h=500&fit=crop&auto=format",
         gradient: "linear-gradient(135deg, #9a3412, #ea580c)",
         details: {
             departureTime: "Sair de Sorocaba às 7h30. Chegada prevista às 9h.",
@@ -218,7 +218,7 @@ const trips = [
         description: "Maior feira de artesanato do estado. Cultura e gastronomia.",
         type: "cultura", status: "planned", people: 6, distance: 100, estimatedCost: 120,
         mapsUrl: "https://maps.google.com/?q=Feira+de+Artesanato+Embu+das+Artes",
-        imageUrl: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=900&h=500&fit=crop&auto=format",
+        imageUrl: "https://images.unsplash.com/photo-1651512596988-4887404ba3ae?w=900&h=500&fit=crop&auto=format",
         gradient: "linear-gradient(135deg, #4c1d95, #7c3aed)",
         details: {
             departureTime: "Sair de Sorocaba às 8h. Chegada prevista às 9h30.",
@@ -263,7 +263,7 @@ const trips = [
         description: "Degustação de doces artesanais e compras.",
         type: "gastronomia", status: "planned", people: 6, distance: 50, estimatedCost: 100,
         mapsUrl: "https://maps.google.com/?q=Tatui+SP",
-        imageUrl: "https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=900&h=500&fit=crop&auto=format",
+        imageUrl: "https://images.unsplash.com/photo-1746182969913-81bdb237309b?w=900&h=500&fit=crop&auto=format",
         gradient: "linear-gradient(135deg, #881337, #e11d48)",
         details: {
             departureTime: "Sair de Sorocaba às 9h. Chegada prevista às 9h45.",
@@ -307,7 +307,7 @@ const trips = [
         description: "Fábrica de chocolate artesanal. Ótimo para férias da Júlia.",
         type: "gastronomia", status: "planned", people: 6, distance: 70, estimatedCost: 150,
         mapsUrl: "https://maps.google.com/?q=Fazenda+do+Chocolate+Cabreuva",
-        imageUrl: "https://images.unsplash.com/photo-1481391319762-47dff72954d9?w=900&h=500&fit=crop&auto=format",
+        imageUrl: "https://images.unsplash.com/photo-1701006643345-e8971bbccd98?w=900&h=500&fit=crop&auto=format",
         gradient: "linear-gradient(135deg, #451a03, #78350f)",
         details: {
             departureTime: "Sair de Sorocaba às 8h30. Chegada prevista às 9h30.",
@@ -351,7 +351,7 @@ const trips = [
         description: "Réplica da Fontana di Trevi, lojas e restaurantes.",
         type: "cultura", status: "planned", people: 6, distance: 170, estimatedCost: 200,
         mapsUrl: "https://maps.google.com/?q=Serra+Negra+SP",
-        imageUrl: "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=900&h=500&fit=crop&auto=format",
+        imageUrl: "https://images.unsplash.com/photo-1750601455226-db033260b715?w=900&h=500&fit=crop&auto=format",
         gradient: "linear-gradient(135deg, #312e81, #4338ca)",
         details: {
             departureTime: "Sair de Sorocaba às 7h. Chegada prevista às 9h30.",
@@ -395,7 +395,7 @@ const trips = [
         description: "Arquitetura holandesa, campos de flores e gastronomia típica.",
         type: "cultura", status: "planned", people: 6, distance: 120, estimatedCost: 180,
         mapsUrl: "https://maps.google.com/?q=Holambra+SP",
-        imageUrl: "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=900&h=500&fit=crop&auto=format",
+        imageUrl: "https://images.unsplash.com/photo-1666828889964-07c2d46c965f?w=900&h=500&fit=crop&auto=format",
         gradient: "linear-gradient(135deg, #c2410c, #f59e0b)",
         details: {
             departureTime: "Sair de Sorocaba às 7h30. Chegada prevista às 9h15.",
@@ -439,7 +439,7 @@ const trips = [
         description: "Parque histórico às margens do Rio Tietê. Passeio tranquilo.",
         type: "historia", status: "planned", people: 6, distance: 30, estimatedCost: 30,
         mapsUrl: "https://maps.google.com/?q=Parque+das+Moncoes+Porto+Feliz",
-        imageUrl: "https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=900&h=500&fit=crop&auto=format",
+        imageUrl: "https://images.unsplash.com/photo-1729269769137-0b6facbce026?w=900&h=500&fit=crop&auto=format",
         gradient: "linear-gradient(135deg, #78350f, #92400e)",
         details: {
             departureTime: "Sair de Sorocaba às 9h. Chegada prevista às 9h30.",
@@ -481,7 +481,7 @@ const trips = [
         description: "Festival de primavera com flores e colheita de morangos.",
         type: "natureza", status: "planned", people: 6, distance: 130, estimatedCost: 220,
         mapsUrl: "https://maps.google.com/?q=Atibaia+SP",
-        imageUrl: "https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=900&h=500&fit=crop&auto=format",
+        imageUrl: "https://images.unsplash.com/photo-1768204040973-1bd786d46ad4?w=900&h=500&fit=crop&auto=format",
         gradient: "linear-gradient(135deg, #be123c, #f43f5e)",
         details: {
             departureTime: "Sair de Sorocaba às 7h. Chegada prevista às 9h.",
@@ -525,7 +525,7 @@ const trips = [
         description: "Jardim Botânico com trilhas acessíveis e área de piquenique.",
         type: "natureza", status: "planned", people: 6, distance: 100, estimatedCost: 0,
         mapsUrl: "https://maps.google.com/?q=Jardim+Botanico+Jundiai",
-        imageUrl: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=900&h=500&fit=crop&auto=format",
+        imageUrl: "https://images.unsplash.com/photo-1609366310097-a18ec8f9873d?w=900&h=500&fit=crop&auto=format",
         gradient: "linear-gradient(135deg, #064e3b, #047857)",
         details: {
             departureTime: "Sair de Sorocaba às 8h. Chegada prevista às 9h30.",
@@ -569,7 +569,7 @@ const trips = [
         description: "Passeio de trem turístico pela cidade. Ótimo pra Júlia.",
         type: "aventura", status: "planned", people: 6, distance: 180, estimatedCost: 180,
         mapsUrl: "https://maps.google.com/?q=Trem+Turistico+Guararema",
-        imageUrl: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=900&h=500&fit=crop&auto=format",
+        imageUrl: "https://images.unsplash.com/photo-1661518542496-1676a1e86c4f?w=900&h=500&fit=crop&auto=format",
         gradient: "linear-gradient(135deg, #713f12, #a16207)",
         details: {
             departureTime: "Sair de Sorocaba às 7h. Chegada prevista às 9h30.",
@@ -613,7 +613,7 @@ const trips = [
         description: "Maior aquário da América Latina. Presente de Dia das Crianças.",
         type: "aventura", status: "planned", people: 6, distance: 100, estimatedCost: 150,
         mapsUrl: "https://maps.google.com/?q=Aquario+de+Sao+Paulo",
-        imageUrl: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=900&h=500&fit=crop&auto=format",
+        imageUrl: "https://images.unsplash.com/photo-1769234428281-c108a6053cd3?w=900&h=500&fit=crop&auto=format",
         gradient: "linear-gradient(135deg, #1e3a5f, #1e40af)",
         details: {
             departureTime: "Sair de Sorocaba às 7h30. Chegada prevista às 9h.",
@@ -658,7 +658,7 @@ const trips = [
         description: "Parque Ecológico e Museu da Água. Passeio gratuito e acessível.",
         type: "natureza", status: "planned", people: 6, distance: 50, estimatedCost: 0,
         mapsUrl: "https://maps.google.com/?q=Parque+Ecologico+Indaiatuba",
-        imageUrl: "https://images.unsplash.com/photo-1414609245224-afa02bfb3fda?w=900&h=500&fit=crop&auto=format",
+        imageUrl: "https://images.unsplash.com/photo-1578062720589-d69991183491?w=900&h=500&fit=crop&auto=format",
         gradient: "linear-gradient(135deg, #14532d, #15803d)",
         details: {
             departureTime: "Sair de Sorocaba às 9h. Chegada prevista às 9h45.",
@@ -702,7 +702,7 @@ const trips = [
         description: "Fazenda histórica com trilhas e ruínas. Patrimônio cultural.",
         type: "historia", status: "planned", people: 6, distance: 15, estimatedCost: 50,
         mapsUrl: "https://maps.google.com/?q=Fazenda+Ipanema+Aracoiaba+da+Serra",
-        imageUrl: "https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=900&h=500&fit=crop&auto=format",
+        imageUrl: "https://images.unsplash.com/photo-1734970757432-08582bf5e970?w=900&h=500&fit=crop&auto=format",
         gradient: "linear-gradient(135deg, #44403c, #78716c)",
         details: {
             departureTime: "Sair de Sorocaba às 9h. Chegada prevista às 9h20.",
@@ -746,7 +746,7 @@ const trips = [
         description: "Decoração natalina na praça central. Passeio noturno em família.",
         type: "cultura", status: "planned", people: 6, distance: 40, estimatedCost: 0,
         mapsUrl: "https://maps.google.com/?q=Praca+Padre+Miguel+Itu",
-        imageUrl: "https://images.unsplash.com/photo-1482517967863-00e15c9b44be?w=900&h=500&fit=crop&auto=format",
+        imageUrl: "https://images.unsplash.com/photo-1455778977533-4a3ef39091c6?w=900&h=500&fit=crop&auto=format",
         gradient: "linear-gradient(135deg, #991b1b, #dc2626)",
         details: {
             departureTime: "Sair de Sorocaba às 17h. Chegada prevista às 17h40.",
@@ -789,7 +789,7 @@ const trips = [
         description: "Volta a Maresias para fechar o ano. Pousada que a família amou em janeiro.",
         type: "praia", status: "planned", people: 6, distance: 180, estimatedCost: null,
         mapsUrl: "https://maps.google.com/?q=Pousada+Tambayba+Maresias",
-        imageUrl: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&h=500&fit=crop&auto=format",
+        imageUrl: "https://images.unsplash.com/photo-1622999620227-5231f99b54d7?w=900&h=500&fit=crop&auto=format",
         gradient: "linear-gradient(135deg, #0369a1, #f97316)",
         details: {
             departureTime: "Viagem com pernoite — horário flexível",
