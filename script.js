@@ -5,7 +5,7 @@ const trips = [
     {
         id: "jan-1", month: "Janeiro", title: "Maresias", subtitle: "Pousada Tambayba",
         description: "Viagem com hospedagem na Pousada Tambayba. Gostamos muito, provavelmente voltaremos no final do ano.",
-        type: "praia", status: "done", people: 6, estimatedCost: null,
+        type: "praia", status: "done", people: 6, distance: 180, estimatedCost: null,
         mapsUrl: "https://maps.google.com/?q=Pousada+Tambayba+Maresias",
         imageUrl: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&h=500&fit=crop&auto=format",
         gradient: "linear-gradient(135deg, #0ea5e9, #06b6d4)",
@@ -43,7 +43,7 @@ const trips = [
     {
         id: "mar-1", month: "Março", title: "São Roque", subtitle: "Rota do Vinho",
         description: "Bate e volta no 1º final de semana. Almoço e passeio pelas vinícolas. ~60km de Sorocaba, 1h de carro.",
-        type: "gastronomia", status: "planned", people: 6, estimatedCost: 250,
+        type: "gastronomia", status: "planned", people: 6, distance: 60, estimatedCost: 250,
         mapsUrl: "https://maps.google.com/?q=Rota+do+Vinho+Sao+Roque+SP",
         imageUrl: "https://images.unsplash.com/photo-1464638681273-0962e9b53566?w=900&h=500&fit=crop&auto=format",
         gradient: "linear-gradient(135deg, #7f1d1d, #b91c1c)",
@@ -87,7 +87,7 @@ const trips = [
     {
         id: "abr-2", month: "Abril", title: "Piedade", subtitle: "Colheita & Jardim Botânico",
         description: "Colheita de caqui na época ou visita ao Jardim Botânico.",
-        type: "natureza", status: "planned", people: 6, estimatedCost: 80,
+        type: "natureza", status: "planned", people: 6, distance: 50, estimatedCost: 80,
         mapsUrl: "https://maps.google.com/?q=Piedade+SP",
         imageUrl: "https://images.unsplash.com/photo-1558293842-c0fd3db86157?w=900&h=500&fit=crop&auto=format",
         gradient: "linear-gradient(135deg, #14532d, #16a34a)",
@@ -128,7 +128,7 @@ const trips = [
     {
         id: "mai-1", month: "Maio", title: "Salto", subtitle: "Cachoeira & Parque Rocha Moutonnée",
         description: "Complexo da Cachoeira e parque temático de dinossauros.",
-        type: "natureza", status: "planned", people: 6, estimatedCost: 100,
+        type: "natureza", status: "planned", people: 6, distance: 80, estimatedCost: 100,
         mapsUrl: "https://maps.google.com/?q=Complexo+da+Cachoeira+Salto+SP",
         imageUrl: "https://images.unsplash.com/photo-1546587348-d12660c30c50?w=900&h=500&fit=crop&auto=format",
         gradient: "linear-gradient(135deg, #0c4a6e, #0284c7)",
@@ -171,7 +171,7 @@ const trips = [
     {
         id: "mai-2", month: "Maio", title: "Cotia", subtitle: "Animália Park",
         description: "Zoológico interativo. Excelente para crianças.",
-        type: "aventura", status: "planned", people: 6, estimatedCost: 300,
+        type: "aventura", status: "planned", people: 6, distance: 90, estimatedCost: 300,
         mapsUrl: "https://maps.google.com/?q=Animalia+Park+Cotia",
         imageUrl: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=900&h=500&fit=crop&auto=format",
         gradient: "linear-gradient(135deg, #9a3412, #ea580c)",
@@ -216,7 +216,7 @@ const trips = [
     {
         id: "jun-1", month: "Junho", title: "Embu das Artes", subtitle: "Feira de Artesanato",
         description: "Maior feira de artesanato do estado. Cultura e gastronomia.",
-        type: "cultura", status: "planned", people: 6, estimatedCost: 120,
+        type: "cultura", status: "planned", people: 6, distance: 100, estimatedCost: 120,
         mapsUrl: "https://maps.google.com/?q=Feira+de+Artesanato+Embu+das+Artes",
         imageUrl: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=900&h=500&fit=crop&auto=format",
         gradient: "linear-gradient(135deg, #4c1d95, #7c3aed)",
@@ -261,7 +261,7 @@ const trips = [
     {
         id: "jun-2", month: "Junho", title: "Tatuí", subtitle: "Rota dos Doces Caseiros",
         description: "Degustação de doces artesanais e compras.",
-        type: "gastronomia", status: "planned", people: 6, estimatedCost: 100,
+        type: "gastronomia", status: "planned", people: 6, distance: 50, estimatedCost: 100,
         mapsUrl: "https://maps.google.com/?q=Tatui+SP",
         imageUrl: "https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=900&h=500&fit=crop&auto=format",
         gradient: "linear-gradient(135deg, #881337, #e11d48)",
@@ -305,39 +305,181 @@ const trips = [
     {
         id: "jul-1", month: "Julho", title: "Cabreúva", subtitle: "Fazenda do Chocolate",
         description: "Fábrica de chocolate artesanal. Ótimo para férias da Júlia.",
-        type: "gastronomia", status: "planned", people: 6, estimatedCost: 150,
+        type: "gastronomia", status: "planned", people: 6, distance: 70, estimatedCost: 150,
         mapsUrl: "https://maps.google.com/?q=Fazenda+do+Chocolate+Cabreuva",
-        imageUrl: "", gradient: "linear-gradient(135deg, #451a03, #78350f)",
-        details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
+        imageUrl: "https://images.unsplash.com/photo-1481391319762-47dff72954d9?w=900&h=500&fit=crop&auto=format",
+        gradient: "linear-gradient(135deg, #451a03, #78350f)",
+        details: {
+            departureTime: "Sair de Sorocaba às 8h30. Chegada prevista às 9h30.",
+            itinerary: [
+                { time: "08:30", activity: "Saída de Sorocaba", desc: "Pegar SP-280 (Castelo Branco) até Itu, depois seguir para Cabreúva. Aproximadamente 1h de viagem." },
+                { time: "09:30", activity: "Fazenda do Chocolate", desc: "Chegada ao complexo. Tour guiado pela fábrica mostrando todo o processo de produção do chocolate artesanal." },
+                { time: "10:30", activity: "Degustação e oficina", desc: "Degustação de chocolates variados. Oficina de chocolate para crianças (verificar disponibilidade)." },
+                { time: "11:30", activity: "Loja da fábrica", desc: "Compras de chocolates, trufas, bombons e cacau em pó com preços de fábrica." },
+                { time: "12:30", activity: "Almoço", desc: "Restaurante dentro do complexo ou opções na cidade de Cabreúva." },
+                { time: "14:00", activity: "Cachoeira do Jacaré", desc: "Cachoeira de fácil acesso na região. Trilha curta e banho refrescante (julho pode estar frio — avaliar)." },
+                { time: "15:30", activity: "Centro de Cabreúva", desc: "Caminhada pelo centro histórico. Igreja Matriz e praça principal." },
+                { time: "16:30", activity: "Retorno a Sorocaba", desc: "Chegada prevista por volta das 17h30." }
+            ],
+            restaurants: [
+                { name: "Restaurante da Fazenda do Chocolate", desc: "Dentro do complexo. Pratos com ingredientes locais e sobremesas com chocolate artesanal. Preço médio: R$55/pessoa.", mapsUrl: "https://maps.google.com/?q=Fazenda+do+Chocolate+Cabreuva" },
+                { name: "Restaurante Recanto das Pedras", desc: "Comida caseira do interior com fogão a lenha. Frango caipira e mandioca. Ambiente rústico.", mapsUrl: "https://maps.google.com/?q=Recanto+das+Pedras+Cabreuva" },
+                { name: "Padaria Cabreúva", desc: "Pães artesanais, bolos e café coado. Bom para lanche rápido.", mapsUrl: "https://maps.google.com/?q=Padaria+Cabreuva+SP" }
+            ],
+            familyActivities: [
+                { name: "Tour pela fábrica de chocolate", desc: "Visita guiada pelo processo de produção. Educativo para todas as idades. Inclui degustação." },
+                { name: "Loja da fábrica", desc: "Chocolates, trufas e bombons artesanais com preços de fábrica. Ótimo para presentes." },
+                { name: "Cachoeira do Jacaré", desc: "Cachoeira de fácil acesso com trilha curta. Boa para contemplação (banho depende do clima em julho)." },
+                { name: "Centro Histórico", desc: "Igreja Matriz e casarões antigos. Passeio leve e acessível para os avós." }
+            ],
+            kidsActivities: [
+                { name: "Oficina de chocolate", desc: "Júlia pode fazer seu próprio chocolate na oficina interativa. Diversão garantida nas férias." },
+                { name: "Degustação", desc: "Provar vários tipos de chocolate: ao leite, amargo, branco, com frutas. Paraíso para crianças." },
+                { name: "Trilha da cachoeira", desc: "Trilha curta e fácil até a Cachoeira do Jacaré. Aventura ao ar livre." }
+            ],
+            citySummary: "Cabreúva é uma cidade tranquila localizada a cerca de 70km de Sorocaba (~1h de carro). O destaque é a Fazenda do Chocolate, um complexo com fábrica de chocolate artesanal, tour guiado, degustação e loja. Ideal para as férias de julho da Júlia, combina diversão (oficina de chocolate) com natureza (cachoeiras na região). A cidade também possui um centro histórico charmoso e é cercada por mata atlântica preservada.",
+            touristSpots: [
+                { name: "Fazenda do Chocolate", desc: "Fábrica artesanal com tour, degustação e loja. Funciona sáb/dom/feriados e diariamente nas férias.", mapsUrl: "https://maps.google.com/?q=Fazenda+do+Chocolate+Cabreuva" },
+                { name: "Cachoeira do Jacaré", desc: "Cachoeira de fácil acesso. Trilha curta de 15min.", mapsUrl: "https://maps.google.com/?q=Cachoeira+do+Jacare+Cabreuva" },
+                { name: "Igreja Matriz", desc: "Igreja histórica no centro de Cabreúva.", mapsUrl: "https://maps.google.com/?q=Igreja+Matriz+Cabreuva" },
+                { name: "Mirante de Cabreúva", desc: "Vista panorâmica da região com serra e mata atlântica.", mapsUrl: "https://maps.google.com/?q=Mirante+Cabreuva+SP" }
+            ]
+        }
     },
     {
         id: "jul-2", month: "Julho", title: "Serra Negra", subtitle: "Fontana di Trevi & Centro",
         description: "Réplica da Fontana di Trevi, lojas e restaurantes.",
-        type: "cultura", status: "planned", people: 6, estimatedCost: 200,
+        type: "cultura", status: "planned", people: 6, distance: 170, estimatedCost: 200,
         mapsUrl: "https://maps.google.com/?q=Serra+Negra+SP",
-        imageUrl: "", gradient: "linear-gradient(135deg, #312e81, #4338ca)",
-        details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
+        imageUrl: "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=900&h=500&fit=crop&auto=format",
+        gradient: "linear-gradient(135deg, #312e81, #4338ca)",
+        details: {
+            departureTime: "Sair de Sorocaba às 7h. Chegada prevista às 9h30.",
+            itinerary: [
+                { time: "07:00", activity: "Saída de Sorocaba", desc: "Viagem mais longa: SP-280 até Campinas, depois SP-360 até Serra Negra. Aproximadamente 2h30." },
+                { time: "09:30", activity: "Fontana di Trevi", desc: "Réplica da famosa fonte italiana no centro da cidade. Jogar moedinha e fazer pedido. Fotos em família." },
+                { time: "10:15", activity: "Rua do Comércio", desc: "Lojas de malhas, chocolates, queijos e artesanato. Serra Negra é famosa pelas malharias com preços de fábrica." },
+                { time: "11:30", activity: "Teleférico", desc: "Passeio de teleférico com vista panorâmica da serra e da cidade. Aproximadamente 15min de percurso." },
+                { time: "12:30", activity: "Almoço", desc: "Restaurantes variados no centro. Culinária italiana e mineira são destaques." },
+                { time: "14:00", activity: "Telefone de Lata", desc: "Instalação artística gigante — dois telefones de lata conectados entre morros. Experiência única e divertida." },
+                { time: "15:00", activity: "Parque da Fonte", desc: "Fonte de água mineral natural no centro. Área verde para descanso." },
+                { time: "16:00", activity: "Retorno a Sorocaba", desc: "Chegada prevista por volta das 18h30." }
+            ],
+            restaurants: [
+                { name: "Cantina Don Carlini", desc: "Culinária italiana com massas caseiras e molhos artesanais. Ambiente acolhedor. Preço médio: R$65/pessoa.", mapsUrl: "https://maps.google.com/?q=Cantina+Don+Carlini+Serra+Negra" },
+                { name: "Restaurante Sabor da Serra", desc: "Comida mineira com fogão a lenha. Buffet variado. Bom custo-benefício. Preço médio: R$45/pessoa.", mapsUrl: "https://maps.google.com/?q=Sabor+da+Serra+Serra+Negra" },
+                { name: "Chocolateria Serra Negra", desc: "Café e chocolateria artesanal. Fondue de chocolate, tortas e bebidas quentes. Perfeito para o frio de julho.", mapsUrl: "https://maps.google.com/?q=Chocolateria+Serra+Negra" }
+            ],
+            familyActivities: [
+                { name: "Fontana di Trevi", desc: "Réplica da fonte romana. Tradição de jogar moedinha e fazer pedido. Cenário bonito para fotos." },
+                { name: "Teleférico", desc: "Vista panorâmica da cidade e da serra. Acessível para os avós. Duração ~15min." },
+                { name: "Compras de malhas", desc: "Lojas de malharia com preços de fábrica. Blusas, casacos e mantas — ótimo para o inverno." },
+                { name: "Parque da Fonte", desc: "Fonte de água mineral natural. Área verde tranquila no centro da cidade." }
+            ],
+            kidsActivities: [
+                { name: "Telefone de Lata", desc: "Instalação gigante entre dois morros. Júlia pode falar no telefone de lata e ouvir do outro lado. Muito divertido." },
+                { name: "Teleférico", desc: "Passeio de teleférico com vista da cidade. Emocionante para crianças." },
+                { name: "Fondue de chocolate", desc: "Na Chocolateria Serra Negra, fondue com frutas e marshmallow. Programa perfeito para Júlia no frio." }
+            ],
+            citySummary: "Serra Negra é uma estância hidromineral localizada a cerca de 170km de Sorocaba (~2h30 de carro), no Circuito das Águas Paulista. A cidade é famosa pela réplica da Fontana di Trevi, pelo teleférico com vista panorâmica e pelo Telefone de Lata (instalação artística gigante). Destaca-se também pelas malharias com preços de fábrica e pela gastronomia italiana. No inverno de julho, o clima frio torna a visita ainda mais aconchegante, com chocolaterias e fondues.",
+            touristSpots: [
+                { name: "Fontana di Trevi", desc: "Réplica da fonte italiana. Centro da cidade. Acesso livre.", mapsUrl: "https://maps.google.com/?q=Fontana+di+Trevi+Serra+Negra" },
+                { name: "Teleférico", desc: "Vista panorâmica da serra. Funciona sáb/dom/feriados e diariamente nas férias.", mapsUrl: "https://maps.google.com/?q=Teleferico+Serra+Negra" },
+                { name: "Telefone de Lata", desc: "Instalação artística entre dois morros. Experiência única. Gratuito.", mapsUrl: "https://maps.google.com/?q=Telefone+de+Lata+Serra+Negra" },
+                { name: "Parque da Fonte", desc: "Fonte de água mineral natural e área verde no centro.", mapsUrl: "https://maps.google.com/?q=Parque+da+Fonte+Serra+Negra" }
+            ]
+        }
     },
     {
         id: "ago-1", month: "Agosto", title: "Holambra", subtitle: "Cidade das Flores",
         description: "Arquitetura holandesa, campos de flores e gastronomia típica.",
-        type: "cultura", status: "planned", people: 6, estimatedCost: 180,
+        type: "cultura", status: "planned", people: 6, distance: 120, estimatedCost: 180,
         mapsUrl: "https://maps.google.com/?q=Holambra+SP",
-        imageUrl: "", gradient: "linear-gradient(135deg, #c2410c, #f59e0b)",
-        details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
+        imageUrl: "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=900&h=500&fit=crop&auto=format",
+        gradient: "linear-gradient(135deg, #c2410c, #f59e0b)",
+        details: {
+            departureTime: "Sair de Sorocaba às 7h30. Chegada prevista às 9h15.",
+            itinerary: [
+                { time: "07:30", activity: "Saída de Sorocaba", desc: "Pegar SP-280 até Campinas, depois SP-340 até Holambra. Aproximadamente 1h45 de viagem." },
+                { time: "09:15", activity: "Chegada em Holambra", desc: "Cidade com arquitetura holandesa. Moinhos de vento e jardins floridos em todo lugar." },
+                { time: "09:30", activity: "Campos de flores", desc: "Visita aos campos de flores e estufas. Girassóis, tulipas, rosas e orquídeas. Cenário perfeito para fotos." },
+                { time: "11:00", activity: "Moinho Povos Unidos", desc: "Moinho de vento holandês autêntico. Museu sobre a imigração holandesa no Brasil." },
+                { time: "12:00", activity: "Almoço", desc: "Restaurantes com culinária holandesa e brasileira. Queijos e cervejas artesanais." },
+                { time: "13:30", activity: "Decky Shopping de Flores", desc: "Centro de compras de flores, plantas, vasos e decoração de jardim. Preços direto do produtor." },
+                { time: "15:00", activity: "Praça central e sorvetes", desc: "Praça com arquitetura típica. Sorveteria artesanal e lojas de souvenirs." },
+                { time: "16:00", activity: "Retorno a Sorocaba", desc: "Chegada prevista por volta das 17h45." }
+            ],
+            restaurants: [
+                { name: "Restaurante De Kookpot", desc: "Culinária holandesa autêntica. Croquetes, panquecas holandesas e sopas. Ambiente temático. Preço médio: R$65/pessoa.", mapsUrl: "https://maps.google.com/?q=De+Kookpot+Holambra" },
+                { name: "Cervejaria Holambier", desc: "Cervejas artesanais e petiscos. Ambiente descontraído com jardim externo.", mapsUrl: "https://maps.google.com/?q=Holambier+Holambra" },
+                { name: "Lunchroom Holambra", desc: "Café e bistrô com tortas holandesas, waffles e café especial. Bom para lanche.", mapsUrl: "https://maps.google.com/?q=Lunchroom+Holambra" }
+            ],
+            familyActivities: [
+                { name: "Campos de flores", desc: "Estufas e campos abertos com flores de todas as cores. Fotos incríveis em família." },
+                { name: "Moinho Povos Unidos", desc: "Moinho de vento holandês com museu da imigração. Educativo e bonito." },
+                { name: "Compras de flores e plantas", desc: "Flores, mudas e vasos direto do produtor. Preços muito abaixo do mercado." },
+                { name: "Passeio pela cidade", desc: "Arquitetura holandesa, praças floridas e lojas temáticas. Cidade inteira é fotogênica." }
+            ],
+            kidsActivities: [
+                { name: "Campos de girassóis", desc: "Júlia vai adorar caminhar entre os girassóis gigantes. Fotos lindas." },
+                { name: "Moinho de vento", desc: "Ver de perto um moinho holandês de verdade. Subir e conhecer por dentro." },
+                { name: "Sorvete artesanal", desc: "Sorveteria na praça central com sabores de flores e frutas." }
+            ],
+            citySummary: "Holambra é a Cidade das Flores, uma colônia holandesa fundada em 1948. Localizada a cerca de 120km de Sorocaba (~1h45 de carro), é o maior polo produtor de flores da América Latina. A cidade encanta com sua arquitetura holandesa, moinhos de vento, campos de flores coloridos e gastronomia típica. É sede da Expoflora (setembro), mas os campos de flores e as atrações funcionam o ano todo. Destino perfeito para fotos em família e compras de plantas.",
+            touristSpots: [
+                { name: "Campos de flores", desc: "Estufas e campos abertos. Girassóis, rosas e orquídeas. Aberto diariamente.", mapsUrl: "https://maps.google.com/?q=Campos+de+Flores+Holambra" },
+                { name: "Moinho Povos Unidos", desc: "Moinho holandês autêntico com museu. Entrada paga.", mapsUrl: "https://maps.google.com/?q=Moinho+Povos+Unidos+Holambra" },
+                { name: "Decky Shopping de Flores", desc: "Centro de compras com flores e plantas direto do produtor.", mapsUrl: "https://maps.google.com/?q=Decky+Shopping+Flores+Holambra" },
+                { name: "Praça Central", desc: "Arquitetura holandesa, lojas e restaurantes temáticos.", mapsUrl: "https://maps.google.com/?q=Praca+Central+Holambra" }
+            ]
+        }
     },
     {
         id: "ago-2", month: "Agosto", title: "Porto Feliz", subtitle: "Parque das Monções",
         description: "Parque histórico às margens do Rio Tietê. Passeio tranquilo.",
-        type: "historia", status: "planned", people: 6, estimatedCost: 30,
+        type: "historia", status: "planned", people: 6, distance: 30, estimatedCost: 30,
         mapsUrl: "https://maps.google.com/?q=Parque+das+Moncoes+Porto+Feliz",
-        imageUrl: "", gradient: "linear-gradient(135deg, #78350f, #92400e)",
-        details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
+        imageUrl: "https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=900&h=500&fit=crop&auto=format",
+        gradient: "linear-gradient(135deg, #78350f, #92400e)",
+        details: {
+            departureTime: "Sair de Sorocaba às 9h. Chegada prevista às 9h30.",
+            itinerary: [
+                { time: "09:00", activity: "Saída de Sorocaba", desc: "Porto Feliz fica a apenas 30km. Estrada rápida, aproximadamente 30min de viagem." },
+                { time: "09:30", activity: "Parque das Monções", desc: "Parque histórico às margens do Rio Tietê. Marco das expedições monçoeiras do século XVIII." },
+                { time: "10:30", activity: "Museu das Monções", desc: "Museu com acervo sobre as expedições fluviais e a história da região. Entrada gratuita." },
+                { time: "11:30", activity: "Caminhada pelo rio", desc: "Passeio pela margem do Tietê. Área verde com bancos e sombra. Tranquilo para os avós." },
+                { time: "12:00", activity: "Almoço em Porto Feliz", desc: "Restaurantes no centro com comida caseira do interior." },
+                { time: "13:30", activity: "Centro Histórico", desc: "Igreja Matriz, praça central e casarões coloniais. Cidade com história rica." },
+                { time: "14:30", activity: "Retorno a Sorocaba", desc: "Chegada prevista por volta das 15h. Passeio leve de meio dia." }
+            ],
+            restaurants: [
+                { name: "Restaurante Porto Grill", desc: "Churrascaria e grill com carnes nobres. Ambiente familiar. Preço médio: R$55/pessoa.", mapsUrl: "https://maps.google.com/?q=Porto+Grill+Porto+Feliz" },
+                { name: "Padaria Estrela", desc: "Padaria tradicional com salgados, bolos caseiros e café. Bom para lanche rápido.", mapsUrl: "https://maps.google.com/?q=Padaria+Estrela+Porto+Feliz" },
+                { name: "Restaurante Sabor Caseiro", desc: "Buffet de comida caseira por quilo. Frango caipira, arroz com feijão e saladas. Preço acessível.", mapsUrl: "https://maps.google.com/?q=Sabor+Caseiro+Porto+Feliz" }
+            ],
+            familyActivities: [
+                { name: "Parque das Monções", desc: "Parque histórico com monumentos e área verde às margens do Tietê. Acessível para os avós." },
+                { name: "Museu das Monções", desc: "Acervo sobre expedições fluviais. Educativo e interessante para todas as idades." },
+                { name: "Caminhada no rio", desc: "Passeio tranquilo pela margem do Tietê com paisagem bonita." },
+                { name: "Centro Histórico", desc: "Igreja Matriz do século XVIII e casarões coloniais. Passeio leve." }
+            ],
+            kidsActivities: [
+                { name: "Parque e playground", desc: "Área de recreação no Parque das Monções. Espaço para Júlia correr e brincar." },
+                { name: "Museu interativo", desc: "Peças e maquetes sobre as expedições de canoa pelo Tietê. Educativo para Júlia." }
+            ],
+            citySummary: "Porto Feliz é uma cidade histórica localizada a apenas 30km de Sorocaba (~30min de carro), o que a torna o destino mais próximo do roteiro. Conhecida como o Porto das Monções, foi ponto de partida das expedições fluviais pelo Rio Tietê no período colonial. O Parque das Monções preserva essa história com monumentos, museu e área verde às margens do rio. É um passeio leve e curto, ideal para um meio-dia tranquilo em família.",
+            touristSpots: [
+                { name: "Parque das Monções", desc: "Parque histórico às margens do Tietê. Monumentos e área verde. Gratuito.", mapsUrl: "https://maps.google.com/?q=Parque+das+Moncoes+Porto+Feliz" },
+                { name: "Museu das Monções", desc: "Acervo sobre expedições fluviais coloniais. Gratuito.", mapsUrl: "https://maps.google.com/?q=Museu+das+Moncoes+Porto+Feliz" },
+                { name: "Igreja Matriz", desc: "Igreja do século XVIII no centro histórico.", mapsUrl: "https://maps.google.com/?q=Igreja+Matriz+Porto+Feliz" },
+                { name: "Rio Tietê", desc: "Margem preservada com passeio e vista para o rio.", mapsUrl: "https://maps.google.com/?q=Rio+Tiete+Porto+Feliz" }
+            ]
+        }
     },
     {
         id: "set-1", month: "Setembro", title: "Atibaia", subtitle: "Festa de Flores e Morangos",
         description: "Festival de primavera com flores e colheita de morangos.",
-        type: "natureza", status: "planned", people: 6, estimatedCost: 220,
+        type: "natureza", status: "planned", people: 6, distance: 130, estimatedCost: 220,
         mapsUrl: "https://maps.google.com/?q=Atibaia+SP",
         imageUrl: "", gradient: "linear-gradient(135deg, #be123c, #f43f5e)",
         details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
@@ -345,7 +487,7 @@ const trips = [
     {
         id: "set-2", month: "Setembro", title: "Jundiaí", subtitle: "Jardim Botânico",
         description: "Jardim Botânico com trilhas acessíveis e área de piquenique.",
-        type: "natureza", status: "planned", people: 6, estimatedCost: 0,
+        type: "natureza", status: "planned", people: 6, distance: 100, estimatedCost: 0,
         mapsUrl: "https://maps.google.com/?q=Jardim+Botanico+Jundiai",
         imageUrl: "", gradient: "linear-gradient(135deg, #064e3b, #047857)",
         details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
@@ -353,7 +495,7 @@ const trips = [
     {
         id: "out-1", month: "Outubro", title: "Guararema", subtitle: "Trem Turístico",
         description: "Passeio de trem turístico pela cidade. Ótimo pra Júlia.",
-        type: "aventura", status: "planned", people: 6, estimatedCost: 180,
+        type: "aventura", status: "planned", people: 6, distance: 180, estimatedCost: 180,
         mapsUrl: "https://maps.google.com/?q=Trem+Turistico+Guararema",
         imageUrl: "", gradient: "linear-gradient(135deg, #713f12, #a16207)",
         details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
@@ -361,7 +503,7 @@ const trips = [
     {
         id: "out-2", month: "Outubro", title: "São Paulo", subtitle: "Aquário de São Paulo",
         description: "Maior aquário da América Latina. Presente de Dia das Crianças.",
-        type: "aventura", status: "planned", people: 6, estimatedCost: 150,
+        type: "aventura", status: "planned", people: 6, distance: 100, estimatedCost: 150,
         mapsUrl: "https://maps.google.com/?q=Aquario+de+Sao+Paulo",
         imageUrl: "", gradient: "linear-gradient(135deg, #1e3a5f, #1e40af)",
         details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
@@ -369,7 +511,7 @@ const trips = [
     {
         id: "nov-1", month: "Novembro", title: "Indaiatuba", subtitle: "Parque Ecológico",
         description: "Parque Ecológico e Museu da Água. Passeio gratuito e acessível.",
-        type: "natureza", status: "planned", people: 6, estimatedCost: 0,
+        type: "natureza", status: "planned", people: 6, distance: 50, estimatedCost: 0,
         mapsUrl: "https://maps.google.com/?q=Parque+Ecologico+Indaiatuba",
         imageUrl: "", gradient: "linear-gradient(135deg, #14532d, #15803d)",
         details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
@@ -377,7 +519,7 @@ const trips = [
     {
         id: "nov-2", month: "Novembro", title: "Araçoiaba da Serra", subtitle: "Fazenda Ipanema",
         description: "Fazenda histórica com trilhas e ruínas. Patrimônio cultural.",
-        type: "historia", status: "planned", people: 6, estimatedCost: 50,
+        type: "historia", status: "planned", people: 6, distance: 15, estimatedCost: 50,
         mapsUrl: "https://maps.google.com/?q=Fazenda+Ipanema+Aracoiaba+da+Serra",
         imageUrl: "", gradient: "linear-gradient(135deg, #44403c, #78716c)",
         details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
@@ -385,7 +527,7 @@ const trips = [
     {
         id: "dez-1", month: "Dezembro", title: "Itu", subtitle: "Luzes de Natal",
         description: "Decoração natalina na praça central. Passeio noturno em família.",
-        type: "cultura", status: "planned", people: 6, estimatedCost: 0,
+        type: "cultura", status: "planned", people: 6, distance: 40, estimatedCost: 0,
         mapsUrl: "https://maps.google.com/?q=Praca+Padre+Miguel+Itu",
         imageUrl: "", gradient: "linear-gradient(135deg, #991b1b, #dc2626)",
         details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
@@ -393,7 +535,7 @@ const trips = [
     {
         id: "dez-2", month: "Dezembro", title: "Maresias", subtitle: "Pousada Tambayba - Retorno",
         description: "Volta a Maresias para fechar o ano.",
-        type: "praia", status: "planned", people: 6, estimatedCost: null,
+        type: "praia", status: "planned", people: 6, distance: 180, estimatedCost: null,
         mapsUrl: "https://maps.google.com/?q=Pousada+Tambayba+Maresias",
         imageUrl: "", gradient: "linear-gradient(135deg, #0369a1, #f97316)",
         details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
@@ -461,7 +603,7 @@ function renderHome() {
             <div class="next-trip-footer">
                 <div class="next-trip-meta">
                     <span>${svgIcon.people} ${next.people} pessoas</span>
-                    <span>${svgIcon.money} ${costText(next.estimatedCost)}</span>
+                    <span>${svgIcon.pin} ~${next.distance}km</span>
                     ${next.details.departureTime ? `<span>${svgIcon.clock} ${next.details.departureTime.split('.')[0]}</span>` : ''}
                 </div>
                 <button class="btn-open-guide">Abrir guia ${svgIcon.arrow}</button>
@@ -480,7 +622,7 @@ function renderHome() {
                     <strong>${t.title}</strong>
                     <span class="trip-row-sub">${t.subtitle}</span>
                 </div>
-                <span class="trip-row-cost">${costText(t.estimatedCost)}</span>
+                <span class="trip-row-cost">~${t.distance}km</span>
                 <span class="trip-row-arrow">${svgIcon.arrow}</span>
             </div>`;
         });
