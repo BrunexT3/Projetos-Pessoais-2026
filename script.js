@@ -1,343 +1,553 @@
+// ============================================================
+// DATA
+// ============================================================
 const trips = [
     {
-        month: "Janeiro",
-        theme: "Praia",
-        trips: [
-            {
-                title: "Maresias",
-                subtitle: "Pousada Tambayba",
-                description: "Viagem com hospedagem. Gostamos, provavelmente voltaremos.",
-                type: "praia",
-                status: "done",
-                people: 6,
-                origin: "Sorocaba",
-                estimatedCost: null,
-                mapsUrl: "https://maps.google.com/?q=Pousada+Tambayba+Maresias"
+        month: "Janeiro", theme: "Praia",
+        trips: [{
+            id: "jan-1",
+            title: "Maresias",
+            subtitle: "Pousada Tambayba",
+            description: "Viagem com hospedagem. Gostamos, provavelmente voltaremos no final do ano.",
+            type: "praia",
+            status: "done",
+            people: 6,
+            estimatedCost: null,
+            mapsUrl: "https://maps.google.com/?q=Pousada+Tambayba+Maresias",
+            imageUrl: "",
+            gradient: "linear-gradient(135deg, #0ea5e9, #06b6d4, #22d3ee)",
+            details: {
+                departureTime: "",
+                restaurants: [],
+                familyActivities: [],
+                kidsActivities: [],
+                citySummary: "",
+                touristSpots: []
             }
-        ]
+        }]
     },
     {
-        month: "Fevereiro",
-        theme: "Sem viagem",
+        month: "Fevereiro", theme: "Sem viagem",
         trips: []
     },
     {
-        month: "Marco",
-        theme: "Gastronomia",
-        trips: [
-            {
-                title: "Sao Roque",
-                subtitle: "Rota do Vinho",
-                description: "Bate e volta. Almoco e passeio pelas vinicolas. 1o final de semana do mes.",
-                type: "gastronomia",
-                status: "planned",
-                people: 6,
-                origin: "Sorocaba",
-                estimatedCost: 200,
-                mapsUrl: "https://maps.google.com/?q=Rota+do+Vinho+Sao+Roque"
+        month: "Marco", theme: "Gastronomia",
+        trips: [{
+            id: "mar-1",
+            title: "Sao Roque",
+            subtitle: "Rota do Vinho",
+            description: "Bate e volta no 1o final de semana. Almoco e passeio pelas vinicolas.",
+            type: "gastronomia",
+            status: "planned",
+            people: 6,
+            estimatedCost: 200,
+            mapsUrl: "https://maps.google.com/?q=Rota+do+Vinho+Sao+Roque",
+            imageUrl: "",
+            gradient: "linear-gradient(135deg, #7f1d1d, #b91c1c, #dc2626)",
+            details: {
+                departureTime: "",
+                restaurants: [],
+                familyActivities: [],
+                kidsActivities: [],
+                citySummary: "",
+                touristSpots: []
             }
-        ]
+        }]
     },
     {
-        month: "Abril",
-        theme: "Natureza & Cultura",
+        month: "Abril", theme: "Natureza & Cultura",
         trips: [
             {
+                id: "abr-1",
                 title: "Itu",
                 subtitle: "Parque Maeda",
                 description: "Jardim Japones, Trenzinho e areas verdes. Otimo para criancas e idosos.",
                 type: "natureza",
                 status: "planned",
                 people: 6,
-                origin: "Sorocaba",
                 estimatedCost: 150,
-                mapsUrl: "https://maps.google.com/?q=Parque+Maeda+Itu"
+                mapsUrl: "https://maps.google.com/?q=Parque+Maeda+Itu",
+                imageUrl: "",
+                gradient: "linear-gradient(135deg, #065f46, #059669, #34d399)",
+                details: {
+                    departureTime: "",
+                    restaurants: [],
+                    familyActivities: [],
+                    kidsActivities: [],
+                    citySummary: "",
+                    touristSpots: []
+                }
             },
             {
+                id: "abr-2",
                 title: "Piedade",
                 subtitle: "Colheita & Jardim Botanico",
                 description: "Colheita de caqui na epoca ou visita ao Jardim Botanico.",
                 type: "natureza",
                 status: "planned",
                 people: 6,
-                origin: "Sorocaba",
                 estimatedCost: 80,
-                mapsUrl: "https://maps.google.com/?q=Piedade+SP"
+                mapsUrl: "https://maps.google.com/?q=Piedade+SP",
+                imageUrl: "",
+                gradient: "linear-gradient(135deg, #14532d, #16a34a, #4ade80)",
+                details: {
+                    departureTime: "",
+                    restaurants: [],
+                    familyActivities: [],
+                    kidsActivities: [],
+                    citySummary: "",
+                    touristSpots: []
+                }
             }
         ]
     },
     {
-        month: "Maio",
-        theme: "Aventura & Natureza",
+        month: "Maio", theme: "Aventura & Natureza",
         trips: [
             {
+                id: "mai-1",
                 title: "Salto",
                 subtitle: "Cachoeira & Parque Rocha Moutonee",
                 description: "Complexo da Cachoeira e parque tematico de dinossauros.",
                 type: "natureza",
                 status: "planned",
                 people: 6,
-                origin: "Sorocaba",
                 estimatedCost: 100,
-                mapsUrl: "https://maps.google.com/?q=Parque+Rocha+Moutonee+Salto"
+                mapsUrl: "https://maps.google.com/?q=Parque+Rocha+Moutonee+Salto",
+                imageUrl: "",
+                gradient: "linear-gradient(135deg, #0c4a6e, #0284c7, #38bdf8)",
+                details: {
+                    departureTime: "",
+                    restaurants: [],
+                    familyActivities: [],
+                    kidsActivities: [],
+                    citySummary: "",
+                    touristSpots: []
+                }
             },
             {
+                id: "mai-2",
                 title: "Cotia",
                 subtitle: "Animalia Park",
                 description: "Zoologico interativo. Excelente para criancas.",
                 type: "aventura",
                 status: "planned",
                 people: 6,
-                origin: "Sorocaba",
                 estimatedCost: 300,
-                mapsUrl: "https://maps.google.com/?q=Animalia+Park+Cotia"
+                mapsUrl: "https://maps.google.com/?q=Animalia+Park+Cotia",
+                imageUrl: "",
+                gradient: "linear-gradient(135deg, #9a3412, #ea580c, #fb923c)",
+                details: {
+                    departureTime: "",
+                    restaurants: [],
+                    familyActivities: [],
+                    kidsActivities: [],
+                    citySummary: "",
+                    touristSpots: []
+                }
             }
         ]
     },
     {
-        month: "Junho",
-        theme: "Artesanato & Doces",
+        month: "Junho", theme: "Artesanato & Doces",
         trips: [
             {
+                id: "jun-1",
                 title: "Embu das Artes",
                 subtitle: "Feira de Artesanato",
                 description: "Maior feira de artesanato do estado. Cultura e gastronomia.",
                 type: "cultura",
                 status: "planned",
                 people: 6,
-                origin: "Sorocaba",
                 estimatedCost: 120,
-                mapsUrl: "https://maps.google.com/?q=Feira+de+Artesanato+Embu+das+Artes"
+                mapsUrl: "https://maps.google.com/?q=Feira+de+Artesanato+Embu+das+Artes",
+                imageUrl: "",
+                gradient: "linear-gradient(135deg, #4c1d95, #7c3aed, #a78bfa)",
+                details: {
+                    departureTime: "",
+                    restaurants: [],
+                    familyActivities: [],
+                    kidsActivities: [],
+                    citySummary: "",
+                    touristSpots: []
+                }
             },
             {
+                id: "jun-2",
                 title: "Tatui",
                 subtitle: "Rota dos Doces Caseiros",
                 description: "Degustacao de doces artesanais e compras.",
                 type: "gastronomia",
                 status: "planned",
                 people: 6,
-                origin: "Sorocaba",
                 estimatedCost: 100,
-                mapsUrl: "https://maps.google.com/?q=Tatui+SP"
+                mapsUrl: "https://maps.google.com/?q=Tatui+SP",
+                imageUrl: "",
+                gradient: "linear-gradient(135deg, #881337, #e11d48, #fb7185)",
+                details: {
+                    departureTime: "",
+                    restaurants: [],
+                    familyActivities: [],
+                    kidsActivities: [],
+                    citySummary: "",
+                    touristSpots: []
+                }
             }
         ]
     },
     {
-        month: "Julho",
-        theme: "Ferias Escolares",
+        month: "Julho", theme: "Ferias Escolares",
         trips: [
             {
+                id: "jul-1",
                 title: "Cabreuva",
                 subtitle: "Fazenda do Chocolate",
                 description: "Fabrica de chocolate artesanal. Otimo para ferias da Laura.",
                 type: "gastronomia",
                 status: "planned",
                 people: 6,
-                origin: "Sorocaba",
                 estimatedCost: 150,
-                mapsUrl: "https://maps.google.com/?q=Fazenda+do+Chocolate+Cabreuva"
+                mapsUrl: "https://maps.google.com/?q=Fazenda+do+Chocolate+Cabreuva",
+                imageUrl: "",
+                gradient: "linear-gradient(135deg, #451a03, #78350f, #a16207)",
+                details: {
+                    departureTime: "",
+                    restaurants: [],
+                    familyActivities: [],
+                    kidsActivities: [],
+                    citySummary: "",
+                    touristSpots: []
+                }
             },
             {
+                id: "jul-2",
                 title: "Serra Negra",
                 subtitle: "Fontana di Trevi & Centro",
                 description: "Replica da Fontana di Trevi, lojas e restaurantes. Alternativa: Jundiai.",
                 type: "cultura",
                 status: "planned",
                 people: 6,
-                origin: "Sorocaba",
                 estimatedCost: 200,
-                mapsUrl: "https://maps.google.com/?q=Serra+Negra+SP"
+                mapsUrl: "https://maps.google.com/?q=Serra+Negra+SP",
+                imageUrl: "",
+                gradient: "linear-gradient(135deg, #312e81, #4338ca, #818cf8)",
+                details: {
+                    departureTime: "",
+                    restaurants: [],
+                    familyActivities: [],
+                    kidsActivities: [],
+                    citySummary: "",
+                    touristSpots: []
+                }
             }
         ]
     },
     {
-        month: "Agosto",
-        theme: "Flores & Historia",
+        month: "Agosto", theme: "Flores & Historia",
         trips: [
             {
+                id: "ago-1",
                 title: "Holambra",
                 subtitle: "Cidade das Flores",
                 description: "Arquitetura holandesa, campos de flores e gastronomia tipica.",
                 type: "cultura",
                 status: "planned",
                 people: 6,
-                origin: "Sorocaba",
                 estimatedCost: 180,
-                mapsUrl: "https://maps.google.com/?q=Holambra+SP"
+                mapsUrl: "https://maps.google.com/?q=Holambra+SP",
+                imageUrl: "",
+                gradient: "linear-gradient(135deg, #c2410c, #f59e0b, #fbbf24)",
+                details: {
+                    departureTime: "",
+                    restaurants: [],
+                    familyActivities: [],
+                    kidsActivities: [],
+                    citySummary: "",
+                    touristSpots: []
+                }
             },
             {
+                id: "ago-2",
                 title: "Porto Feliz",
                 subtitle: "Parque das Moncoes",
                 description: "Parque historico as margens do Rio Tiete. Passeio tranquilo.",
                 type: "historia",
                 status: "planned",
                 people: 6,
-                origin: "Sorocaba",
                 estimatedCost: 30,
-                mapsUrl: "https://maps.google.com/?q=Parque+das+Moncoes+Porto+Feliz"
+                mapsUrl: "https://maps.google.com/?q=Parque+das+Moncoes+Porto+Feliz",
+                imageUrl: "",
+                gradient: "linear-gradient(135deg, #78350f, #92400e, #d97706)",
+                details: {
+                    departureTime: "",
+                    restaurants: [],
+                    familyActivities: [],
+                    kidsActivities: [],
+                    citySummary: "",
+                    touristSpots: []
+                }
             }
         ]
     },
     {
-        month: "Setembro",
-        theme: "Primavera",
+        month: "Setembro", theme: "Primavera",
         trips: [
             {
+                id: "set-1",
                 title: "Atibaia",
                 subtitle: "Festa de Flores e Morangos",
                 description: "Festival de primavera com flores e colheita de morangos.",
                 type: "natureza",
                 status: "planned",
                 people: 6,
-                origin: "Sorocaba",
                 estimatedCost: 220,
-                mapsUrl: "https://maps.google.com/?q=Atibaia+SP"
+                mapsUrl: "https://maps.google.com/?q=Atibaia+SP",
+                imageUrl: "",
+                gradient: "linear-gradient(135deg, #be123c, #f43f5e, #fda4af)",
+                details: {
+                    departureTime: "",
+                    restaurants: [],
+                    familyActivities: [],
+                    kidsActivities: [],
+                    citySummary: "",
+                    touristSpots: []
+                }
             },
             {
+                id: "set-2",
                 title: "Jundiai",
                 subtitle: "Jardim Botanico",
                 description: "Jardim Botanico com trilhas acessiveis e area de piquenique.",
                 type: "natureza",
                 status: "planned",
                 people: 6,
-                origin: "Sorocaba",
                 estimatedCost: 0,
-                mapsUrl: "https://maps.google.com/?q=Jardim+Botanico+Jundiai"
+                mapsUrl: "https://maps.google.com/?q=Jardim+Botanico+Jundiai",
+                imageUrl: "",
+                gradient: "linear-gradient(135deg, #064e3b, #047857, #34d399)",
+                details: {
+                    departureTime: "",
+                    restaurants: [],
+                    familyActivities: [],
+                    kidsActivities: [],
+                    citySummary: "",
+                    touristSpots: []
+                }
             }
         ]
     },
     {
-        month: "Outubro",
-        theme: "Dia das Criancas",
+        month: "Outubro", theme: "Dia das Criancas",
         trips: [
             {
+                id: "out-1",
                 title: "Guararema",
                 subtitle: "Trem Turistico",
                 description: "Passeio de trem turistico pela cidade. Otimo pra Laura.",
                 type: "aventura",
                 status: "planned",
                 people: 6,
-                origin: "Sorocaba",
                 estimatedCost: 180,
-                mapsUrl: "https://maps.google.com/?q=Trem+Turistico+Guararema"
+                mapsUrl: "https://maps.google.com/?q=Trem+Turistico+Guararema",
+                imageUrl: "",
+                gradient: "linear-gradient(135deg, #713f12, #a16207, #eab308)",
+                details: {
+                    departureTime: "",
+                    restaurants: [],
+                    familyActivities: [],
+                    kidsActivities: [],
+                    citySummary: "",
+                    touristSpots: []
+                }
             },
             {
+                id: "out-2",
                 title: "Sao Paulo",
                 subtitle: "Aquario de Sao Paulo",
                 description: "Maior aquario da America Latina. Presente de Dia das Criancas.",
                 type: "aventura",
                 status: "planned",
                 people: 6,
-                origin: "Sorocaba",
                 estimatedCost: 150,
-                mapsUrl: "https://maps.google.com/?q=Aquario+de+Sao+Paulo"
+                mapsUrl: "https://maps.google.com/?q=Aquario+de+Sao+Paulo",
+                imageUrl: "",
+                gradient: "linear-gradient(135deg, #1e3a5f, #1e40af, #3b82f6)",
+                details: {
+                    departureTime: "",
+                    restaurants: [],
+                    familyActivities: [],
+                    kidsActivities: [],
+                    citySummary: "",
+                    touristSpots: []
+                }
             }
         ]
     },
     {
-        month: "Novembro",
-        theme: "Passeios Tranquilos",
+        month: "Novembro", theme: "Passeios Tranquilos",
         trips: [
             {
+                id: "nov-1",
                 title: "Indaiatuba",
                 subtitle: "Parque Ecologico",
                 description: "Parque Ecologico e Museu da Agua. Passeio gratuito e acessivel.",
                 type: "natureza",
                 status: "planned",
                 people: 6,
-                origin: "Sorocaba",
                 estimatedCost: 0,
-                mapsUrl: "https://maps.google.com/?q=Parque+Ecologico+Indaiatuba"
+                mapsUrl: "https://maps.google.com/?q=Parque+Ecologico+Indaiatuba",
+                imageUrl: "",
+                gradient: "linear-gradient(135deg, #14532d, #15803d, #22c55e)",
+                details: {
+                    departureTime: "",
+                    restaurants: [],
+                    familyActivities: [],
+                    kidsActivities: [],
+                    citySummary: "",
+                    touristSpots: []
+                }
             },
             {
+                id: "nov-2",
                 title: "Aracoiaba da Serra",
                 subtitle: "Fazenda Ipanema",
                 description: "Fazenda historica com trilhas e ruinas. Patrimonio cultural.",
                 type: "historia",
                 status: "planned",
                 people: 6,
-                origin: "Sorocaba",
                 estimatedCost: 50,
-                mapsUrl: "https://maps.google.com/?q=Fazenda+Ipanema+Aracoiaba+da+Serra"
+                mapsUrl: "https://maps.google.com/?q=Fazenda+Ipanema+Aracoiaba+da+Serra",
+                imageUrl: "",
+                gradient: "linear-gradient(135deg, #44403c, #78716c, #a8a29e)",
+                details: {
+                    departureTime: "",
+                    restaurants: [],
+                    familyActivities: [],
+                    kidsActivities: [],
+                    citySummary: "",
+                    touristSpots: []
+                }
             }
         ]
     },
     {
-        month: "Dezembro",
-        theme: "Natal & Despedida do Ano",
+        month: "Dezembro", theme: "Natal & Despedida do Ano",
         trips: [
             {
+                id: "dez-1",
                 title: "Itu",
                 subtitle: "Luzes de Natal",
                 description: "Decoracao natalina na praca central. Passeio noturno em familia.",
                 type: "cultura",
                 status: "planned",
                 people: 6,
-                origin: "Sorocaba",
                 estimatedCost: 0,
-                mapsUrl: "https://maps.google.com/?q=Praca+Padre+Miguel+Itu"
+                mapsUrl: "https://maps.google.com/?q=Praca+Padre+Miguel+Itu",
+                imageUrl: "",
+                gradient: "linear-gradient(135deg, #991b1b, #dc2626, #16a34a)",
+                details: {
+                    departureTime: "",
+                    restaurants: [],
+                    familyActivities: [],
+                    kidsActivities: [],
+                    citySummary: "",
+                    touristSpots: []
+                }
             },
             {
+                id: "dez-2",
                 title: "Maresias",
                 subtitle: "Pousada Tambayba - Retorno",
                 description: "Volta a Maresias para fechar o ano. Pousada que a familia gostou em janeiro.",
                 type: "praia",
                 status: "planned",
                 people: 6,
-                origin: "Sorocaba",
                 estimatedCost: null,
-                mapsUrl: "https://maps.google.com/?q=Pousada+Tambayba+Maresias"
+                mapsUrl: "https://maps.google.com/?q=Pousada+Tambayba+Maresias",
+                imageUrl: "",
+                gradient: "linear-gradient(135deg, #0369a1, #0ea5e9, #f97316)",
+                details: {
+                    departureTime: "",
+                    restaurants: [],
+                    familyActivities: [],
+                    kidsActivities: [],
+                    citySummary: "",
+                    touristSpots: []
+                }
             }
         ]
     }
 ];
 
-// --- ICONS ---
-const typeIcons = {
-    praia: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="3"/><path d="M2 20c2-3 4-5 6-5s4 2 6 5"/><path d="M14 15c2-3 4-5 6-5"/></svg>',
-    gastronomia: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>',
-    natureza: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 20H7l5-16 5 16z"/><path d="M12 13l-3 7"/><path d="M12 13l3 7"/><line x1="12" y1="20" x2="12" y2="24"/></svg>',
-    cultura: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>',
-    aventura: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
-    historia: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01"/><path d="M9 12v.01"/><path d="M9 15v.01"/><path d="M9 18v.01"/></svg>'
+// ============================================================
+// TYPE CONFIG
+// ============================================================
+const typeConfig = {
+    praia:       { label: "Praia",       color: "#0ea5e9", icon: "M2 20c2-3 4-5 6-5s4 2 6 5M14 15c2-3 4-5 6-5" },
+    gastronomia: { label: "Gastronomia", color: "#dc2626", icon: "M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z" },
+    natureza:    { label: "Natureza",    color: "#16a34a", icon: "M12 3L4 14h5l-1 7 8-11h-5l1-7" },
+    cultura:     { label: "Cultura",     color: "#7c3aed", icon: "M4 19.5A2.5 2.5 0 016.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" },
+    aventura:    { label: "Aventura",    color: "#ea580c", icon: "M13 2L3 14h9l-1 10L21 10h-9l1-8" },
+    historia:    { label: "Historia",    color: "#92400e", icon: "M3 21h18M5 21V7l8-4v18M19 21V11l-6-4" }
 };
 
-const typeColors = {
-    praia: { bg: "#dbeafe", text: "#1e40af", accent: "#3b82f6" },
-    gastronomia: { bg: "#fef3c7", text: "#92400e", accent: "#f59e0b" },
-    natureza: { bg: "#d1fae5", text: "#065f46", accent: "#10b981" },
-    cultura: { bg: "#ede9fe", text: "#5b21b6", accent: "#8b5cf6" },
-    aventura: { bg: "#fee2e2", text: "#991b1b", accent: "#ef4444" },
-    historia: { bg: "#f3e8ff", text: "#6b21a8", accent: "#a855f7" }
-};
-
-const typeLabels = {
-    praia: "Praia",
-    gastronomia: "Gastronomia",
-    natureza: "Natureza",
-    cultura: "Cultura",
-    aventura: "Aventura",
-    historia: "Historia"
-};
-
-// --- STATE ---
+// ============================================================
+// STATE
+// ============================================================
 let currentIndex = getCurrentMonthIndex();
+let isAnimating = false;
+let detailOpen = false;
 
 function getCurrentMonthIndex() {
-    const now = new Date();
-    const currentMonth = now.getMonth(); // 0-indexed
-    // Find the closest month in our trips array
     const monthNames = ["Janeiro", "Fevereiro", "Marco", "Abril", "Maio", "Junho",
         "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
-    const target = monthNames[currentMonth];
+    const now = new Date();
+    const target = monthNames[now.getMonth()];
     const idx = trips.findIndex(t => t.month === target);
     return idx >= 0 ? idx : 0;
 }
 
-// --- RENDER ---
+// ============================================================
+// RENDER: MONTH NAV
+// ============================================================
+function renderMonthNav() {
+    const nav = document.getElementById("monthNav");
+    nav.innerHTML = "";
+    trips.forEach((m, i) => {
+        const btn = document.createElement("button");
+        btn.className = "month-pill";
+        btn.textContent = m.month.substring(0, 3);
+        btn.dataset.index = i;
+
+        const hasTrips = m.trips.length > 0;
+        const allDone = hasTrips && m.trips.every(t => t.status === "done");
+        if (allDone) btn.classList.add("done");
+        if (!hasTrips) btn.classList.add("empty");
+        if (i === currentIndex) btn.classList.add("active");
+
+        btn.addEventListener("click", () => navigateTo(i));
+        nav.appendChild(btn);
+    });
+}
+
+// ============================================================
+// RENDER: PROGRESS
+// ============================================================
+function renderProgress() {
+    const total = trips.reduce((s, m) => s + m.trips.length, 0);
+    const done = trips.reduce((s, m) => s + m.trips.filter(t => t.status === "done").length, 0);
+    const pct = total > 0 ? (done / total) * 100 : 0;
+
+    document.getElementById("progressFill").style.width = pct + "%";
+    document.getElementById("progressText").textContent = `${done}/${total} realizadas`;
+}
+
+// ============================================================
+// RENDER: SLIDES
+// ============================================================
 function renderSlides() {
-    const wrapper = document.getElementById("slidesWrapper");
-    wrapper.innerHTML = "";
+    const track = document.getElementById("slidesTrack");
+    track.innerHTML = "";
 
     trips.forEach((monthData, i) => {
         const slide = document.createElement("div");
@@ -348,156 +558,319 @@ function renderSlides() {
         const doneCount = monthData.trips.filter(t => t.status === "done").length;
 
         let cardsHTML = "";
+
         if (tripCount === 0) {
-            cardsHTML = `<div class="empty-month">
-                <div class="empty-icon">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                </div>
-                <p>Nenhuma viagem planejada para este mes.</p>
-            </div>`;
+            cardsHTML = `
+                <div class="empty-state">
+                    <div class="empty-icon">
+                        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                    </div>
+                    <p>Nenhuma viagem neste mes</p>
+                </div>`;
         } else {
-            monthData.trips.forEach(trip => {
-                const colors = typeColors[trip.type] || typeColors.cultura;
-                const icon = typeIcons[trip.type] || typeIcons.cultura;
-                const label = typeLabels[trip.type] || trip.type;
+            monthData.trips.forEach((trip, ti) => {
+                const cfg = typeConfig[trip.type] || typeConfig.cultura;
                 const isDone = trip.status === "done";
                 const costText = trip.estimatedCost === null ? "A definir"
                     : trip.estimatedCost === 0 ? "Gratuito"
                     : `R$ ${trip.estimatedCost}`;
+                const bgStyle = trip.imageUrl
+                    ? `background-image: url('${trip.imageUrl}'); background-size: cover; background-position: center;`
+                    : `background: ${trip.gradient};`;
 
                 cardsHTML += `
-                <div class="trip-card ${isDone ? 'is-done' : ''}" style="--card-accent: ${colors.accent}; --card-bg: ${colors.bg}; --card-text: ${colors.text}">
-                    <div class="card-status-bar"></div>
-                    <div class="card-content">
-                        <div class="card-top">
-                            <span class="card-type-badge" style="background: ${colors.bg}; color: ${colors.text}">
-                                ${icon} ${label}
-                            </span>
-                            ${isDone ? '<span class="card-done-badge">Realizada</span>' : '<span class="card-planned-badge">Planejada</span>'}
+                <article class="trip-card ${isDone ? 'is-done' : ''}" data-trip-id="${trip.id}" style="animation-delay: ${0.1 + ti * 0.15}s">
+                    <div class="card-image" style="${bgStyle}">
+                        <div class="card-image-overlay"></div>
+                        <div class="card-badges">
+                            <span class="badge-type" style="--badge-color: ${cfg.color}">${cfg.label}</span>
+                            ${isDone
+                                ? '<span class="badge-done">Realizada</span>'
+                                : '<span class="badge-planned">Planejada</span>'}
                         </div>
-                        <h3 class="card-title">${trip.title}</h3>
-                        <p class="card-subtitle">${trip.subtitle}</p>
-                        <p class="card-description">${trip.description}</p>
+                        <div class="card-image-title">
+                            <h3>${trip.title}</h3>
+                            <p>${trip.subtitle}</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">${trip.description}</p>
                         <div class="card-meta">
-                            <span class="meta-item">
+                            <span class="meta">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
                                 ${trip.people} pessoas
                             </span>
-                            <span class="meta-item">
+                            <span class="meta">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
                                 ${costText}
                             </span>
                         </div>
-                        ${trip.mapsUrl ? `<a href="${trip.mapsUrl}" target="_blank" rel="noopener" class="card-map-link">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                            Ver no mapa
-                        </a>` : ''}
+                        <div class="card-actions">
+                            ${trip.mapsUrl ? `<a href="${trip.mapsUrl}" target="_blank" rel="noopener" class="btn-map" onclick="event.stopPropagation()">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                Mapa
+                            </a>` : ''}
+                            <button class="btn-details" onclick="event.stopPropagation(); openDetail('${trip.id}')">
+                                Ver detalhes
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                            </button>
+                        </div>
                     </div>
-                </div>`;
+                </article>`;
             });
         }
 
+        const statsText = tripCount > 0
+            ? `${doneCount}/${tripCount} ${tripCount === 1 ? 'viagem' : 'viagens'}${doneCount === tripCount ? ' -- Completo!' : ''}`
+            : '';
+
         slide.innerHTML = `
             <div class="slide-header">
-                <span class="slide-month-label">${monthData.month}</span>
+                <span class="slide-month">${monthData.month}</span>
                 <h2 class="slide-theme">${monthData.theme}</h2>
-                ${tripCount > 0 ? `<div class="slide-stats">${doneCount}/${tripCount} ${tripCount === 1 ? 'viagem' : 'viagens'} ${doneCount === tripCount && tripCount > 0 ? '-- Completo!' : ''}</div>` : ''}
+                ${statsText ? `<p class="slide-stats">${statsText}</p>` : ''}
             </div>
-            <div class="cards-grid ${tripCount === 1 ? 'single-card' : ''}">
-                ${cardsHTML}
-            </div>
+            <div class="cards-row ${tripCount === 1 ? 'single' : ''}">${cardsHTML}</div>
         `;
 
-        wrapper.appendChild(slide);
-    });
-
-    updateView(false);
-}
-
-function renderDots() {
-    const dotsContainer = document.getElementById("monthDots");
-    dotsContainer.innerHTML = "";
-    trips.forEach((m, i) => {
-        const dot = document.createElement("button");
-        dot.className = "dot";
-        dot.title = m.month;
-        dot.dataset.index = i;
-
-        const hasTrips = m.trips.length > 0;
-        const allDone = hasTrips && m.trips.every(t => t.status === "done");
-        if (allDone) dot.classList.add("done");
-        if (!hasTrips) dot.classList.add("empty");
-
-        dot.addEventListener("click", () => goTo(i));
-        dotsContainer.appendChild(dot);
+        track.appendChild(slide);
     });
 }
 
-function updateView(animate = true) {
+// ============================================================
+// NAVIGATION
+// ============================================================
+function navigateTo(index, direction) {
+    if (index < 0 || index >= trips.length || index === currentIndex || isAnimating) return;
+    isAnimating = true;
+
+    const dir = direction || (index > currentIndex ? 1 : -1);
     const slides = document.querySelectorAll(".slide");
-    slides.forEach((slide, i) => {
-        slide.classList.remove("active", "prev", "next");
-        if (i === currentIndex) {
-            slide.classList.add("active");
-        } else if (i < currentIndex) {
-            slide.classList.add("prev");
-        } else {
-            slide.classList.add("next");
-        }
+    const oldSlide = slides[currentIndex];
+    const newSlide = slides[index];
+
+    // Exit old slide
+    oldSlide.classList.remove("active");
+    oldSlide.classList.add(dir > 0 ? "exit-left" : "exit-right");
+
+    // Enter new slide
+    newSlide.classList.add(dir > 0 ? "enter-right" : "enter-left");
+
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            newSlide.classList.remove("enter-right", "enter-left");
+            newSlide.classList.add("active");
+        });
     });
 
-    // Update dots
-    const dots = document.querySelectorAll(".dot");
-    dots.forEach((dot, i) => {
-        dot.classList.toggle("active", i === currentIndex);
+    currentIndex = index;
+    updateNav();
+
+    setTimeout(() => {
+        oldSlide.classList.remove("exit-left", "exit-right");
+        isAnimating = false;
+    }, 600);
+}
+
+function goNext() { navigateTo(currentIndex + 1, 1); }
+function goPrev() { navigateTo(currentIndex - 1, -1); }
+
+function updateNav() {
+    // Month pills
+    document.querySelectorAll(".month-pill").forEach((pill, i) => {
+        pill.classList.toggle("active", i === currentIndex);
     });
-
-    // Update counter
-    const counter = document.getElementById("tripCounter");
-    const total = trips.reduce((sum, m) => sum + m.trips.length, 0);
-    const done = trips.reduce((sum, m) => sum + m.trips.filter(t => t.status === "done").length, 0);
-    counter.textContent = `${done}/${total} viagens realizadas`;
-
-    // Update arrows
+    // Arrows
     document.getElementById("prevBtn").disabled = currentIndex === 0;
     document.getElementById("nextBtn").disabled = currentIndex === trips.length - 1;
 }
 
-function goTo(index) {
-    if (index < 0 || index >= trips.length) return;
-    currentIndex = index;
-    updateView(true);
+// ============================================================
+// DETAIL VIEW
+// ============================================================
+function findTrip(tripId) {
+    for (const month of trips) {
+        const found = month.trips.find(t => t.id === tripId);
+        if (found) return { trip: found, month: month.month };
+    }
+    return null;
 }
 
-function goNext() { goTo(currentIndex + 1); }
-function goPrev() { goTo(currentIndex - 1); }
+function openDetail(tripId) {
+    const result = findTrip(tripId);
+    if (!result) return;
 
-// --- KEYBOARD NAV ---
+    const { trip, month } = result;
+    const cfg = typeConfig[trip.type] || typeConfig.cultura;
+    const costText = trip.estimatedCost === null ? "A definir"
+        : trip.estimatedCost === 0 ? "Gratuito"
+        : `R$ ${trip.estimatedCost}`;
+    const bgStyle = trip.imageUrl
+        ? `background-image: url('${trip.imageUrl}'); background-size: cover; background-position: center;`
+        : `background: ${trip.gradient};`;
+
+    const hero = document.getElementById("detailHero");
+    hero.style = bgStyle;
+
+    document.getElementById("detailHeroContent").innerHTML = `
+        <span class="detail-badge" style="--badge-color: ${cfg.color}">${cfg.label}</span>
+        <h1>${trip.title}</h1>
+        <p>${trip.subtitle}</p>
+        <span class="detail-month-tag">${month}</span>
+    `;
+
+    const d = trip.details;
+
+    document.getElementById("detailBody").innerHTML = `
+        <div class="detail-overview">
+            <div class="detail-info-card">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                <div><strong>${trip.people} pessoas</strong><br><small>Saindo de Sorocaba</small></div>
+            </div>
+            <div class="detail-info-card">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                <div><strong>${costText}</strong><br><small>Custo estimado</small></div>
+            </div>
+            <div class="detail-info-card">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <div><strong>${d.departureTime || 'A definir'}</strong><br><small>Hora de saida</small></div>
+            </div>
+            <div class="detail-info-card">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div><strong>${trip.status === 'done' ? 'Realizada' : 'Planejada'}</strong><br><small>Status</small></div>
+            </div>
+        </div>
+
+        <section class="detail-section anim-section" style="animation-delay: 0.1s">
+            <h3>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                Resumo da Cidade
+            </h3>
+            ${d.citySummary
+                ? `<p>${d.citySummary}</p>`
+                : '<div class="placeholder-block"><p>Conteudo sera adicionado em breve</p></div>'}
+        </section>
+
+        <section class="detail-section anim-section" style="animation-delay: 0.2s">
+            <h3>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/></svg>
+                Onde Comer
+            </h3>
+            ${d.restaurants.length > 0
+                ? `<ul class="detail-list">${d.restaurants.map(r => `<li><strong>${r.name}</strong> - ${r.description}</li>`).join('')}</ul>`
+                : '<div class="placeholder-block"><p>Restaurantes recomendados serao adicionados</p></div>'}
+        </section>
+
+        <section class="detail-section anim-section" style="animation-delay: 0.3s">
+            <h3>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                Passeios em Familia
+            </h3>
+            ${d.familyActivities.length > 0
+                ? `<ul class="detail-list">${d.familyActivities.map(a => `<li><strong>${a.name}</strong> - ${a.description}</li>`).join('')}</ul>`
+                : '<div class="placeholder-block"><p>Atividades para toda a familia serao adicionadas</p></div>'}
+        </section>
+
+        <section class="detail-section anim-section" style="animation-delay: 0.4s">
+            <h3>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                Passeios para Criancas
+            </h3>
+            ${d.kidsActivities.length > 0
+                ? `<ul class="detail-list">${d.kidsActivities.map(a => `<li><strong>${a.name}</strong> - ${a.description}</li>`).join('')}</ul>`
+                : '<div class="placeholder-block"><p>Atividades para a Laura serao adicionadas</p></div>'}
+        </section>
+
+        <section class="detail-section anim-section" style="animation-delay: 0.5s">
+            <h3>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Principais Pontos Turisticos
+            </h3>
+            ${d.touristSpots.length > 0
+                ? `<ul class="detail-list">${d.touristSpots.map(s => `<li><strong>${s.name}</strong> - ${s.description}</li>`).join('')}</ul>`
+                : '<div class="placeholder-block"><p>Pontos turisticos serao adicionados</p></div>'}
+        </section>
+
+        ${trip.mapsUrl ? `
+        <div class="detail-map-link anim-section" style="animation-delay: 0.6s">
+            <a href="${trip.mapsUrl}" target="_blank" rel="noopener">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Abrir no Google Maps
+            </a>
+        </div>` : ''}
+    `;
+
+    const overlay = document.getElementById("detailOverlay");
+    overlay.classList.add("open");
+    detailOpen = true;
+    document.body.style.overflow = "hidden";
+}
+
+function closeDetail() {
+    const overlay = document.getElementById("detailOverlay");
+    overlay.classList.add("closing");
+    setTimeout(() => {
+        overlay.classList.remove("open", "closing");
+        detailOpen = false;
+        document.body.style.overflow = "";
+    }, 400);
+}
+
+// ============================================================
+// EVENTS
+// ============================================================
+document.getElementById("prevBtn").addEventListener("click", goPrev);
+document.getElementById("nextBtn").addEventListener("click", goNext);
+document.getElementById("detailBack").addEventListener("click", closeDetail);
+document.getElementById("detailOverlay").addEventListener("click", (e) => {
+    if (e.target === e.currentTarget) closeDetail();
+});
+
 document.addEventListener("keydown", (e) => {
+    if (detailOpen) {
+        if (e.key === "Escape") closeDetail();
+        return;
+    }
     if (e.key === "ArrowLeft") goPrev();
     if (e.key === "ArrowRight") goNext();
 });
 
-// --- TOUCH/SWIPE ---
+// Touch/Swipe
 let touchStartX = 0;
-let touchEndX = 0;
-
 document.addEventListener("touchstart", (e) => {
+    if (detailOpen) return;
     touchStartX = e.changedTouches[0].screenX;
 }, { passive: true });
-
 document.addEventListener("touchend", (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    const diff = touchStartX - touchEndX;
-    if (Math.abs(diff) > 50) {
+    if (detailOpen) return;
+    const diff = touchStartX - e.changedTouches[0].screenX;
+    if (Math.abs(diff) > 60) {
         if (diff > 0) goNext();
         else goPrev();
     }
 }, { passive: true });
 
-// --- INIT ---
-document.getElementById("prevBtn").addEventListener("click", goPrev);
-document.getElementById("nextBtn").addEventListener("click", goNext);
+// Card click -> detail
+document.addEventListener("click", (e) => {
+    const card = e.target.closest(".trip-card");
+    if (card && !detailOpen) {
+        openDetail(card.dataset.tripId);
+    }
+});
 
+// ============================================================
+// INIT
+// ============================================================
 renderSlides();
-renderDots();
+renderMonthNav();
+renderProgress();
+
+// Set initial active slide without animation
+document.querySelectorAll(".slide").forEach((s, i) => {
+    if (i === currentIndex) s.classList.add("active");
+});
+updateNav();
