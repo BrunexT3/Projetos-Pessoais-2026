@@ -4,87 +4,113 @@
 const trips = [
     {
         id: "jan-1", month: "Janeiro", title: "Maresias", subtitle: "Pousada Tambayba",
-        description: "Viagem com hospedagem. Gostamos, provavelmente voltaremos no final do ano.",
+        description: "Viagem com hospedagem na Pousada Tambayba. Gostamos muito, provavelmente voltaremos no final do ano.",
         type: "praia", status: "done", people: 6, estimatedCost: null,
         mapsUrl: "https://maps.google.com/?q=Pousada+Tambayba+Maresias",
-        imageUrl: "",
+        imageUrl: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&h=500&fit=crop&auto=format",
         gradient: "linear-gradient(135deg, #0ea5e9, #06b6d4)",
         details: {
-            departureTime: "", itinerary: [], restaurants: [],
-            familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: []
+            departureTime: "Viagem com pernoite — horário flexível",
+            itinerary: [
+                { time: "08:00", activity: "Saída de Sorocaba", desc: "Pegar SP-270 até São Paulo, depois SP-055 (Rio-Santos). Aproximadamente 3h de viagem." },
+                { time: "11:00", activity: "Check-in na Pousada Tambayba", desc: "Pousada aconchegante com café da manhã incluso. Ótima localização perto da praia." },
+                { time: "12:00", activity: "Almoço na praia", desc: "Restaurantes e quiosques na orla de Maresias. Frutos do mar frescos." },
+                { time: "14:00", activity: "Tarde na praia", desc: "Banho de mar, caminhada na areia. Praia com boa infraestrutura." },
+                { time: "18:00", activity: "Pôr do sol", desc: "Maresias tem um dos pores do sol mais bonitos do litoral norte." }
+            ],
+            restaurants: [
+                { name: "Restaurante Sirena", desc: "Frutos do mar e culinária praiana. Ambiente pé na areia com vista para o mar. Preço médio: R$90/pessoa.", mapsUrl: "https://maps.google.com/?q=Restaurante+Sirena+Maresias" },
+                { name: "Bar do Celso", desc: "Petiscos e porções generosas. Ambiente descontraído, bom para famílias.", mapsUrl: "https://maps.google.com/?q=Bar+do+Celso+Maresias" },
+                { name: "Manjuba Gastronomia", desc: "Cozinha autoral com ingredientes locais. Um dos melhores restaurantes da região.", mapsUrl: "https://maps.google.com/?q=Manjuba+Gastronomia+Maresias" }
+            ],
+            familyActivities: [
+                { name: "Praia de Maresias", desc: "Praia principal com boa infraestrutura. Areia clara, mar com ondas moderadas." },
+                { name: "Trilha de Maresias a Paúba", desc: "Trilha leve de 30 minutos pela costeira. Vista panorâmica do litoral." },
+                { name: "Caminhada no calçadão", desc: "Passeio tranquilo pela orla com lojas, sorveterias e artesanato local." }
+            ],
+            kidsActivities: [
+                { name: "Piscina da pousada", desc: "Pousada Tambayba tem piscina — ótimo para Júlia brincar com segurança." },
+                { name: "Castelo de areia na praia", desc: "Área mais tranquila da praia para brincar na areia e tomar banho de mar." }
+            ],
+            citySummary: "Maresias é uma das praias mais famosas do litoral norte de São Paulo. Localizada em São Sebastião, a cerca de 180km de Sorocaba (~3h de carro), é conhecida pelas ondas perfeitas para o surfe, areia branca e águas cristalinas. A Pousada Tambayba fica em localização privilegiada, com café da manhã caprichado e ambiente familiar. A região também oferece trilhas, restaurantes de frutos do mar e um pôr do sol inesquecível.",
+            touristSpots: [
+                { name: "Praia de Maresias", desc: "Praia principal. Ondas boas, infraestrutura completa. Bandeira Azul.", mapsUrl: "https://maps.google.com/?q=Praia+de+Maresias" },
+                { name: "Praia de Paúba", desc: "Praia vizinha mais tranquila. Boa para famílias com crianças.", mapsUrl: "https://maps.google.com/?q=Praia+de+Pauba" },
+                { name: "Mirante de Maresias", desc: "Vista panorâmica da praia e da serra. Acesso pela trilha ou carro.", mapsUrl: "https://maps.google.com/?q=Mirante+Maresias" }
+            ]
         }
     },
     {
-        id: "mar-1", month: "Marco", title: "Sao Roque", subtitle: "Rota do Vinho",
-        description: "Bate e volta no 1o final de semana. Almoco e passeio pelas vinicolas. ~60km de Sorocaba, 1h de carro.",
+        id: "mar-1", month: "Março", title: "São Roque", subtitle: "Rota do Vinho",
+        description: "Bate e volta no 1º final de semana. Almoço e passeio pelas vinícolas. ~60km de Sorocaba, 1h de carro.",
         type: "gastronomia", status: "planned", people: 6, estimatedCost: 250,
         mapsUrl: "https://maps.google.com/?q=Rota+do+Vinho+Sao+Roque+SP",
         imageUrl: "https://images.unsplash.com/photo-1464638681273-0962e9b53566?w=900&h=500&fit=crop&auto=format",
         gradient: "linear-gradient(135deg, #7f1d1d, #b91c1c)",
         details: {
-            departureTime: "Sair de Sorocaba as 8h30. Chegada prevista as 9h30.",
+            departureTime: "Sair de Sorocaba às 8h30. Chegada prevista às 9h30.",
             itinerary: [
-                { time: "08:30", activity: "Saida de Sorocaba", desc: "Pegar SP-270 sentido Sao Paulo. Aproximadamente 1h de viagem." },
-                { time: "09:30", activity: "Vinicola Goes", desc: "Tour gratuito pela fabrica com degustacao. Loja com precos de fabrica. Aberta sab/dom 9h-17h." },
-                { time: "11:30", activity: "Almoco - Villa Don Patto", desc: "Restaurante italiano com pizzaria e emporio. Reservar com antecedencia. Preco medio R$80/pessoa." },
-                { time: "13:30", activity: "Passeio pela Rota do Vinho", desc: "Circuito de 10km com vinicolas, adegas e emporios. Degustacao de vinhos (adultos) e sucos de uva (Laura)." },
-                { time: "15:00", activity: "Ski Mountain Park", desc: "Pista de ski sintetico, alpine coaster e tirolesa. Ingressos a partir de R$60. Laura vai adorar." },
+                { time: "08:30", activity: "Saída de Sorocaba", desc: "Pegar SP-270 sentido São Paulo. Aproximadamente 1h de viagem." },
+                { time: "09:30", activity: "Vinícola Góes", desc: "Tour gratuito pela fábrica com degustação. Loja com preços de fábrica. Aberta sáb/dom 9h-17h." },
+                { time: "11:30", activity: "Almoço - Villa Don Patto", desc: "Restaurante italiano com pizzaria e empório. Reservar com antecedência. Preço médio R$80/pessoa." },
+                { time: "13:30", activity: "Passeio pela Rota do Vinho", desc: "Circuito de 10km com vinícolas, adegas e empórios. Degustação de vinhos (adultos) e sucos de uva (Júlia)." },
+                { time: "15:00", activity: "Ski Mountain Park", desc: "Pista de ski sintético, alpine coaster e tirolesa. Ingressos a partir de R$60. Júlia vai adorar." },
                 { time: "17:00", activity: "Retorno a Sorocaba", desc: "Chegada prevista por volta das 18h." }
             ],
             restaurants: [
-                { name: "Villa Don Patto", desc: "Complexo com restaurante italiano, pizzaria, emporio e degustacao de vinhos. Ambiente amplo e familiar. Reservar com antecedencia.", mapsUrl: "https://maps.google.com/?q=Villa+Don+Patto+Sao+Roque" },
-                { name: "Quinta do Olivardo", desc: "Restaurante portugues premiado com vista para os vinhedos. Bacalhau e polvo sao destaques. Preco medio: R$90/pessoa.", mapsUrl: "https://maps.google.com/?q=Quinta+do+Olivardo+Sao+Roque" },
-                { name: "Cantina Villa Arrieta", desc: "Cantina italiana tradicional com massas caseiras. Ambiente rustico e acolhedor. Bom custo-beneficio.", mapsUrl: "https://maps.google.com/?q=Cantina+Villa+Arrieta+Sao+Roque" },
-                { name: "Emporio Sao Roque", desc: "Opcao mais rapida com lanches, queijos, embutidos e vinhos para degustacao. Bom para um pit stop.", mapsUrl: "https://maps.google.com/?q=Emporio+Sao+Roque" }
+                { name: "Villa Don Patto", desc: "Complexo com restaurante italiano, pizzaria, empório e degustação de vinhos. Ambiente amplo e familiar. Reservar com antecedência.", mapsUrl: "https://maps.google.com/?q=Villa+Don+Patto+Sao+Roque" },
+                { name: "Quinta do Olivardo", desc: "Restaurante português premiado com vista para os vinhedos. Bacalhau e polvo são destaques. Preço médio: R$90/pessoa.", mapsUrl: "https://maps.google.com/?q=Quinta+do+Olivardo+Sao+Roque" },
+                { name: "Cantina Villa Arrieta", desc: "Cantina italiana tradicional com massas caseiras. Ambiente rústico e acolhedor. Bom custo-benefício.", mapsUrl: "https://maps.google.com/?q=Cantina+Villa+Arrieta+Sao+Roque" },
+                { name: "Empório São Roque", desc: "Opção mais rápida com lanches, queijos, embutidos e vinhos para degustação. Bom para um pit stop.", mapsUrl: "https://maps.google.com/?q=Emporio+Sao+Roque" }
             ],
             familyActivities: [
-                { name: "Rota do Vinho", desc: "Circuito com mais de 30 vinicolas e adegas. Degustacao de vinhos e sucos artesanais. Entrada gratuita na maioria." },
-                { name: "Vinicola Goes", desc: "Maior vinicola da regiao com tour guiado gratuito. Degustacao inclusa." },
-                { name: "Villa Don Patto - Passeio", desc: "Emporio gourmet, espaco para fotos e area verde. Da pra passar 1-2h." },
-                { name: "Centro Historico", desc: "Caminhada pelo centro com igreja matriz e casaroes coloniais. Passeio curto de 30min." }
+                { name: "Rota do Vinho", desc: "Circuito com mais de 30 vinícolas e adegas. Degustação de vinhos e sucos artesanais. Entrada gratuita na maioria." },
+                { name: "Vinícola Góes", desc: "Maior vinícola da região com tour guiado gratuito. Degustação inclusa." },
+                { name: "Villa Don Patto - Passeio", desc: "Empório gourmet, espaço para fotos e área verde. Dá pra passar 1-2h." },
+                { name: "Centro Histórico", desc: "Caminhada pelo centro com igreja matriz e casarões coloniais. Passeio curto de 30min." }
             ],
             kidsActivities: [
-                { name: "Ski Mountain Park", desc: "Pista de ski sintetico, alpine coaster (montanha-russa), tirolesa e teleferico. Ingressos a partir de R$60." },
-                { name: "Degustacao de Suco de Uva", desc: "Nas vinicolas, criancas podem degustar sucos de uva artesanais e ver a fabricacao." },
-                { name: "Tour Vinicola Goes", desc: "Tour guiado mostra como o vinho e produzido. Educativo e interessante." }
+                { name: "Ski Mountain Park", desc: "Pista de ski sintético, alpine coaster (montanha-russa), tirolesa e teleférico. Ingressos a partir de R$60." },
+                { name: "Degustação de Suco de Uva", desc: "Nas vinícolas, crianças podem degustar sucos de uva artesanais e ver a fabricação." },
+                { name: "Tour Vinícola Góes", desc: "Tour guiado mostra como o vinho é produzido. Educativo e interessante." }
             ],
-            citySummary: "Sao Roque e conhecida como a Terra do Vinho no estado de Sao Paulo. Localizada a cerca de 60km de Sorocaba (~1h de carro pela SP-270), a cidade abriga a famosa Rota do Vinho com mais de 30 estabelecimentos entre vinicolas, adegas e restaurantes. Alem da gastronomia, destaca-se pelo Ski Mountain Park (unica pista de ski do estado) e pelo clima interiorano com forte influencia da colonizacao portuguesa e italiana.",
+            citySummary: "São Roque é conhecida como a Terra do Vinho no estado de São Paulo. Localizada a cerca de 60km de Sorocaba (~1h de carro pela SP-270), a cidade abriga a famosa Rota do Vinho com mais de 30 estabelecimentos entre vinícolas, adegas e restaurantes. Além da gastronomia, destaca-se pelo Ski Mountain Park (única pista de ski do estado) e pelo clima interiorano com forte influência da colonização portuguesa e italiana.",
             touristSpots: [
-                { name: "Rota do Vinho", desc: "Principal atracao. Circuito de 10km. Funciona aos finais de semana o dia todo.", mapsUrl: "https://maps.google.com/?q=Estrada+do+Vinho+Sao+Roque" },
-                { name: "Vinicola Goes", desc: "Fundada em 1938. Tour gratuito com degustacao. Sab/dom 9h-17h.", mapsUrl: "https://maps.google.com/?q=Vinicola+Goes+Sao+Roque" },
-                { name: "Ski Mountain Park", desc: "Ski sintetico, alpine coaster, teleferico e tirolesa. Sab/dom/feriados.", mapsUrl: "https://maps.google.com/?q=Ski+Mountain+Park+Sao+Roque" },
-                { name: "Villa Don Patto", desc: "Complexo gastronomico. Um dos pontos mais visitados da rota.", mapsUrl: "https://maps.google.com/?q=Villa+Don+Patto+Sao+Roque" },
-                { name: "Igreja Matriz", desc: "Igreja historica do seculo XVIII no centro da cidade.", mapsUrl: "https://maps.google.com/?q=Igreja+Matriz+Sao+Roque" }
+                { name: "Rota do Vinho", desc: "Principal atração. Circuito de 10km. Funciona aos finais de semana o dia todo.", mapsUrl: "https://maps.google.com/?q=Estrada+do+Vinho+Sao+Roque" },
+                { name: "Vinícola Góes", desc: "Fundada em 1938. Tour gratuito com degustação. Sáb/dom 9h-17h.", mapsUrl: "https://maps.google.com/?q=Vinicola+Goes+Sao+Roque" },
+                { name: "Ski Mountain Park", desc: "Ski sintético, alpine coaster, teleférico e tirolesa. Sáb/dom/feriados.", mapsUrl: "https://maps.google.com/?q=Ski+Mountain+Park+Sao+Roque" },
+                { name: "Villa Don Patto", desc: "Complexo gastronômico. Um dos pontos mais visitados da rota.", mapsUrl: "https://maps.google.com/?q=Villa+Don+Patto+Sao+Roque" },
+                { name: "Igreja Matriz", desc: "Igreja histórica do século XVIII no centro da cidade.", mapsUrl: "https://maps.google.com/?q=Igreja+Matriz+Sao+Roque" }
             ]
         }
     },
     {
         id: "abr-1", month: "Abril", title: "Itu", subtitle: "Parque Maeda",
-        description: "Jardim Japones, Trenzinho e areas verdes. Otimo para criancas e idosos.",
+        description: "Jardim Japonês, Trenzinho e áreas verdes. Ótimo para crianças e idosos.",
         type: "natureza", status: "planned", people: 6, estimatedCost: 150,
         mapsUrl: "https://maps.google.com/?q=Parque+Maeda+Itu",
         imageUrl: "", gradient: "linear-gradient(135deg, #065f46, #059669)",
         details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
     },
     {
-        id: "abr-2", month: "Abril", title: "Piedade", subtitle: "Colheita & Jardim Botanico",
-        description: "Colheita de caqui na epoca ou visita ao Jardim Botanico.",
+        id: "abr-2", month: "Abril", title: "Piedade", subtitle: "Colheita & Jardim Botânico",
+        description: "Colheita de caqui na época ou visita ao Jardim Botânico.",
         type: "natureza", status: "planned", people: 6, estimatedCost: 80,
         mapsUrl: "https://maps.google.com/?q=Piedade+SP",
         imageUrl: "", gradient: "linear-gradient(135deg, #14532d, #16a34a)",
         details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
     },
     {
-        id: "mai-1", month: "Maio", title: "Salto", subtitle: "Cachoeira & Parque Rocha Moutonee",
-        description: "Complexo da Cachoeira e parque tematico de dinossauros.",
+        id: "mai-1", month: "Maio", title: "Salto", subtitle: "Cachoeira & Parque Rocha Moutonnée",
+        description: "Complexo da Cachoeira e parque temático de dinossauros.",
         type: "natureza", status: "planned", people: 6, estimatedCost: 100,
         mapsUrl: "https://maps.google.com/?q=Parque+Rocha+Moutonee+Salto",
         imageUrl: "", gradient: "linear-gradient(135deg, #0c4a6e, #0284c7)",
         details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
     },
     {
-        id: "mai-2", month: "Maio", title: "Cotia", subtitle: "Animalia Park",
-        description: "Zoologico interativo. Excelente para criancas.",
+        id: "mai-2", month: "Maio", title: "Cotia", subtitle: "Animália Park",
+        description: "Zoológico interativo. Excelente para crianças.",
         type: "aventura", status: "planned", people: 6, estimatedCost: 300,
         mapsUrl: "https://maps.google.com/?q=Animalia+Park+Cotia",
         imageUrl: "", gradient: "linear-gradient(135deg, #9a3412, #ea580c)",
@@ -99,16 +125,16 @@ const trips = [
         details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
     },
     {
-        id: "jun-2", month: "Junho", title: "Tatui", subtitle: "Rota dos Doces Caseiros",
-        description: "Degustacao de doces artesanais e compras.",
+        id: "jun-2", month: "Junho", title: "Tatuí", subtitle: "Rota dos Doces Caseiros",
+        description: "Degustação de doces artesanais e compras.",
         type: "gastronomia", status: "planned", people: 6, estimatedCost: 100,
         mapsUrl: "https://maps.google.com/?q=Tatui+SP",
         imageUrl: "", gradient: "linear-gradient(135deg, #881337, #e11d48)",
         details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
     },
     {
-        id: "jul-1", month: "Julho", title: "Cabreuva", subtitle: "Fazenda do Chocolate",
-        description: "Fabrica de chocolate artesanal. Otimo para ferias da Laura.",
+        id: "jul-1", month: "Julho", title: "Cabreúva", subtitle: "Fazenda do Chocolate",
+        description: "Fábrica de chocolate artesanal. Ótimo para férias da Júlia.",
         type: "gastronomia", status: "planned", people: 6, estimatedCost: 150,
         mapsUrl: "https://maps.google.com/?q=Fazenda+do+Chocolate+Cabreuva",
         imageUrl: "", gradient: "linear-gradient(135deg, #451a03, #78350f)",
@@ -116,7 +142,7 @@ const trips = [
     },
     {
         id: "jul-2", month: "Julho", title: "Serra Negra", subtitle: "Fontana di Trevi & Centro",
-        description: "Replica da Fontana di Trevi, lojas e restaurantes.",
+        description: "Réplica da Fontana di Trevi, lojas e restaurantes.",
         type: "cultura", status: "planned", people: 6, estimatedCost: 200,
         mapsUrl: "https://maps.google.com/?q=Serra+Negra+SP",
         imageUrl: "", gradient: "linear-gradient(135deg, #312e81, #4338ca)",
@@ -124,15 +150,15 @@ const trips = [
     },
     {
         id: "ago-1", month: "Agosto", title: "Holambra", subtitle: "Cidade das Flores",
-        description: "Arquitetura holandesa, campos de flores e gastronomia tipica.",
+        description: "Arquitetura holandesa, campos de flores e gastronomia típica.",
         type: "cultura", status: "planned", people: 6, estimatedCost: 180,
         mapsUrl: "https://maps.google.com/?q=Holambra+SP",
         imageUrl: "", gradient: "linear-gradient(135deg, #c2410c, #f59e0b)",
         details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
     },
     {
-        id: "ago-2", month: "Agosto", title: "Porto Feliz", subtitle: "Parque das Moncoes",
-        description: "Parque historico as margens do Rio Tiete. Passeio tranquilo.",
+        id: "ago-2", month: "Agosto", title: "Porto Feliz", subtitle: "Parque das Monções",
+        description: "Parque histórico às margens do Rio Tietê. Passeio tranquilo.",
         type: "historia", status: "planned", people: 6, estimatedCost: 30,
         mapsUrl: "https://maps.google.com/?q=Parque+das+Moncoes+Porto+Feliz",
         imageUrl: "", gradient: "linear-gradient(135deg, #78350f, #92400e)",
@@ -147,40 +173,40 @@ const trips = [
         details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
     },
     {
-        id: "set-2", month: "Setembro", title: "Jundiai", subtitle: "Jardim Botanico",
-        description: "Jardim Botanico com trilhas acessiveis e area de piquenique.",
+        id: "set-2", month: "Setembro", title: "Jundiaí", subtitle: "Jardim Botânico",
+        description: "Jardim Botânico com trilhas acessíveis e área de piquenique.",
         type: "natureza", status: "planned", people: 6, estimatedCost: 0,
         mapsUrl: "https://maps.google.com/?q=Jardim+Botanico+Jundiai",
         imageUrl: "", gradient: "linear-gradient(135deg, #064e3b, #047857)",
         details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
     },
     {
-        id: "out-1", month: "Outubro", title: "Guararema", subtitle: "Trem Turistico",
-        description: "Passeio de trem turistico pela cidade. Otimo pra Laura.",
+        id: "out-1", month: "Outubro", title: "Guararema", subtitle: "Trem Turístico",
+        description: "Passeio de trem turístico pela cidade. Ótimo pra Júlia.",
         type: "aventura", status: "planned", people: 6, estimatedCost: 180,
         mapsUrl: "https://maps.google.com/?q=Trem+Turistico+Guararema",
         imageUrl: "", gradient: "linear-gradient(135deg, #713f12, #a16207)",
         details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
     },
     {
-        id: "out-2", month: "Outubro", title: "Sao Paulo", subtitle: "Aquario de Sao Paulo",
-        description: "Maior aquario da America Latina. Presente de Dia das Criancas.",
+        id: "out-2", month: "Outubro", title: "São Paulo", subtitle: "Aquário de São Paulo",
+        description: "Maior aquário da América Latina. Presente de Dia das Crianças.",
         type: "aventura", status: "planned", people: 6, estimatedCost: 150,
         mapsUrl: "https://maps.google.com/?q=Aquario+de+Sao+Paulo",
         imageUrl: "", gradient: "linear-gradient(135deg, #1e3a5f, #1e40af)",
         details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
     },
     {
-        id: "nov-1", month: "Novembro", title: "Indaiatuba", subtitle: "Parque Ecologico",
-        description: "Parque Ecologico e Museu da Agua. Passeio gratuito e acessivel.",
+        id: "nov-1", month: "Novembro", title: "Indaiatuba", subtitle: "Parque Ecológico",
+        description: "Parque Ecológico e Museu da Água. Passeio gratuito e acessível.",
         type: "natureza", status: "planned", people: 6, estimatedCost: 0,
         mapsUrl: "https://maps.google.com/?q=Parque+Ecologico+Indaiatuba",
         imageUrl: "", gradient: "linear-gradient(135deg, #14532d, #15803d)",
         details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
     },
     {
-        id: "nov-2", month: "Novembro", title: "Aracoiaba da Serra", subtitle: "Fazenda Ipanema",
-        description: "Fazenda historica com trilhas e ruinas. Patrimonio cultural.",
+        id: "nov-2", month: "Novembro", title: "Araçoiaba da Serra", subtitle: "Fazenda Ipanema",
+        description: "Fazenda histórica com trilhas e ruínas. Patrimônio cultural.",
         type: "historia", status: "planned", people: 6, estimatedCost: 50,
         mapsUrl: "https://maps.google.com/?q=Fazenda+Ipanema+Aracoiaba+da+Serra",
         imageUrl: "", gradient: "linear-gradient(135deg, #44403c, #78716c)",
@@ -188,7 +214,7 @@ const trips = [
     },
     {
         id: "dez-1", month: "Dezembro", title: "Itu", subtitle: "Luzes de Natal",
-        description: "Decoracao natalina na praca central. Passeio noturno em familia.",
+        description: "Decoração natalina na praça central. Passeio noturno em família.",
         type: "cultura", status: "planned", people: 6, estimatedCost: 0,
         mapsUrl: "https://maps.google.com/?q=Praca+Padre+Miguel+Itu",
         imageUrl: "", gradient: "linear-gradient(135deg, #991b1b, #dc2626)",
@@ -256,7 +282,7 @@ function renderHome() {
                 ${imgOrGradient(next)}
                 <div class="next-trip-overlay"></div>
                 <div class="next-trip-content">
-                    <span class="next-trip-label">Proxima viagem</span>
+                    <span class="next-trip-label">Próxima viagem</span>
                     <h2>${next.title}</h2>
                     <p>${next.subtitle}</p>
                     <span class="next-trip-month">${next.month}</span>
@@ -274,7 +300,7 @@ function renderHome() {
     }
 
     if (planned.length > 0) {
-        html += `<section class="trip-list"><h3 class="section-title">Proximas viagens</h3>`;
+        html += `<section class="trip-list"><h3 class="section-title">Próximas viagens</h3>`;
         planned.forEach(t => {
             html += `
             <div class="trip-row" onclick="openGuide('${t.id}')">
@@ -337,14 +363,14 @@ function renderGuide(tripId) {
 
         <div class="guide-body">
             <div class="guide-info-bar">
-                <div class="info-item">${svgIcon.clock}<div><strong>${d.departureTime ? d.departureTime.split('.')[0] : 'A definir'}</strong><small>Horario de saida</small></div></div>
+                <div class="info-item">${svgIcon.clock}<div><strong>${d.departureTime ? d.departureTime.split('.')[0] : 'A definir'}</strong><small>Horário de saída</small></div></div>
                 <div class="info-item">${svgIcon.people}<div><strong>${trip.people} pessoas</strong><small>Saindo de Sorocaba</small></div></div>
                 <div class="info-item">${svgIcon.money}<div><strong>${costText(trip.estimatedCost)}</strong><small>Custo estimado</small></div></div>
             </div>
 
             ${trip.mapsUrl ? `
             <a href="${trip.mapsUrl}" target="_blank" rel="noopener" class="btn-navigate">
-                ${svgIcon.nav} Navegar ate o local
+                ${svgIcon.nav} Navegar até o local
             </a>` : ''}
 
             ${d.citySummary ? `
@@ -354,7 +380,7 @@ function renderGuide(tripId) {
             </section>` : `
             <section class="guide-section">
                 <h3>Sobre a cidade</h3>
-                <div class="placeholder">Conteudo sera adicionado</div>
+                <div class="placeholder">Conteúdo será adicionado</div>
             </section>`}
 
             <section class="guide-section">
@@ -370,7 +396,7 @@ function renderGuide(tripId) {
                             <p>${item.desc}</p>
                         </div>
                     </div>`).join('')}
-                </div>` : '<div class="placeholder">Roteiro sera definido</div>'}
+                </div>` : '<div class="placeholder">Roteiro será definido</div>'}
             </section>
 
             <section class="guide-section">
@@ -385,33 +411,33 @@ function renderGuide(tripId) {
                         </div>
                         ${r.mapsUrl ? `<a href="${r.mapsUrl}" target="_blank" rel="noopener" class="info-card-pin" title="Ver no mapa">${svgIcon.pin}</a>` : ''}
                     </div>`).join('')}
-                </div>` : '<div class="placeholder">Restaurantes serao adicionados</div>'}
+                </div>` : '<div class="placeholder">Restaurantes serão adicionados</div>'}
             </section>
 
             <section class="guide-section">
-                <h3>Passeios em familia</h3>
+                <h3>Passeios em família</h3>
                 ${hasContent(d.familyActivities) ? `
                 <div class="card-list">
                     ${d.familyActivities.map(a => `
                     <div class="info-card">
                         <div class="info-card-text"><strong>${a.name}</strong><p>${a.desc}</p></div>
                     </div>`).join('')}
-                </div>` : '<div class="placeholder">Atividades serao adicionadas</div>'}
+                </div>` : '<div class="placeholder">Atividades serão adicionadas</div>'}
             </section>
 
             <section class="guide-section">
-                <h3>Pra Laura</h3>
+                <h3>Pra Júlia</h3>
                 ${hasContent(d.kidsActivities) ? `
                 <div class="card-list">
                     ${d.kidsActivities.map(a => `
                     <div class="info-card">
                         <div class="info-card-text"><strong>${a.name}</strong><p>${a.desc}</p></div>
                     </div>`).join('')}
-                </div>` : '<div class="placeholder">Atividades serao adicionadas</div>'}
+                </div>` : '<div class="placeholder">Atividades serão adicionadas</div>'}
             </section>
 
             <section class="guide-section">
-                <h3>Pontos turisticos</h3>
+                <h3>Pontos turísticos</h3>
                 ${hasContent(d.touristSpots) ? `
                 <div class="card-list">
                     ${d.touristSpots.map(s => `
@@ -419,7 +445,7 @@ function renderGuide(tripId) {
                         <div class="info-card-text"><strong>${s.name}</strong><p>${s.desc}</p></div>
                         ${s.mapsUrl ? `<a href="${s.mapsUrl}" target="_blank" rel="noopener" class="info-card-pin" title="Ver no mapa">${svgIcon.pin}</a>` : ''}
                     </div>`).join('')}
-                </div>` : '<div class="placeholder">Pontos turisticos serao adicionados</div>'}
+                </div>` : '<div class="placeholder">Pontos turísticos serão adicionados</div>'}
             </section>
         </div>
     </div>`;
