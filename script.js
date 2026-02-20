@@ -658,32 +658,173 @@ const trips = [
         description: "Parque Ecológico e Museu da Água. Passeio gratuito e acessível.",
         type: "natureza", status: "planned", people: 6, distance: 50, estimatedCost: 0,
         mapsUrl: "https://maps.google.com/?q=Parque+Ecologico+Indaiatuba",
-        imageUrl: "", gradient: "linear-gradient(135deg, #14532d, #15803d)",
-        details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
+        imageUrl: "https://images.unsplash.com/photo-1414609245224-afa02bfb3fda?w=900&h=500&fit=crop&auto=format",
+        gradient: "linear-gradient(135deg, #14532d, #15803d)",
+        details: {
+            departureTime: "Sair de Sorocaba às 9h. Chegada prevista às 9h45.",
+            itinerary: [
+                { time: "09:00", activity: "Saída de Sorocaba", desc: "Pegar SP-280 (Castelo Branco) até Indaiatuba. Aproximadamente 45min de viagem." },
+                { time: "09:45", activity: "Parque Ecológico", desc: "Entrada gratuita. Parque enorme com lagos, trilhas, playgrounds e áreas de piquenique." },
+                { time: "10:30", activity: "Trilha do Lago", desc: "Caminhada ao redor do lago principal. Pontes, pedalinhos e área de observação de aves." },
+                { time: "11:30", activity: "Playground e pedalinho", desc: "Área de recreação com playground grande e pedalinhos no lago. Perfeito para Júlia." },
+                { time: "12:30", activity: "Almoço em Indaiatuba", desc: "Restaurantes próximos ao parque. Opções de comida caseira e pizzarias." },
+                { time: "14:00", activity: "Museu da Água", desc: "Museu interativo sobre o ciclo da água. Educativo e divertido para crianças." },
+                { time: "15:00", activity: "Parque Cidade de Indaiatuba", desc: "Segundo parque da cidade com pista de caminhada, quadras e lago. Passeio leve." },
+                { time: "16:00", activity: "Retorno a Sorocaba", desc: "Chegada prevista por volta das 16h45." }
+            ],
+            restaurants: [
+                { name: "Restaurante Dona Maria", desc: "Comida caseira do interior. Buffet por quilo com feijão tropeiro, frango e mandioca. Preço médio: R$35/pessoa.", mapsUrl: "https://maps.google.com/?q=Restaurante+Dona+Maria+Indaiatuba" },
+                { name: "Pizzaria Fratello", desc: "Pizzas em forno a lenha e massas caseiras. Ambiente familiar. Preço médio: R$50/pessoa.", mapsUrl: "https://maps.google.com/?q=Pizzaria+Fratello+Indaiatuba" },
+                { name: "Sorveteria Davó", desc: "Sorvete artesanal com sabores regionais. Parada obrigatória no calor de novembro.", mapsUrl: "https://maps.google.com/?q=Sorveteria+Davo+Indaiatuba" }
+            ],
+            familyActivities: [
+                { name: "Parque Ecológico", desc: "Parque enorme com lagos, trilhas e áreas verdes. Gratuito e acessível para os avós." },
+                { name: "Pedalinho no lago", desc: "Pedalinhos disponíveis no lago principal. Atividade tranquila para toda a família." },
+                { name: "Museu da Água", desc: "Museu interativo sobre recursos hídricos. Educativo e bem apresentado." },
+                { name: "Piquenique", desc: "Áreas com mesas e sombra no parque. Levar lanches e aproveitar o dia ao ar livre." }
+            ],
+            kidsActivities: [
+                { name: "Playground do parque", desc: "Playground grande e bem conservado. Diversos brinquedos para Júlia." },
+                { name: "Pedalinho", desc: "Passeio de pedalinho no lago. Divertido e seguro para crianças." },
+                { name: "Museu da Água", desc: "Exposição interativa onde Júlia pode aprender brincando sobre o ciclo da água." }
+            ],
+            citySummary: "Indaiatuba é uma cidade bem estruturada localizada a apenas 50km de Sorocaba (~45min de carro). O Parque Ecológico é um dos maiores e mais bonitos parques urbanos do interior paulista, com lagos, trilhas, playgrounds e áreas de piquenique — tudo gratuito. O Museu da Água oferece exposição interativa sobre recursos hídricos. É um passeio leve, sem custo e ideal para um dia tranquilo ao ar livre com a família, especialmente no calor de novembro.",
+            touristSpots: [
+                { name: "Parque Ecológico", desc: "Um dos maiores parques urbanos do interior. Gratuito. Aberto diariamente 6h-18h.", mapsUrl: "https://maps.google.com/?q=Parque+Ecologico+Indaiatuba" },
+                { name: "Museu da Água", desc: "Exposição interativa sobre recursos hídricos. Gratuito.", mapsUrl: "https://maps.google.com/?q=Museu+da+Agua+Indaiatuba" },
+                { name: "Parque Cidade de Indaiatuba", desc: "Parque urbano com pista de caminhada e lago. Gratuito.", mapsUrl: "https://maps.google.com/?q=Parque+Cidade+Indaiatuba" },
+                { name: "Centro Cultural", desc: "Exposições e eventos culturais. Programação variada.", mapsUrl: "https://maps.google.com/?q=Centro+Cultural+Indaiatuba" }
+            ]
+        }
     },
     {
         id: "nov-2", month: "Novembro", title: "Araçoiaba da Serra", subtitle: "Fazenda Ipanema",
         description: "Fazenda histórica com trilhas e ruínas. Patrimônio cultural.",
         type: "historia", status: "planned", people: 6, distance: 15, estimatedCost: 50,
         mapsUrl: "https://maps.google.com/?q=Fazenda+Ipanema+Aracoiaba+da+Serra",
-        imageUrl: "", gradient: "linear-gradient(135deg, #44403c, #78716c)",
-        details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
+        imageUrl: "https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=900&h=500&fit=crop&auto=format",
+        gradient: "linear-gradient(135deg, #44403c, #78716c)",
+        details: {
+            departureTime: "Sair de Sorocaba às 9h. Chegada prevista às 9h20.",
+            itinerary: [
+                { time: "09:00", activity: "Saída de Sorocaba", desc: "Araçoiaba da Serra fica a apenas 15km. Aproximadamente 20min de viagem." },
+                { time: "09:20", activity: "Fazenda Ipanema (FLONA)", desc: "Chegada à Floresta Nacional de Ipanema. Estacionamento gratuito. Área administrada pelo ICMBio." },
+                { time: "09:45", activity: "Ruínas da Real Fábrica de Ferro", desc: "Ruínas da primeira siderúrgica do Brasil (1810). Paredes de pedra preservadas entre a vegetação." },
+                { time: "10:45", activity: "Trilha da Pedra Santa", desc: "Trilha leve de 2km com paisagem de cerrado e mata atlântica. Passagem por nascentes." },
+                { time: "12:00", activity: "Almoço", desc: "Restaurantes em Araçoiaba ou levar lanche para piquenique na área de apoio da FLONA." },
+                { time: "13:30", activity: "Lago e observação de aves", desc: "Lago dentro da FLONA com grande diversidade de aves. Levar binóculos se tiver." },
+                { time: "14:30", activity: "Centro de Visitantes", desc: "Exposição sobre a história da fazenda e a biodiversidade local." },
+                { time: "15:00", activity: "Retorno a Sorocaba", desc: "Chegada prevista por volta das 15h20. Passeio mais curto do roteiro." }
+            ],
+            restaurants: [
+                { name: "Restaurante Tempero da Roça", desc: "Comida caipira com fogão a lenha em Araçoiaba. Frango, leitão e acompanhamentos. Preço médio: R$35/pessoa.", mapsUrl: "https://maps.google.com/?q=Restaurante+Tempero+da+Roca+Aracoiaba" },
+                { name: "Piquenique na FLONA", desc: "Área de apoio com mesas e sombra. Levar lanches, frutas e sucos. Opção gratuita e prática.", mapsUrl: "https://maps.google.com/?q=FLONA+Ipanema+Aracoiaba" },
+                { name: "Padaria Araçoiaba", desc: "Pães frescos, salgados e café. Bom para lanche rápido antes ou depois do passeio.", mapsUrl: "https://maps.google.com/?q=Padaria+Aracoiaba+da+Serra" }
+            ],
+            familyActivities: [
+                { name: "Ruínas históricas", desc: "Primeira siderúrgica do Brasil (1810). Paredes de pedra entre a mata. Impressionante e educativo." },
+                { name: "Trilha da Pedra Santa", desc: "Trilha leve e acessível de 2km. Natureza preservada com cerrado e mata atlântica." },
+                { name: "Observação de aves", desc: "Mais de 200 espécies registradas na FLONA. Passeio contemplativo junto ao lago." },
+                { name: "Piquenique", desc: "Área de apoio com mesas na sombra. Passeio econômico e relaxante para a família." }
+            ],
+            kidsActivities: [
+                { name: "Explorar as ruínas", desc: "Júlia vai se sentir numa aventura explorando as paredes de pedra da fábrica antiga." },
+                { name: "Trilha na mata", desc: "Caminhada pela trilha com árvores, passarinhos e nascentes. Contato direto com a natureza." },
+                { name: "Observar animais", desc: "Aves, borboletas e pequenos animais no caminho. Levar caderninho para Júlia desenhar." }
+            ],
+            citySummary: "Araçoiaba da Serra é a cidade mais próxima de Sorocaba no roteiro — apenas 15km (~20min de carro). A Fazenda Ipanema, hoje Floresta Nacional (FLONA) administrada pelo ICMBio, abriga as ruínas da Real Fábrica de Ferro de São João de Ipanema, a primeira siderúrgica do Brasil (1810). Além das ruínas históricas, oferece trilhas leves em meio a cerrado e mata atlântica, lago para observação de aves (mais de 200 espécies) e área de piquenique. Passeio curto, econômico e rico em história e natureza.",
+            touristSpots: [
+                { name: "Ruínas da Real Fábrica de Ferro", desc: "Primeira siderúrgica do Brasil (1810). Patrimônio histórico.", mapsUrl: "https://maps.google.com/?q=Ruinas+Fabrica+de+Ferro+Ipanema" },
+                { name: "FLONA Ipanema", desc: "Floresta Nacional com trilhas e lago. Administrada pelo ICMBio. Gratuito.", mapsUrl: "https://maps.google.com/?q=FLONA+Ipanema+Aracoiaba" },
+                { name: "Trilha da Pedra Santa", desc: "Trilha leve de 2km. Cerrado e mata atlântica.", mapsUrl: "https://maps.google.com/?q=Trilha+Pedra+Santa+Aracoiaba" },
+                { name: "Lago da FLONA", desc: "Lago com diversidade de aves. Bom para observação e fotos.", mapsUrl: "https://maps.google.com/?q=Lago+FLONA+Ipanema" }
+            ]
+        }
     },
     {
         id: "dez-1", month: "Dezembro", title: "Itu", subtitle: "Luzes de Natal",
         description: "Decoração natalina na praça central. Passeio noturno em família.",
         type: "cultura", status: "planned", people: 6, distance: 40, estimatedCost: 0,
         mapsUrl: "https://maps.google.com/?q=Praca+Padre+Miguel+Itu",
-        imageUrl: "", gradient: "linear-gradient(135deg, #991b1b, #dc2626)",
-        details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
+        imageUrl: "https://images.unsplash.com/photo-1482517967863-00e15c9b44be?w=900&h=500&fit=crop&auto=format",
+        gradient: "linear-gradient(135deg, #991b1b, #dc2626)",
+        details: {
+            departureTime: "Sair de Sorocaba às 17h. Chegada prevista às 17h40.",
+            itinerary: [
+                { time: "17:00", activity: "Saída de Sorocaba", desc: "Passeio noturno — sair no final da tarde. SP-280 até Itu, ~40min." },
+                { time: "17:40", activity: "Chegada em Itu", desc: "Estacionar próximo à Praça Padre Miguel. Centro da cidade com decoração natalina." },
+                { time: "18:00", activity: "Praça dos Exageros iluminada", desc: "Os objetos gigantes de Itu ganham iluminação especial no Natal. Fotos divertidas em família." },
+                { time: "18:30", activity: "Decoração natalina", desc: "Praça Padre Miguel com árvore de Natal gigante, luzes, presépio e projeções. Espetáculo de luzes." },
+                { time: "19:30", activity: "Jantar em Itu", desc: "Restaurantes no centro com opções variadas. Clima natalino na cidade." },
+                { time: "20:30", activity: "Caminhada noturna", desc: "Passeio pelas ruas decoradas do centro. Barracas com doces, quentão e pamonha." },
+                { time: "21:00", activity: "Retorno a Sorocaba", desc: "Chegada prevista por volta das 21h40." }
+            ],
+            restaurants: [
+                { name: "Restaurante Villa Chic", desc: "Culinária contemporânea em casarão histórico. Carnes e massas. Preço médio: R$70/pessoa.", mapsUrl: "https://maps.google.com/?q=Villa+Chic+Itu" },
+                { name: "Pizzaria Fornalha", desc: "Pizza em forno a lenha no centro. Ambiente familiar e aconchegante. Preço médio: R$50/pessoa.", mapsUrl: "https://maps.google.com/?q=Pizzaria+Fornalha+Itu" },
+                { name: "Barracas da praça", desc: "Comidas típicas nas barracas: pamonha, curau, quentão, churros e doces de Natal. Preço acessível.", mapsUrl: "https://maps.google.com/?q=Praca+Padre+Miguel+Itu" }
+            ],
+            familyActivities: [
+                { name: "Espetáculo de luzes", desc: "Projeções e show de luzes na Praça Padre Miguel. Gratuito e mágico." },
+                { name: "Praça dos Exageros iluminada", desc: "Objetos gigantes com iluminação natalina. Fotos únicas e divertidas." },
+                { name: "Presépio e árvore de Natal", desc: "Presépio em tamanho real e árvore gigante no centro da praça." },
+                { name: "Caminhada noturna", desc: "Ruas decoradas com luzes. Clima natalino perfeito para fotos em família." }
+            ],
+            kidsActivities: [
+                { name: "Árvore de Natal gigante", desc: "Júlia vai adorar ver a árvore enorme toda iluminada. Momento mágico para crianças." },
+                { name: "Papai Noel", desc: "Papai Noel presente na praça para fotos e entrega de cartinhas." },
+                { name: "Doces e quentão kids", desc: "Churros, algodão-doce e chocolate quente nas barracas. Festa para Júlia." }
+            ],
+            citySummary: "Itu no Natal é uma experiência especial. A Cidade dos Exageros, a apenas 40km de Sorocaba (~40min), transforma suas praças e ruas com decoração natalina grandiosa — como tudo na cidade. A Praça Padre Miguel recebe árvore de Natal gigante, presépio em tamanho real, espetáculo de luzes e projeções. Os objetos gigantes da Praça dos Exageros ganham iluminação especial. Barracas com comidas típicas e clima festivo completam o passeio noturno perfeito para fechar o ano em família.",
+            touristSpots: [
+                { name: "Praça Padre Miguel", desc: "Centro da decoração natalina. Árvore gigante e show de luzes. Gratuito.", mapsUrl: "https://maps.google.com/?q=Praca+Padre+Miguel+Itu" },
+                { name: "Praça dos Exageros", desc: "Objetos gigantes com iluminação natalina especial.", mapsUrl: "https://maps.google.com/?q=Praca+dos+Exageros+Itu" },
+                { name: "Centro Histórico iluminado", desc: "Ruas decoradas com luzes e enfeites natalinos.", mapsUrl: "https://maps.google.com/?q=Centro+Historico+Itu" },
+                { name: "Igreja Matriz", desc: "Igreja histórica com decoração de Natal.", mapsUrl: "https://maps.google.com/?q=Igreja+Matriz+Itu" }
+            ]
+        }
     },
     {
         id: "dez-2", month: "Dezembro", title: "Maresias", subtitle: "Pousada Tambayba - Retorno",
-        description: "Volta a Maresias para fechar o ano.",
+        description: "Volta a Maresias para fechar o ano. Pousada que a família amou em janeiro.",
         type: "praia", status: "planned", people: 6, distance: 180, estimatedCost: null,
         mapsUrl: "https://maps.google.com/?q=Pousada+Tambayba+Maresias",
-        imageUrl: "", gradient: "linear-gradient(135deg, #0369a1, #f97316)",
-        details: { departureTime: "", itinerary: [], restaurants: [], familyActivities: [], kidsActivities: [], citySummary: "", touristSpots: [] }
+        imageUrl: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&h=500&fit=crop&auto=format",
+        gradient: "linear-gradient(135deg, #0369a1, #f97316)",
+        details: {
+            departureTime: "Viagem com pernoite — horário flexível",
+            itinerary: [
+                { time: "08:00", activity: "Saída de Sorocaba", desc: "SP-270 até São Paulo, depois SP-055 (Rio-Santos). Aproximadamente 3h de viagem." },
+                { time: "11:00", activity: "Check-in na Pousada Tambayba", desc: "Retorno à pousada que a família amou em janeiro. Café da manhã caprichado e ambiente familiar." },
+                { time: "12:00", activity: "Almoço na praia", desc: "Quiosques e restaurantes na orla de Maresias. Frutos do mar frescos." },
+                { time: "14:00", activity: "Praia de Maresias", desc: "Tarde inteira na praia. Banho de mar, castelo de areia com Júlia, caminhada na orla." },
+                { time: "17:00", activity: "Pôr do sol", desc: "Pôr do sol na praia para encerrar o ano de viagens com uma vista inesquecível." },
+                { time: "19:00", activity: "Jantar especial", desc: "Jantar em restaurante à beira-mar para celebrar o último passeio do ano." }
+            ],
+            restaurants: [
+                { name: "Restaurante Sirena", desc: "Frutos do mar e culinária praiana. Ambiente pé na areia. O mesmo que curtimos em janeiro. Preço médio: R$90/pessoa.", mapsUrl: "https://maps.google.com/?q=Restaurante+Sirena+Maresias" },
+                { name: "Manjuba Gastronomia", desc: "Cozinha autoral com ingredientes locais. Um dos melhores da região.", mapsUrl: "https://maps.google.com/?q=Manjuba+Gastronomia+Maresias" },
+                { name: "Bar do Celso", desc: "Petiscos e porções generosas. Ambiente descontraído, bom para famílias.", mapsUrl: "https://maps.google.com/?q=Bar+do+Celso+Maresias" }
+            ],
+            familyActivities: [
+                { name: "Praia de Maresias", desc: "Praia principal com boa infraestrutura. Areia clara, mar com ondas moderadas. Dia inteiro." },
+                { name: "Trilha de Maresias a Paúba", desc: "Trilha leve de 30 minutos pela costeira. Vista panorâmica do litoral." },
+                { name: "Pôr do sol na praia", desc: "Encerrar o ano de viagens assistindo o pôr do sol juntos. Momento especial." },
+                { name: "Caminhada no calçadão", desc: "Passeio pela orla com lojas, sorveterias e artesanato." }
+            ],
+            kidsActivities: [
+                { name: "Castelo de areia", desc: "Área tranquila da praia para Júlia brincar na areia e tomar banho de mar." },
+                { name: "Piscina da pousada", desc: "Pousada Tambayba tem piscina. Júlia já conhece e adora." },
+                { name: "Sorvete no calçadão", desc: "Sorveterias artesanais na orla. Programa clássico de praia com Júlia." }
+            ],
+            citySummary: "Maresias é o destino de encerramento do ano — um retorno à praia e à Pousada Tambayba que a família amou em janeiro. A ideia é fechar 2026 no mesmo lugar onde começou, completando o ciclo. Localizada a 180km de Sorocaba (~3h de carro), a praia continua sendo uma das mais bonitas do litoral norte de São Paulo, com areia branca, águas cristalinas e um pôr do sol inesquecível. Desta vez, a família já conhece os melhores restaurantes e cantinhos.",
+            touristSpots: [
+                { name: "Praia de Maresias", desc: "Praia principal. Infraestrutura completa. Bandeira Azul.", mapsUrl: "https://maps.google.com/?q=Praia+de+Maresias" },
+                { name: "Praia de Paúba", desc: "Praia vizinha mais tranquila. Boa para famílias.", mapsUrl: "https://maps.google.com/?q=Praia+de+Pauba" },
+                { name: "Mirante de Maresias", desc: "Vista panorâmica da praia e da serra.", mapsUrl: "https://maps.google.com/?q=Mirante+Maresias" },
+                { name: "Pousada Tambayba", desc: "A pousada da família. Café da manhã caprichado e localização privilegiada.", mapsUrl: "https://maps.google.com/?q=Pousada+Tambayba+Maresias" }
+            ]
+        }
     }
 ];
 
